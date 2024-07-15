@@ -1,0 +1,130 @@
+$version 1.0
+
+attr active = Thermostat::Thermostat;
+attr callStackMonitor_Show = false;
+attr connectInspectors = false;
+attr currentCodeInspector = Thermostat::DeviceClass.UpdateActualTemp;
+attr debug_TrackUpdates = false;
+attr extractDoc_ClassOverview = true;
+attr extractDoc_DeleteOldFiles = false;
+attr extractDoc_Destination = ./HtmlDoc;
+attr extractDoc_IgnoreAccessors = true;
+attr extractDoc_IgnoreMembers = true;
+attr extractDoc_Navigation = true;
+attr extractDoc_Profiles = false;
+attr extractDoc_Title = Documentation;
+attr extractDoc_Variants = false;
+attr generateClut_ReservedColors = 0;
+attr heapMonitor_Show = false;
+attr language = Default;
+attr profile = Win32;
+attr profilerMonitor_Show = false;
+attr search_CaseSensitive = false;
+attr search_IgnoreDescription = false;
+attr search_IgnoreMosaic = false;
+attr search_LimitToComposer = true;
+attr search_WholeWords = false;
+attr search_WildCards = false;
+
+view Project
+{
+  attr aspectRatio = 1.0;
+  attr enableGrid = true;
+  attr enableWireMode = false;
+  attr grid = 10;
+  attr scrollTo = <105,153>;
+  attr zoom = 1.0;
+}
+
+view unit Application
+{
+  attr aspectRatio = 1.0;
+  attr enableGrid = true;
+  attr enableWireMode = false;
+  attr grid = 10;
+  attr scrollTo = <-7,425>;
+  attr zoom = 1.0;
+}
+
+view class Application::Application
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view unit Thermostat
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-608,241>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::DeviceClass
+{
+  attr enableWireMode = false;
+  attr scrollTo = <297,249>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::Thermostat
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-315,-58>;
+  attr zoom = 0.5;
+}
+
+view class WidgetSet::RadioButton
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+codeview Thermostat::DeviceClass.UpdateActualTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <5,0>;
+  attr codeSelStart = <5,0>;
+}
+
+codeview Thermostat::DeviceClass.OnSetNominalTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,16>;
+  attr codeSelEnd = <27,21>;
+  attr codeSelStart = <27,21>;
+}
+
+codeview Thermostat::DeviceClass.OnSetFanSpeed
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,16>;
+  attr codeSelEnd = <26,29>;
+  attr codeSelStart = <26,29>;
+}
+
+codeview Thermostat::DeviceClass.OnSetSwingMode
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,16>;
+  attr codeSelEnd = <27,29>;
+  attr codeSelStart = <27,29>;
+}
+
+codeview Thermostat::DeviceClass.OnSetSettingNo
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,23>;
+  attr codeSelEnd = <27,36>;
+  attr codeSelStart = <27,36>;
+}
+
+codeview Thermostat::DeviceClass.ChangeActualTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
