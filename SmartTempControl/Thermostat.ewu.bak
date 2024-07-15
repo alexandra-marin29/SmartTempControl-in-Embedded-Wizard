@@ -686,7 +686,7 @@ class TemperatureController : Core::Group
   // This slot method will receive a signal, if the value of the property assigned \
   // to @Outlet has been changed by another widget or by the application logic. In \
   // response to this notification, the widget will update itself.
-  $rect <610,359,810,399>
+  $rect <800,210,1000,250>
   slot outletNominalSlot
   {
     /* update the current state of the widget */
@@ -736,7 +736,7 @@ class TemperatureController : Core::Group
   // This slot method will receive a signal, if the value of the property assigned \
   // to @Outlet has been changed by another widget or by the application logic. In \
   // response to this notification, the widget will update itself.
-  $rect <610,310,810,350>
+  $rect <800,170,1000,210>
   slot outletCurrentSlot
   {
     /* update the current state of the widget */
@@ -953,7 +953,7 @@ class TemperatureController : Core::Group
     preset InitialDelay = 1200;
   }
 
-  $rect <610,400,810,440>
+  $rect <800,260,1000,300>
   slot fadeText
   {
     sender; /* the method is called from the sender object */

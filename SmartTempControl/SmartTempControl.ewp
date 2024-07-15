@@ -1,4 +1,4 @@
-﻿$version 13.00
+﻿$version 13.04
 
 // This unit is a part of the Embedded Wizard framework 'Mosaic'
 $rect <40,70,240,110>
@@ -59,31 +59,17 @@ $rect <540,70,740,110>
 language Default;
 
 // This unit is intended to contain the application class and another GUI components.
-$rect <40,420,240,460>
+$rect <299,179,499,219>
 unit Application
 {
   attr Directory = .\;
 }
 
 // This is a unit.
-$rect <40,460,240,500>
+$rect <299,219,499,259>
 unit Thermostat
 {
   attr Directory = .\;
-}
-
-// Welcome to the SmartThermostat Demo Application!
-// 
-// This project implements an application that shows a thermostat, which is rotatable \
-// to adjust the nominal and actual temperature.
-// While you can in-/decrease the nominal temperature, the actual temperature is \
-// continously getting closer to it by heating up or cooling down. Both temperature \
-// types are displayed by different needles or indicators.
-// 
-// This application is designed for platforms with a screen size of 800x480 pixel.
-note legend AppDescription
-{
-  attr Bounds = <270,140,760,440>;
 }
 
 $rect <40,270,240,310>
@@ -116,14 +102,8 @@ note group Note3
   attr Bounds = <520,20,760,130>;
 }
 
-// Project Units
+// Units
 note group Note5
 {
-  attr Bounds = <20,380,260,520>;
-}
-
-// Graphical design of 'SmartThermostat' by Ergosign - https://www.ergosign.de
-note legend Note4
-{
-  attr Bounds = <270,450,760,520>;
+  attr Bounds = <280,139,520,279>;
 }
