@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::TemperatureController;
+attr active = Application::Application;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Core::Group.Add;
+attr currentCodeInspector = Thermostat::DeviceClass.ChangeActualTemp;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -49,42 +49,14 @@ view unit Application
 view class Application::Application
 {
   attr enableWireMode = false;
-  attr scrollTo = <-410,-107>;
-  attr zoom = 0.25;
+  attr scrollTo = <-52,57>;
+  attr zoom = 0.75;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-224,-47>;
-  attr zoom = 0.75;
-}
-
-view class Thermostat::DeviceClass
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-199,-55>;
-  attr zoom = 0.75;
-}
-
-view class Thermostat::Thermostat
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-315,-49>;
-  attr zoom = 0.5;
-}
-
-view class WidgetSet::RadioButton
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-7,-231>;
-  attr zoom = 1.0;
-}
-
-view class Thermostat::TemperatureController
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-232,-53>;
+  attr scrollTo = <-160,-159>;
   attr zoom = 0.75;
 }
 
@@ -92,8 +64,8 @@ codeview Thermostat::DeviceClass.UpdateActualTemp
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <30,2>;
+  attr codeSelStart = <30,2>;
 }
 
 codeview Thermostat::DeviceClass.OnSetNominalTemp
@@ -132,8 +104,8 @@ codeview Thermostat::DeviceClass.ChangeActualTemp
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <28,0>;
+  attr codeSelStart = <28,0>;
 }
 
 codeview Core::Group.Add
@@ -142,4 +114,116 @@ codeview Core::Group.Add
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <2,1>;
   attr codeSelStart = <2,1>;
+}
+
+codeview Thermostat::TemperatureController.OnSetMinValue
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,4>;
+  attr codeSelStart = <0,4>;
+}
+
+codeview Thermostat::TemperatureController.OnSetMaxValue
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,4>;
+  attr codeSelStart = <0,4>;
+}
+
+codeview Thermostat::TemperatureController.OnSetActualValue
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,4>;
+  attr codeSelStart = <0,4>;
+}
+
+codeview Thermostat::TemperatureController.OnSetNominalValue
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,4>;
+  attr codeSelStart = <0,4>;
+}
+
+codeview Thermostat::TemperatureController.OnSetOutletActual
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,10>;
+  attr codeSelStart = <0,10>;
+}
+
+codeview Thermostat::TemperatureController.OnSetOutletNominal
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <27,6>;
+  attr codeSelStart = <27,6>;
+}
+
+codeview Thermostat::TemperatureController.outletCurrentSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::TemperatureController.outletNominalSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::TemperatureController.fadeText
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <7,0>;
+  attr codeSelStart = <7,0>;
+}
+
+codeview Thermostat::TemperatureController.onStartSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,2>;
+  attr codeSelStart = <0,2>;
+}
+
+codeview Thermostat::TemperatureController.onRotateSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,33>;
+  attr codeSelStart = <0,33>;
+}
+
+codeview Thermostat::TemperatureController.onEndSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,1>;
+  attr codeSelStart = <0,1>;
+}
+
+codeview Thermostat::TemperatureController.incrNominal
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,6>;
+  attr codeSelEnd = <0,17>;
+  attr codeSelStart = <0,17>;
+}
+
+codeview Thermostat::TemperatureController.decrNominal
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,6>;
+  attr codeSelEnd = <0,16>;
+  attr codeSelStart = <0,16>;
 }

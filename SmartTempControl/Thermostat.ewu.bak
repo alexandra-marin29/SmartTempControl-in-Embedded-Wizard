@@ -265,13 +265,9 @@ class DeviceClass : Templates::DeviceClass
   $output true
   method void UpdateActualTemp( arg int32 aNewValue )
   {
-    // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure ActualTemp )
     {
-      // Remember the new value in the internal memory of the property.
       pure ActualTemp = aNewValue;
-
-      // Notify all associated property observers.
       notifyobservers ^ActualTemp;
     }
   }
@@ -402,7 +398,7 @@ class DeviceClass : Templates::DeviceClass
   $rect <20,340,220,380>
   slot ChangeActualTemp
   {
-    /* this is just a simulation of heating / cooling */
+    var int32 temp = ActualTemp;
     var int32 temp = ActualTemp;
 
     if ( temp < NominalTemp )
@@ -501,7 +497,7 @@ resource Resources::Bitmap Controller
   attr bitmapmode Mode = Default;
 }
 
-$rect <290,40,490,80>
+$rect <210,39,410,79>
 $output false
 class TemperatureController : Core::Group
 {
@@ -653,14 +649,11 @@ class TemperatureController : Core::Group
   $rect <600,130,800,170>
   onset NominalValue
   {
-    /* check if the given value differs from the current value */
     if ( pure NominalValue == value )
       return;
 
-    /* store the new value */
     pure NominalValue = value;
 
-    /* ...and finally, force an update */
     InvalidateViewState();
   }
 
@@ -672,24 +665,20 @@ class TemperatureController : Core::Group
   $rect <600,90,800,130>
   onset ActualValue
   {
-    /* check if the given value differs from the current value */
     if ( pure ActualValue == value )
       return;
 
-    /* store the new value */
     pure ActualValue = value;
 
-    /* ...and finally, force an update */
     InvalidateViewState();
   }
 
   // This slot method will receive a signal, if the value of the property assigned \
   // to @Outlet has been changed by another widget or by the application logic. In \
   // response to this notification, the widget will update itself.
-  $rect <800,210,1000,250>
+  $rect <610,359,810,399>
   slot outletNominalSlot
   {
-    /* update the current state of the widget */
     if ( OutletNominal != null )
       NominalValue = OutletNominal^;
   }
@@ -697,22 +686,17 @@ class TemperatureController : Core::Group
   $rect <600,210,800,250>
   onset OutletNominal
   {
-    /* check if the new outlet differs from the currently used outlet */
     if ( pure OutletNominal == value )
       return;
 
-    /* detach from the previous outlet */
     if ( pure OutletNominal != null )
       detachobserver outletNominalSlot, pure OutletNominal;
 
-    /* store the new outlet */
     pure OutletNominal = value;
 
-    /* ... and attach to the new one */
     if ( value != null )
       attachobserver outletNominalSlot, value;
 
-    /* finally, update the current state of the widget by posting a signal to the outlet slot */
     if ( value != null )
       postsignal outletNominalSlot;
   }
@@ -736,10 +720,9 @@ class TemperatureController : Core::Group
   // This slot method will receive a signal, if the value of the property assigned \
   // to @Outlet has been changed by another widget or by the application logic. In \
   // response to this notification, the widget will update itself.
-  $rect <800,170,1000,210>
+  $rect <610,310,810,350>
   slot outletCurrentSlot
   {
-    /* update the current state of the widget */
     if ( OutletActual != null )
       ActualValue = OutletActual^;
   }
@@ -747,22 +730,17 @@ class TemperatureController : Core::Group
   $rect <600,170,800,210>
   onset OutletActual
   {
-    /* check if the new outlet differs from the currently used outlet */
     if ( pure OutletActual == value )
       return;
 
-    /* detach from the previous outlet */
     if ( pure OutletActual != null )
       detachobserver outletCurrentSlot, pure OutletActual;
 
-    /* store the new outlet */
     pure OutletActual = value;
 
-    /* ... and attach to the new one */
     if ( value != null )
       attachobserver outletCurrentSlot, value;
 
-    /* finally, update the current state of the widget by posting a signal to the outlet slot */
     if ( value != null )
       postsignal outletCurrentSlot;
   }
@@ -791,14 +769,11 @@ class TemperatureController : Core::Group
   $rect <600,50,800,90>
   onset MaxValue
   {
-    /* check if the given value differs from the current value */
     if ( pure MaxValue == value )
       return;
 
-    /* store the new value */
     pure MaxValue = value;
 
-    /* ...and finally, force an update */
     InvalidateViewState();
   }
 
@@ -810,25 +785,20 @@ class TemperatureController : Core::Group
   $rect <600,10,800,50>
   onset MinValue
   {
-    /* check if the given value differs from the current value */
     if ( pure MinValue == value )
       return;
 
-    /* store the new value */
     pure MinValue = value;
 
-    /* ...and finally, force an update */
     InvalidateViewState();
   }
 
   $rect <400,350,600,390>
   slot onStartSlot
   {
-    /* user interaction begins */
     InvalidateViewState();
     startValue = NominalValue;
 
-    /* nominal text has to be shown */
     NominalText.Opacity = 0xFF;
     ActualText.Opacity  = 0x00;
     FadeTextEffect.Enabled = false;
@@ -842,26 +812,21 @@ class TemperatureController : Core::Group
     var int32 temp = 0;
     var int32 delta = 0;
 
-    /* ensure that the current set value and the given minimum and maximum values are valid */
     if (( pure MaxValue > pure MinValue) && ( pure NominalValue >= pure MinValue) && ( pure NominalValue <= pure MaxValue))
     {
-      /* convert rotation angle into value change */
       delta = (int32)RotateTouchHandler.Relative * ( pure MaxValue - pure MinValue ) / 720;
     }
 
-    /* caluclate new desired temperature value */
     temp = startValue - delta;
     if ( temp < pure MinValue )
       temp = pure MinValue;
     if ( temp > pure MaxValue )
       temp = pure MaxValue;
 
-    /* inform others about the changed value */
     if ( pure NominalValue != temp )
     {
       var int32 inx = Wheel.FrameNumber;
 
-      /* update the wheel */
       if ( pure NominalValue - temp > 0 )
         inx = inx - 1;
       else
@@ -875,11 +840,9 @@ class TemperatureController : Core::Group
       Wheel.FrameNumber = inx;
       NominalValue = temp;
 
-      /* update the attached outlet, if there is one... */
       if (  OutletNominal != null )
         OutletNominal^ = NominalValue;
 
-      /* ... and inform other observers, that the outlet has changed its value */
       notifyobservers OutletNominal;
 
     }
@@ -889,10 +852,8 @@ class TemperatureController : Core::Group
   $rect <400,427,600,467>
   slot onEndSlot
   {
-    /* end of interaction */
     InvalidateViewState();
 
-    /* restart timer for fading nominal text to actual text */
     FadeTextEffect.Enabled = true;
 
   }
@@ -953,10 +914,10 @@ class TemperatureController : Core::Group
     preset InitialDelay = 1200;
   }
 
-  $rect <800,260,1000,300>
+  $rect <610,400,810,440>
   slot fadeText
   {
-    sender; /* the method is called from the sender object */
+    sender;
 
     NominalText.Opacity = 0xFF - FadeTextEffect.Value;
     ActualText.Opacity  = FadeTextEffect.Value;
@@ -966,56 +927,47 @@ class TemperatureController : Core::Group
   $rect <200,390,400,430>
   slot incrNominal
   {
-    sender; /* the method is called from the sender object */
+    sender;
     var int32 temp = NominalValue + 5;
 
-    /* nominal text has to be shown */
     NominalText.Opacity = 0xFF;
     ActualText.Opacity  = 0x00;
     FadeTextEffect.Enabled = false;
 
-    /* check limits */
     if ( temp > pure MaxValue )
       temp = pure MaxValue;
 
     NominalValue = temp;
 
-    /* update the attached outlet, if there is one... */
     if (  OutletNominal != null )
       OutletNominal^ = NominalValue;
 
-    /* ... and inform other observers, that the outlet has changed its value */
     notifyobservers OutletNominal;
 
-    /* restart timer for fading nominal text to actual text */
+
     FadeTextEffect.Enabled = true;
   }
 
   $rect <200,430,400,470>
   slot decrNominal
   {
-    sender; /* the method is called from the sender object */
+    sender;
     var int32 temp = NominalValue - 5;
 
-    /* nominal text has to be shown */
     NominalText.Opacity = 0xFF;
     ActualText.Opacity  = 0x00;
     FadeTextEffect.Enabled = false;
 
-    /* check limits */
     if ( temp < pure MinValue )
       temp = pure MinValue;
 
     NominalValue = temp;
 
-    /* update the attached outlet, if there is one... */
     if (  OutletNominal != null )
       OutletNominal^ = NominalValue;
 
-    /* ... and inform other observers, that the outlet has changed its value */
     notifyobservers OutletNominal;
 
-    /* restart timer for fading nominal text to actual text */
     FadeTextEffect.Enabled = true;
   }
 
@@ -1095,7 +1047,7 @@ resource Resources::Font FontXXL
   attr fontrowdistance RowDistance;
 }
 
-$rect <40,40,280,80>
+$rect <-50,39,190,79>
 $output false
 class Thermostat : Core::Group
 {
@@ -1312,7 +1264,7 @@ note group Note1
 // Main Screen and Temperature Controller
 note group Note4
 {
-  attr Bounds = <20,0,520,100>;
+  attr Bounds = <-60,0,440,100>;
 }
 
 // Fonts
