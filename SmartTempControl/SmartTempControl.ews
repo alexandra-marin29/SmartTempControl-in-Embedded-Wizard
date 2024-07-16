@@ -1,6 +1,6 @@
 $version 1.0
 
-attr active = Thermostat::ExitScreen;
+attr active = Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Thermostat::Thermostat.onSettingChanged;
@@ -32,8 +32,8 @@ view Project
   attr enableGrid = true;
   attr enableWireMode = false;
   attr grid = 10;
-  attr scrollTo = <449,259>;
-  attr zoom = 1.5;
+  attr scrollTo = <-52,32>;
+  attr zoom = 0.75;
 }
 
 view unit Application
@@ -49,21 +49,21 @@ view unit Application
 view class Application::Application
 {
   attr enableWireMode = false;
-  attr scrollTo = <-52,-87>;
+  attr scrollTo = <-52,-55>;
   attr zoom = 0.75;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-299,-97>;
+  attr scrollTo = <-139,79>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,329>;
+  attr scrollTo = <-7,169>;
   attr zoom = 1.0;
 }
 
@@ -77,8 +77,8 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-119,-46>;
-  attr zoom = 0.5;
+  attr scrollTo = <45,2>;
+  attr zoom = 0.75;
 }
 
 view class Core::PropertyObserver
@@ -114,8 +114,8 @@ codeview Thermostat::Thermostat.onSettingChanged
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <53,7>;
-  attr codeSelStart = <53,7>;
+  attr codeSelEnd = <123,5>;
+  attr codeSelStart = <123,5>;
 }
 
 codeview Thermostat::DeviceClass.UpdateActualTemp
@@ -252,4 +252,28 @@ codeview Thermostat::TemperatureController.UpdateLayout
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <0,4>;
   attr codeSelStart = <0,4>;
+}
+
+codeview Thermostat::Thermostat.ExitScreenSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,5>;
+  attr codeSelEnd = <13,17>;
+  attr codeSelStart = <13,17>;
+}
+
+codeview Thermostat::DeviceClass.OnSetSettingNo
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,23>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::DeviceClass.ChangeActualTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <28,0>;
+  attr codeSelStart = <28,0>;
 }

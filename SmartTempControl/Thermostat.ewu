@@ -3,19 +3,19 @@
 // Device Class
 note group GlobalsNote
 {
-  attr Bounds = <-70,270,170,420>;
+  attr Bounds = <-70,290,170,440>;
 }
 
 // Constants
 note group ConstantsNote
 {
-  attr Bounds = <-70,110,170,260>;
+  attr Bounds = <-70,110,170,279>;
 }
 
 // Resources
 note group Note
 {
-  attr Bounds = <530,0,1010,370>;
+  attr Bounds = <530,0,1010,420>;
 }
 
 $rect <210,150,450,190>
@@ -96,10 +96,10 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonDayConfig
 {
   preset LabelOnColorActive = #FFFFFFFF;
   preset LabelOnColorFocused = #FFFFFFFF;
-  preset LabelOnColorDefault = #FFFFFFFF;
+  preset LabelOnColorDefault = Thermostat::Hot;
   preset LabelOffColorActive = #FFFFFFFF;
   preset LabelOffColorFocused = #FFFFFFFF;
-  preset LabelOffColorDefault = #FFFFFFFF;
+  preset LabelOffColorDefault = Thermostat::Hot;
   preset LabelMarginLeft = 50;
   preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
   preset LabelOnFont = Thermostat::FontL;
@@ -131,10 +131,10 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonNightConfig
 {
   preset LabelOnColorActive = #FFFFFFFF;
   preset LabelOnColorFocused = #FFFFFFFF;
-  preset LabelOnColorDefault = #FFFFFFFF;
+  preset LabelOnColorDefault = Thermostat::Cold;
   preset LabelOffColorActive = #FFFFFFFF;
   preset LabelOffColorFocused = #FFFFFFFF;
-  preset LabelOffColorDefault = #FFFFFFFF;
+  preset LabelOffColorDefault = Thermostat::Cold;
   preset LabelMarginLeft = 50;
   preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
   preset LabelOnFont = Thermostat::FontL;
@@ -166,10 +166,10 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonVacationConfig
 {
   preset LabelOnColorActive = #FFFFFFFF;
   preset LabelOnColorFocused = #FFFFFFFF;
-  preset LabelOnColorDefault = #FFFFFFFF;
+  preset LabelOnColorDefault = Thermostat::Vac;
   preset LabelOffColorActive = #FFFFFFFF;
   preset LabelOffColorFocused = #FFFFFFFF;
-  preset LabelOffColorDefault = #FFFFFFFF;
+  preset LabelOffColorDefault = Thermostat::Vac;
   preset LabelMarginLeft = 50;
   preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
   preset LabelOnFont = Thermostat::FontL;
@@ -250,7 +250,7 @@ autoobject WidgetSet::VerticalSliderConfig VerticalSliderConfig
   preset WidgetMinSize = <20,220>;
 }
 
-$rect <-50,310,150,350>
+$rect <-50,330,150,370>
 $output false
 class DeviceClass : Templates::DeviceClass
 {
@@ -469,7 +469,7 @@ class DeviceClass : Templates::DeviceClass
   }
 }
 
-$rect <-50,350,150,390>
+$rect <-50,370,150,410>
 autoobject Thermostat::DeviceClass Device;
 
 $rect <550,40,750,80>
@@ -496,7 +496,7 @@ resource Resources::Bitmap Controller
   attr bitmapmode Mode = Default;
 }
 
-$rect <-39,39,161,79>
+$rect <-39,39,190,80>
 $output false
 class TemperatureController : Core::Group
 {
@@ -1157,6 +1157,7 @@ class Thermostat : Core::Group
     {
       case 0: Overlay.Bitmap = Thermostat::BackgroundDay;
       case 1: Overlay.Bitmap = Thermostat::BackgroundNight;
+      case 2:Overlay.Bitmap = Thermostat::BackgroundVacation;
       default: Overlay.Bitmap = Thermostat::BackgroundDefault;
     }
 
@@ -1165,11 +1166,18 @@ class Thermostat : Core::Group
   }
 
   $rect <20,20,160,60>
-  object Views::Text Fan
+  object Views::Text FanText
   {
     preset Bounds = <565,363,665,393>;
     preset String = "Fan";
     preset Font = Thermostat::FontM;
+  }
+
+  $rect <20,20,160,60>
+  object Thermostat::ExitScreen ExitScreen
+  {
+    preset Bounds = <0,0,800,480>;
+    preset Visible = false;
   }
 
   $rect <20,20,160,60>
@@ -1181,6 +1189,68 @@ class Thermostat : Core::Group
     preset Label = "";
     preset Appearance = Thermostat::RadioButtonPowerOff;
   }
+
+  $rect <840,179,1040,219>
+  slot ExitScreenSlot
+  {
+    sender;
+    Background.Visible=false;
+    Overlay.Visible=false;
+    ToggleButton.Visible=false;
+    ToggleButton.Enabled=false;
+    RadioDay.Visible=false;
+    RadioDay.Enabled=false;
+    RadioNight.Enabled=false;
+    RadioNight.Visible=false;
+    RadioVacation.Enabled=false;
+    RadioVacation.Visible=false;
+    VerticalSlider.Visible=false;
+    VerticalSlider.Enabled=false;
+    TemperatureController.Visible=false;
+    OnOffButtonText.Visible=false;
+    FanText.Visible=false;
+    RadioPowerOff.Enabled=false;
+    RadioPowerOff.Visible=false;
+    ExitScreen.Visible = true;
+
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <693,18>;
+    preset Point3 = <757,18>;
+    preset Point2 = <755,107>;
+    preset Point1 = <693,107>;
+    preset OnPress = ExitScreenSlot;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Bounds
+  $member ExitScreen
+  $member Background
+  $member Overlay
+  $member RadioPowerOff
+  $member ToggleButton
+  $member RadioDay
+  $member RadioNight
+  $member RadioVacation
+  $member VerticalSlider
+  $member Device
+  $member TemperatureController
+  $member OnOffButtonText
+  $member changeBackFinished
+  $member FadeEffect
+  $member SettingsObserver
+  $member onSettingChanged
+  $member FanText
+  $member ExitScreenSlot
+  $member SimpleTouchHandler
 }
 
 $rect <750,80,950,120>
@@ -1315,7 +1385,7 @@ resource Resources::Bitmap PowerOffIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <190,39,390,79>
+$rect <210,-10,410,30>
 $output false
 class ExitScreen : Core::Group
 {
@@ -1340,9 +1410,36 @@ class ExitScreen : Core::Group
   $rect <880,59,1080,99>
   object Effects::ColorEffect ColorEffect
   {
+    preset InterCycleDelay = 500;
+    preset InitialDelay = 500;
     preset Enabled = true;
     preset Value2 = #5892FFFF;
     preset Value1 = #73D0FF00;
     preset Outlet = ^Text.Color;
   }
+
+  $rect <880,110,1080,150>
+  object Core::Timer Timer
+  {
+    preset OnTrigger = ColorEffect.StartEffect;
+    preset Period = 2000;
+    preset Begin = 1000;
+    preset Enabled = true;
+  }
 }
+
+$rect <550,330,750,370>
+$output false
+resource Resources::Bitmap BackgroundVacation
+{
+  attr bitmapfile FileName = .\Res\BackgroundVacation.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <-50,230,150,270>
+$output false
+const color Vac = #FF8B4FFF;
