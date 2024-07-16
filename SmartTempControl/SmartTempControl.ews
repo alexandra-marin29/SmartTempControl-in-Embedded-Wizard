@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Application::Application;
+attr active = Thermostat::TemperatureController;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::DeviceClass.ChangeActualTemp;
+attr currentCodeInspector = Thermostat::DeviceClass.OnSetNominalTemp;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -30,7 +30,6 @@ view Project
 {
   attr aspectRatio = 1.0;
   attr enableGrid = true;
-  attr enableWireMode = false;
   attr grid = 10;
   attr scrollTo = <-243,-21>;
   attr zoom = 0.5;
@@ -40,7 +39,6 @@ view unit Application
 {
   attr aspectRatio = 1.0;
   attr enableGrid = true;
-  attr enableWireMode = false;
   attr grid = 10;
   attr scrollTo = <-232,-183>;
   attr zoom = 0.75;
@@ -48,16 +46,27 @@ view unit Application
 
 view class Application::Application
 {
-  attr enableWireMode = false;
   attr scrollTo = <-52,57>;
   attr zoom = 0.75;
 }
 
 view unit Thermostat
 {
-  attr enableWireMode = false;
-  attr scrollTo = <-160,-159>;
+  attr scrollTo = <-272,1>;
   attr zoom = 0.75;
+}
+
+view class Thermostat::DeviceClass
+{
+  attr scrollTo = <-7,-55>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::TemperatureController
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,81>;
+  attr zoom = 1.25;
 }
 
 codeview Thermostat::DeviceClass.UpdateActualTemp
@@ -71,9 +80,9 @@ codeview Thermostat::DeviceClass.UpdateActualTemp
 codeview Thermostat::DeviceClass.OnSetNominalTemp
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,12>;
-  attr codeSelEnd = <0,23>;
-  attr codeSelStart = <0,23>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <50,0>;
+  attr codeSelStart = <50,0>;
 }
 
 codeview Thermostat::DeviceClass.OnSetFanSpeed

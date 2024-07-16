@@ -875,7 +875,7 @@ class TemperatureController : Core::Group
   $rect <20,20,160,60>
   object Views::Image Symbol
   {
-    preset Bounds = <140,260,200,300>;
+    preset Bounds = <140,240,200,280>;
     preset Bitmap = Thermostat::SymbolHeadCool;
   }
 
@@ -884,10 +884,10 @@ class TemperatureController : Core::Group
   object Views::Text ActualText
   {
     preset Layout = Core::Layout[AlignToBottom, AlignToRight, AlignToTop, ResizeHorz, ResizeVert];
-    preset Bounds = <90,140,261,210>;
+    preset Bounds = <120,100,221,140>;
     preset Alignment = Views::TextAlignment[AlignHorzRight, AlignVertTop];
     preset String = "20.0°C";
-    preset Font = Thermostat::FontXXL;
+    preset Font = Thermostat::FontL;
     preset Color = #000000FF;
   }
 
@@ -896,7 +896,7 @@ class TemperatureController : Core::Group
   object Views::Text NominalText
   {
     preset Layout = Core::Layout[AlignToBottom, AlignToRight, AlignToTop, ResizeHorz, ResizeVert];
-    preset Bounds = <90,140,261,210>;
+    preset Bounds = <120,100,221,140>;
     preset Alignment = Views::TextAlignment[AlignHorzRight, AlignVertTop];
     preset String = "20.0°C";
     preset Font = Thermostat::FontXXL;
@@ -974,10 +974,10 @@ class TemperatureController : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandlerPlus
   {
-    preset Point4 = <131,140>;
-    preset Point3 = <209,140>;
-    preset Point2 = <209,70>;
-    preset Point1 = <131,70>;
+    preset Point4 = <93,199>;
+    preset Point3 = <150,199>;
+    preset Point2 = <150,140>;
+    preset Point1 = <93,140>;
     preset OnPress = incrNominal;
     preset MaxStrikeCount = 100;
   }
@@ -986,10 +986,10 @@ class TemperatureController : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandlerMinus
   {
-    preset Point4 = <130,269>;
-    preset Point3 = <208,269>;
-    preset Point2 = <208,199>;
-    preset Point1 = <130,199>;
+    preset Point4 = <191,187>;
+    preset Point3 = <253,187>;
+    preset Point2 = <253,147>;
+    preset Point1 = <191,147>;
     preset OnPress = decrNominal;
     preset MaxStrikeCount = 100;
   }

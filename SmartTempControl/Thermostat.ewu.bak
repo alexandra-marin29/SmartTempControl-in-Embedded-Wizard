@@ -90,7 +90,7 @@ resource Resources::Bitmap ButtonVacation
   attr bitmapmode Mode = Default;
 }
 
-$rect <210,190,450,230>
+$rect <210,230,450,270>
 $output false
 autoobject WidgetSet::RadioButtonConfig RadioButtonDayConfig
 {
@@ -125,7 +125,7 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonDayConfig
   preset WidgetMinSize = <44,44>;
 }
 
-$rect <210,230,450,270>
+$rect <210,270,450,310>
 $output false
 autoobject WidgetSet::RadioButtonConfig RadioButtonNightConfig
 {
@@ -160,7 +160,7 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonNightConfig
   preset WidgetMinSize = <44,44>;
 }
 
-$rect <210,270,450,310>
+$rect <210,310,450,350>
 $output false
 autoobject WidgetSet::RadioButtonConfig RadioButtonVacationConfig
 {
@@ -226,7 +226,7 @@ resource Resources::Bitmap VertBar
   attr bitmapmode Mode = Default;
 }
 
-$rect <210,310,450,350>
+$rect <210,190,450,230>
 $output false
 autoobject WidgetSet::VerticalSliderConfig VerticalSliderConfig
 {
@@ -398,7 +398,6 @@ class DeviceClass : Templates::DeviceClass
   $rect <20,340,220,380>
   slot ChangeActualTemp
   {
-    var int32 temp = ActualTemp;
     var int32 temp = ActualTemp;
 
     if ( temp < NominalTemp )
