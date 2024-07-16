@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::TemperatureController;
+attr active = Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::TemperatureController.decrNominal;
+attr currentCodeInspector = Thermostat::Thermostat.onSettingChanged;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -49,15 +49,15 @@ view unit Application
 view class Application::Application
 {
   attr enableWireMode = false;
-  attr scrollTo = <-52,105>;
+  attr scrollTo = <-52,-87>;
   attr zoom = 0.75;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-293,-96>;
-  attr zoom = 0.5;
+  attr scrollTo = <-299,-97>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
@@ -77,8 +77,8 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-22>;
-  attr zoom = 0.75;
+  attr scrollTo = <-119,-46>;
+  attr zoom = 0.5;
 }
 
 view class Core::PropertyObserver
@@ -107,8 +107,8 @@ codeview Thermostat::Thermostat.onSettingChanged
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <30,6>;
-  attr codeSelStart = <30,6>;
+  attr codeSelEnd = <53,7>;
+  attr codeSelStart = <53,7>;
 }
 
 codeview Thermostat::DeviceClass.UpdateActualTemp

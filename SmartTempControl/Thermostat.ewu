@@ -1076,7 +1076,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioNight
   {
-    preset Bounds = <270,38,465,82>;
+    preset Bounds = <205,38,400,82>;
     preset OutletSelector = 1;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Night";
@@ -1086,7 +1086,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioVacation
   {
-    preset Bounds = <547,38,742,82>;
+    preset Bounds = <420,38,615,82>;
     preset OutletSelector = 2;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Vacation";
@@ -1171,6 +1171,16 @@ class Thermostat : Core::Group
     preset String = "Fan";
     preset Font = Thermostat::FontM;
   }
+
+  $rect <20,20,160,60>
+  object WidgetSet::RadioButton RadioPowerOff
+  {
+    preset Bounds = <714,35,789,79>;
+    preset OutletSelector = 1;
+    preset Outlet = ^Thermostat::Device.SettingNo;
+    preset Label = "";
+    preset Appearance = Thermostat::RadioButtonPowerOff;
+  }
 }
 
 $rect <750,80,950,120>
@@ -1243,10 +1253,10 @@ resource Resources::Bitmap BackgroundDefault
 // Widgets
 note group Note1
 {
-  attr Bounds = <170,110,520,370>;
+  attr Bounds = <170,110,520,420>;
 }
 
-// Main Screen and Temperature Controller
+// Main Screen Temperature Controller
 note group Note4
 {
   attr Bounds = <-60,0,440,100>;
@@ -1256,4 +1266,51 @@ note group Note4
 note group Note2
 {
   attr Bounds = <1030,0,1330,200>;
+}
+
+$rect <210,360,450,400>
+$output false
+autoobject WidgetSet::RadioButtonConfig RadioButtonPowerOff
+{
+  preset LabelOnColorActive = #FFFFFFFF;
+  preset LabelOnColorFocused = #FFFFFFFF;
+  preset LabelOnColorDefault = #FFFFFFFF;
+  preset LabelOffColorActive = #FFFFFFFF;
+  preset LabelOffColorFocused = #FFFFFFFF;
+  preset LabelOffColorDefault = #FFFFFFFF;
+  preset LabelMarginLeft = 50;
+  preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
+  preset LabelOnFont = Thermostat::FontL;
+  preset LabelOffFont = Thermostat::FontL;
+  preset FaceLayout = Core::Layout[AlignToBottom, AlignToLeft, AlignToTop];
+  preset FaceOnFrameActive = 1;
+  preset FaceOnFrameFocused = 1;
+  preset FaceOnFrameDisabled = 1;
+  preset FaceOnFrameDefault = 1;
+  preset FaceOnBitmapActive = Thermostat::PowerOffIcon;
+  preset FaceOnBitmapFocused = Thermostat::PowerOffIcon;
+  preset FaceOnBitmapDisabled = Thermostat::PowerOffIcon;
+  preset FaceOnBitmapDefault = Thermostat::PowerOffIcon;
+  preset FaceOffFrameActive = 0;
+  preset FaceOffFrameFocused = 0;
+  preset FaceOffFrameDisabled = 0;
+  preset FaceOffFrameDefault = 0;
+  preset FaceOffBitmapActive = Thermostat::PowerOffIcon;
+  preset FaceOffBitmapFocused = Thermostat::PowerOffIcon;
+  preset FaceOffBitmapDisabled = Thermostat::PowerOffIcon;
+  preset FaceOffBitmapDefault = Thermostat::PowerOffIcon;
+  preset WidgetMaxSize = <440,44>;
+  preset WidgetMinSize = <44,44>;
+}
+
+$rect <760,290,960,330>
+$output false
+resource Resources::Bitmap PowerOffIcon
+{
+  attr bitmapfile FileName = .\Res\PowerOffIcon.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
 }

@@ -506,14 +506,11 @@ class TemperatureController : Core::Group
   $rect <0,430,200,470>
   inherited method UpdateLayout()
   {
-    // Always invoke the inherited method.
     super( aSize );
 
-    /* determine center point */
     var int32 cX = aSize.x / 2;
     var int32 cY = aSize.y / 2;
 
-    /* arrange the minmax indicator */
     DeltaTempView.Bounds = rect( <0,0>, aSize );
     DeltaTempView.Offset = point( cX, cY );
 
@@ -522,7 +519,6 @@ class TemperatureController : Core::Group
   $rect <0,390,200,430>
   inherited method UpdateViewState()
   {
-    /* Always invoke the inherited method */
     super( aState );
 
     var int32 alpha = 0;
@@ -531,7 +527,6 @@ class TemperatureController : Core::Group
     var int32 nominal = pure NominalValue;
     var float nomAngle = 0.0;
 
-    /* ensure limits of the temperature values */
     if ( actual < pure MinValue )
       actual = pure MinValue;
     if ( actual > pure MaxValue )
@@ -541,23 +536,19 @@ class TemperatureController : Core::Group
     if ( nominal > pure MaxValue )
       nominal = pure MaxValue;
 
-    /* calculate angles for actual and nominal temperature */
     if ( pure MaxValue > pure MinValue)
     {
       actAngle = 135.0 - (float)( actual - pure MinValue ) * 270.0 / (float)( pure MaxValue - pure MinValue ); 
       nomAngle = 135.0 - (float)( nominal - pure MinValue ) * 270.0 / (float)( pure MaxValue - pure MinValue ); 
     }
 
-    /* place the needle at nominal temperature */
     Needle.RotateAndScale( Foreground.Bounds.center, nomAngle, 1.0, 1.0 );
 
     var int32 inner = 92;
     var int32 outer = 102;
 
-    /* calculate the delta temperature indicator */
     if (( pure MaxValue > pure MinValue) && ( actual != nominal ))
     {
-      /* draw line for actAngle and an arc between actAngle and nomAngle */
       DeltaTempPath.InitSubPath( 0, 84 );
       DeltaTempPath.Rotate( -actAngle -90.0 );
       DeltaTempPath.Begin( 0, inner, 0 );
@@ -567,14 +558,11 @@ class TemperatureController : Core::Group
     }
     else
     {
-      /* clear the path */
       DeltaTempPath.InitSubPath( 0, 84 );
     }
 
-    /* colorize the delta temperature indicator and the heat/cool symbol */
     if ( actual < nominal )
     {
-      /* heating */
       Symbol.FrameNumber = 0;
       Symbol.Color = Thermostat::Hot;
       DeltaTempView.Color = Thermostat::Hot;
@@ -582,7 +570,6 @@ class TemperatureController : Core::Group
     }
     else if ( actual > nominal )
     {
-      /* cooling */
       Symbol.FrameNumber = 1;
       Symbol.Color = Thermostat::Cold;
       DeltaTempView.Color = Thermostat::Cold;
@@ -592,11 +579,9 @@ class TemperatureController : Core::Group
       alpha = 255;
     Symbol.Opacity = alpha;
 
-    /* format the string for the digital temperature display */
     ActualText.String = string( actual / 10 ) + "." + string( actual % 10 ) + "°C";
     NominalText.String = string( nominal / 10 ) + "." + string( nominal % 10 ) + "°C";
 
-    /* the color of the actual temperature text should correspond to the temperature */
     alpha = ( actual - pure MinValue ) * 255 / ( pure MaxValue - pure MinValue );
     var color hot = Thermostat::Hot * alpha;
     var color cold = Thermostat::Cold * (uint8)( 255 - alpha );
@@ -619,6 +604,7 @@ class TemperatureController : Core::Group
   object Views::Image Wheel
   {
     preset Bounds = <0,0,340,340>;
+    preset Color = #000000FF;
     preset Bitmap = Thermostat::Wheels;
   }
 
@@ -637,6 +623,7 @@ class TemperatureController : Core::Group
     preset Point2 = <150,20>;
     preset Point1 = <50,20>;
     preset SourceAnchor = <15,132>;
+    preset Color = Thermostat::Hot;
     preset Bitmap = Thermostat::Needle;
   }
 
@@ -1136,7 +1123,7 @@ class Thermostat : Core::Group
   $rect <1030,120,1230,160>
   slot changeBackFinished
   {
-    sender; /* the method is called from the sender object */
+    sender;
 
     Background.Bitmap = Overlay.Bitmap;
     Overlay.Opacity = 0x00;
@@ -1166,7 +1153,6 @@ class Thermostat : Core::Group
     Overlay.Opacity = 0x00;
     FadeEffect.Enabled = false;
 
-    /* select new background */
     switch ( Device.SettingNo )
     {
       case 0: Overlay.Bitmap = Thermostat::BackgroundDay;
