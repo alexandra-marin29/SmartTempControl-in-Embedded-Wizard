@@ -496,7 +496,7 @@ resource Resources::Bitmap Controller
   attr bitmapmode Mode = Default;
 }
 
-$rect <210,39,410,79>
+$rect <-39,39,161,79>
 $output false
 class TemperatureController : Core::Group
 {
@@ -1033,7 +1033,7 @@ resource Resources::Font FontXXL
   attr fontrowdistance RowDistance;
 }
 
-$rect <-50,39,190,79>
+$rect <-39,-10,201,30>
 $output false
 class Thermostat : Core::Group
 {
@@ -1259,7 +1259,7 @@ note group Note1
 // Main Screen Temperature Controller
 note group Note4
 {
-  attr Bounds = <-60,0,440,100>;
+  attr Bounds = <-60,-50,439,110>;
 }
 
 // Fonts
@@ -1313,4 +1313,36 @@ resource Resources::Bitmap PowerOffIcon
   attr framedelay FrameDelay;
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
+}
+
+$rect <190,39,390,79>
+$output false
+class ExitScreen : Core::Group
+{
+  $rect <880,10,1080,50>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Wallpaper Background
+  {
+    preset Bounds = <0,0,800,480>;
+    preset Bitmap = Thermostat::BackgroundDefault;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <285,186,516,297>;
+    preset String = "Goodbye!";
+    preset Font = Resources::FontExtraLarge;
+  }
+
+  $rect <880,59,1080,99>
+  object Effects::ColorEffect ColorEffect
+  {
+    preset Enabled = true;
+    preset Value2 = #5892FFFF;
+    preset Value1 = #73D0FF00;
+    preset Outlet = ^Text.Color;
+  }
 }

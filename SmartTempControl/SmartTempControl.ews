@@ -1,6 +1,6 @@
 $version 1.0
 
-attr active = Thermostat;
+attr active = Thermostat::ExitScreen;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Thermostat::Thermostat.onSettingChanged;
@@ -93,6 +93,13 @@ view class Effects::Int32Effect
   attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
+}
+
+view class Thermostat::ExitScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-212,-16>;
+  attr zoom = 0.5;
 }
 
 codeview Thermostat::Thermostat.changeBackFinished
