@@ -1,8 +1,9 @@
 $version 1.0
 
+attr active = Clock::Clock;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.onSettingChanged;
+attr currentCodeInspector = Clock::Clock.Init;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -31,7 +32,7 @@ view Project
   attr enableGrid = true;
   attr enableWireMode = false;
   attr grid = 10;
-  attr scrollTo = <76,0>;
+  attr scrollTo = <188,0>;
   attr zoom = 0.75;
 }
 
@@ -55,7 +56,7 @@ view class Application::Application
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-171,31>;
+  attr scrollTo = <-27,-129>;
   attr zoom = 0.75;
 }
 
@@ -113,6 +114,41 @@ view class Core::Timer
   attr enableWireMode = false;
   attr scrollTo = <-7,-39>;
   attr zoom = 1.0;
+}
+
+view unit Clock
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-39>;
+  attr zoom = 1.0;
+}
+
+view class Clock::Digit
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-45,79>;
+  attr zoom = 1.0;
+}
+
+view class Clock::Dots
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-84,-40>;
+  attr zoom = 1.75;
+}
+
+view class Clock::DayOfWeek
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-695,-143>;
+  attr zoom = 1.25;
+}
+
+view class Clock::Clock
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-37,-93>;
+  attr zoom = 1.25;
 }
 
 codeview Thermostat::Thermostat.changeBackFinished
@@ -321,4 +357,68 @@ codeview Thermostat::DeviceClass.OnSetSwingMode
   attr codeFirstPos = <0,6>;
   attr codeSelEnd = <29,15>;
   attr codeSelStart = <29,15>;
+}
+
+codeview Clock::Digit.OnSetDigit
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <22,8>;
+  attr codeSelStart = <22,8>;
+}
+
+codeview Clock::Digit.OnSetBounds
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <15,1>;
+  attr codeSelStart = <15,1>;
+}
+
+codeview Clock::Dots.OnSetActive
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Clock::DayOfWeek.OnSetBounds
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <15,1>;
+  attr codeSelStart = <15,1>;
+}
+
+codeview Clock::DayOfWeek.OnSetActive
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <26,4>;
+  attr codeSelStart = <26,4>;
+}
+
+codeview Clock::DayOfWeek.OnSetDay
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <39,7>;
+  attr codeSelStart = <39,7>;
+}
+
+codeview Clock::Clock.Init
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <22,0>;
+  attr codeSelStart = <22,0>;
+}
+
+codeview Clock::Clock.updateSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,3>;
+  attr codeSelEnd = <0,10>;
+  attr codeSelStart = <0,10>;
 }

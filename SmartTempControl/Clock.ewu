@@ -1,0 +1,512 @@
+﻿$version 13.04
+
+$rect <20,20,220,60>
+$output false
+class Digit : Core::Group
+{
+  $rect <-10,80,190,120>
+  inherited property Bounds = <0,0,36,52>;
+
+  $rect <60,-20,260,20>
+  property int32 Digit = 0;
+
+  $rect <60,20,260,60>
+  onset Digit
+  {
+    if ( value > 9 ) value = 9;
+    if ( value < 0 ) value = -1;
+
+    if ( value == pure Digit )
+      return;
+
+    pure Digit = value;
+
+    DigitImage.Visible     = value != -1;
+    DigitImage.FrameNumber = value;
+
+  }
+
+  $rect <-10,120,170,160>
+  inherited onset Bounds
+  {
+    value.size = <36,52>;
+    super( value );
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image BackgroundImage
+  {
+    preset Bounds = <0,0,36,52>;
+    preset FrameNumber = 10;
+    preset Bitmap = Clock::DigitImages;
+    preset Opacity = 40;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image DigitImage
+  {
+    preset Bounds = <0,0,36,52>;
+    preset FrameNumber = 0;
+    preset Bitmap = Clock::DigitImages;
+  }
+
+  // Directives to adapt the order of members belonging to this class so they appear 
+  // correctly arranged relative to the members inherited from the ancestor (super) 
+  // classes. The numbers indicate the order-displacement to apply on the respective 
+  // member once all members have been loaded and combined with members from the 
+  // ancestor classes.
+  $reorder Bounds 1
+  $reorder first 1
+  $reorder last 1
+  $reorder keyHandlers 1
+  $reorder buffer 1
+  $reorder dialogStack 1
+  $reorder fadersQueue 1
+  $reorder pendingFader 1
+  $reorder extClipLeft 1
+  $reorder extClipRight 1
+  $reorder extClipTop 1
+  $reorder extClipBottom 1
+  $reorder processKeyHandlers 1
+  $reorder updateBufferSlot 1
+  $reorder drawContent 1
+  $reorder recalculateLayout 1
+  $reorder updateComponentWithDelay 1
+  $reorder updateComponent 1
+  $reorder OnGetDeriveEnabledState 1
+  $reorder OnSetDeriveEnabledState 1
+  $reorder OnSetFocus 1
+  $reorder OnGetClipViews 1
+  $reorder OnSetClipViews 1
+  $reorder OnGetBuffered 1
+  $reorder OnSetBuffered 1
+  $reorder OnGetEnabled 1
+  $reorder OnSetEnabled 1
+  $reorder OnSetOpacity 1
+  $reorder OnGetEmbedded 1
+  $reorder OnSetEmbedded 1
+  $reorder OnGetAlphaBlended 1
+  $reorder OnSetAlphaBlended 1
+  $reorder OnGetVisible 1
+  $reorder OnSetVisible 1
+  $reorder ExtendClipping 1
+  $reorder DrawForeground 1
+  $reorder DrawBackground 1
+  $reorder GetMaximalSize 1
+  $reorder GetMinimalSize 1
+  $reorder FindActiveDialogByClass 1
+  $reorder FindDialogByClass 1
+  $reorder FindCurrentDialog 1
+  $reorder IsCurrentDialog 1
+  $reorder IsActiveDialog 1
+  $reorder IsDialog 1
+  $reorder GetIndexOfDialog 1
+  $reorder GetDialogAtIndex 1
+  $reorder CountDialogs 1
+  $reorder SwitchToDialog 1
+  $reorder DismissDialog 1
+  $reorder PresentDialog 1
+  $reorder ObtainFocus 1
+  $reorder HasViewState 1
+  $reorder LocalPosition 1
+  $reorder GlobalPosition 1
+  $reorder DispatchEvent 1
+  $reorder BroadcastEventAtPosition 1
+  $reorder BroadcastEvent 1
+  $reorder UpdateLayout 1
+  $reorder UpdateViewState 1
+  $reorder InvalidateLayout 1
+  $reorder InvalidateViewState 1
+  $reorder InvalidateArea 1
+  $reorder GetIndexOfView 1
+  $reorder GetViewAtIndex 1
+  $reorder CountViews 1
+  $reorder FindViewWithStackingPriority 1
+  $reorder FindViewInDirection 1
+  $reorder FindViewWithinArea 1
+  $reorder FindViewAtPosition 1
+  $reorder FindPrevView 1
+  $reorder FindNextView 1
+  $reorder FindSiblingView 1
+  $reorder GetContentArea 1
+  $reorder FadeGroup 1
+  $reorder RestackBehind 1
+  $reorder RestackBack 1
+  $reorder RestackTop 1
+  $reorder Restack 1
+  $reorder RemoveAll 1
+  $reorder Remove 1
+  $reorder AddBehind 1
+  $reorder Add 1
+  $reorder DeriveEnabledState 1
+  $reorder Focus 1
+  $reorder ClipViews 1
+  $reorder Buffered 1
+  $reorder Enabled 1
+  $reorder Opacity 1
+  $reorder Embedded 1
+  $reorder AlphaBlended 1
+  $reorder Visible 1
+  $reorder Digit 1
+  $reorder OnSetDigit 1
+}
+
+$rect <20,60,220,100>
+$output false
+class Dots : Core::Group
+{
+  $rect <-10,50,190,90>
+  inherited property Bounds = <0,0,10,30>;
+
+  $rect <0,90,180,130>
+  inherited onset Bounds
+  {
+    // Invoke the inherited version of the onset method 'OnSetBounds'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    // TO DO: Write your code here ... 
+  }
+
+  $rect <110,-80,310,-40>
+  property bool Active = true;
+
+  $rect <110,-40,310,0>
+  onset Active
+  {
+    if ( value == pure Active )
+      return;
+
+    pure Active = value;
+    DotsImage.Visible = value;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image BackgroundImage
+  {
+    preset Bounds = <0,0,10,30>;
+    preset FrameNumber = 1;
+    preset Bitmap = Clock::DotsImages;
+    preset Opacity = 40;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image DotsImage
+  {
+    preset Bounds = <0,0,10,30>;
+    preset FrameNumber = 0;
+    preset Bitmap = Clock::DotsImages;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member OnSetBounds
+  $member Bounds
+  $member Active
+  $member OnSetActive
+  $member BackgroundImage
+  $member DotsImage
+}
+
+$rect <20,100,220,140>
+$output false
+class DayOfWeek : Core::Group
+{
+  $rect <-10,50,190,90>
+  inherited property Bounds = <0,0,40,14>;
+
+  $rect <-10,90,170,130>
+  inherited onset Bounds
+  {
+    value.size = <28,14>;
+    super( value );
+  }
+
+  $rect <190,-40,390,0>
+  property bool Active = true;
+
+  $rect <190,0,390,40>
+  onset Active
+  {
+    if ( value == pure Active )
+      return;
+
+    pure Active = value;
+    DOWImage.Visible = value;
+  }
+
+  // The number of the desired day of the week. 0 is Sunday, 1 is Monday, ...
+  $rect <210,50,410,90>
+  property int32 Day = 0;
+
+  // This onset method is invoked automatically, when the value of the property @Day \
+  // is changed. This method forces the view to display the day of the week with \
+  // the given number.
+  $rect <210,90,410,130>
+  onset Day
+  {
+    if ( value < 0 ) value = 0;
+    if ( value > 6 ) value = 6;
+
+    if ( value == pure Day )
+      return;
+
+    pure Day = value;
+
+    value = value - 1;
+    if ( value == -1 ) value = 6;
+
+    BackgroundImage.FrameNumber = ( value * 2 );
+    DOWImage.FrameNumber        = ( value * 2 );
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image BackgroundImage
+  {
+    preset Bounds = <0,0,28,14>;
+    preset FrameNumber = 13;
+    preset Bitmap = Clock::DOWImages;
+    preset Opacity = 40;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image DOWImage
+  {
+    preset Bounds = <0,0,28,14>;
+    preset Bitmap = Clock::DOWImages;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member OnSetBounds
+  $member Bounds
+  $member Active
+  $member OnSetActive
+  $member Day
+  $member OnSetDay
+  $member BackgroundImage
+  $member DOWImage
+}
+
+$rect <20,140,220,180>
+$output false
+class Clock : Core::Group
+{
+  $rect <20,80,220,120>
+  inherited property Bounds = <0,0,237,67>;
+
+  $rect <20,120,200,160>
+  inherited method Init()
+  {
+    postsignal updateSlot;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Digit Hour1
+  {
+    preset Bounds = <0,0,36,52>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Digit Hour2
+  {
+    preset Bounds = <36,0,72,52>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Dots Dots1
+  {
+    preset Bounds = <71,9,81,39>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Digit Min1
+  {
+    preset Bounds = <82,0,118,52>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Digit Min2
+  {
+    preset Bounds = <118,0,154,52>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Dots Dots2
+  {
+    preset Bounds = <153,9,163,39>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Digit Sec1
+  {
+    preset Bounds = <164,0,200,52>;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Digit Sec2
+  {
+    preset Bounds = <200,0,236,52>;
+  }
+
+  // This is a timer object. The timer forces the clock update. Each time the timer \
+  // expires, a signal is sent to the @updateSlot method.
+  $rect <10,160,210,200>
+  object Core::Timer Timer
+  {
+    preset OnTrigger = updateSlot;
+    preset Period = 500;
+    preset Enabled = true;
+  }
+
+  // This method will receive signals from the timer object @Timer. It performs the \
+  // clock update.
+  $rect <10,240,210,280>
+  slot updateSlot
+  {
+    var Core::Time current = Time.CurrentTime;
+
+    Hour1.Digit = current.Hour / 10;
+    Hour1.Digit = current.Hour % 10;
+    Min1.Digit = current.Minute / 10;
+    Min2.Digit = current.Minute % 10;
+    Sec1.Digit = current.Second / 10;
+    Sec2.Digit = current.Second % 10;
+
+    Dots2.Active = ( current.Second % 2 ) == 0;
+    Dots2.Active = Dots2.Active;
+
+    DayOfWeek0.Active = current.DayOfWeek == 0;
+    DayOfWeek1.Active = current.DayOfWeek == 1;
+    DayOfWeek2.Active = current.DayOfWeek == 2;
+    DayOfWeek3.Active = current.DayOfWeek == 3;
+    DayOfWeek4.Active = current.DayOfWeek == 4;
+    DayOfWeek5.Active = current.DayOfWeek == 5;
+    DayOfWeek6.Active = current.DayOfWeek == 6;
+
+  }
+
+  // This Core::Time object provides the clock with the current time.
+  $rect <10,200,210,240>
+  object Core::Time Time;
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek0
+  {
+    preset Bounds = <204,52,232,66>;
+    preset Active = false;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek1
+  {
+    preset Bounds = <6,52,34,66>;
+    preset Active = false;
+    preset Day = 1;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek2
+  {
+    preset Bounds = <39,52,67,66>;
+    preset Active = false;
+    preset Day = 2;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek3
+  {
+    preset Bounds = <72,52,100,66>;
+    preset Active = false;
+    preset Day = 3;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek4
+  {
+    preset Bounds = <105,52,133,66>;
+    preset Active = false;
+    preset Day = 4;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek5
+  {
+    preset Bounds = <138,52,166,66>;
+    preset Active = false;
+    preset Day = 5;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::DayOfWeek DayOfWeek6
+  {
+    preset Bounds = <171,52,199,66>;
+    preset Active = false;
+    preset Day = 6;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Hour1
+  $member Hour2
+  $member Dots1
+  $member Min1
+  $member Min2
+  $member Dots2
+  $member Sec1
+  $member Sec2
+  $member Timer
+  $member updateSlot
+  $member Time
+  $member DayOfWeek0
+  $member DayOfWeek1
+  $member DayOfWeek2
+  $member DayOfWeek3
+  $member DayOfWeek4
+  $member DayOfWeek5
+  $member DayOfWeek6
+}
+
+$rect <250,20,450,60>
+$output false
+resource Resources::Bitmap DigitImages
+{
+  attr bitmapfile FileName = .\Res\Digits.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize = <36,52>;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <250,60,450,100>
+$output false
+resource Resources::Bitmap DotsImages
+{
+  attr bitmapfile FileName = .\Res\Dots.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize = <10,30>;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <250,100,450,140>
+$output false
+resource Resources::Bitmap DOWImages
+{
+  attr bitmapfile FileName = .\Res\DayOfWeek.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize = <28,14>;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
