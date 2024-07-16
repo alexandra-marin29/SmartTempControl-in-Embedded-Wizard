@@ -1183,7 +1183,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioPowerOff
   {
-    preset Bounds = <713,38,757,82>;
+    preset Bounds = <735,16,779,60>;
     preset OutletSelector = 1;
     preset Outlet = null;
     preset Icon = null;
@@ -1224,10 +1224,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandler
   {
-    preset Point4 = <702,25>;
-    preset Point3 = <766,25>;
-    preset Point2 = <764,114>;
-    preset Point1 = <702,114>;
+    preset Point4 = <735,6>;
+    preset Point3 = <799,6>;
+    preset Point2 = <797,95>;
+    preset Point1 = <735,95>;
     preset OnPress = ExitScreenSlot;
   }
 
@@ -1238,6 +1238,12 @@ class Thermostat : Core::Group
     preset NoOfCycles = 1;
     preset CycleDuration = 1000;
     preset Outlet = ^ExitScreen.Opacity;
+  }
+
+  $rect <20,20,160,60>
+  object Clock::Clock Clock
+  {
+    preset Bounds = <517,363,754,430>;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1265,6 +1271,7 @@ class Thermostat : Core::Group
   $member ExitScreenSlot
   $member SimpleTouchHandler
   $member FadeEffectPowerOff
+  $member Clock
 }
 
 $rect <750,80,950,120>

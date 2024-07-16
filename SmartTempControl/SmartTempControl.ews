@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Clock::Clock.updateSlot;
+attr currentCodeInspector = Thermostat::Thermostat.ExitScreenSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -67,7 +67,7 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-69,-82>;
+  attr scrollTo = <123,-18>;
   attr zoom = 0.75;
 }
 
@@ -297,8 +297,8 @@ codeview Thermostat::Thermostat.ExitScreenSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,11>;
-  attr codeSelEnd = <26,22>;
-  attr codeSelStart = <26,22>;
+  attr codeSelEnd = <22,21>;
+  attr codeSelStart = <22,21>;
 }
 
 codeview Thermostat::DeviceClass.OnSetSettingNo
