@@ -1058,7 +1058,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::ToggleButton ToggleButton
   {
-    preset Bounds = <86,235,161,279>;
+    preset Bounds = <509,125,584,169>;
     preset Outlet = ^Thermostat::Device.SwingMode;
     preset Label = "Caption";
     preset Appearance = Thermostat::SwingSwitchConfig;
@@ -1096,7 +1096,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::VerticalSlider VerticalSlider
   {
-    preset Bounds = <605,130,625,350>;
+    preset Bounds = <439,125,459,345>;
     preset Outlet = ^Thermostat::Device.FanSpeed;
     preset Appearance = Thermostat::VerticalSliderConfig;
   }
@@ -1107,7 +1107,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Thermostat::TemperatureController TemperatureController
   {
-    preset Bounds = <197,110,537,450>;
+    preset Bounds = <35,95,375,435>;
     preset OutletNominal = ^Thermostat::Device.NominalTemp;
     preset OutletActual = ^Thermostat::Device.ActualTemp;
   }
@@ -1115,7 +1115,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text OnOffButtonText
   {
-    preset Bounds = <90,280,160,310>;
+    preset Bounds = <509,189,579,219>;
     preset String = "SWING";
     preset Font = Thermostat::FontM;
   }
@@ -1168,7 +1168,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text FanText
   {
-    preset Bounds = <565,363,665,393>;
+    preset Bounds = <409,363,509,393>;
     preset String = "Fan";
     preset Font = Thermostat::FontM;
   }
@@ -1183,17 +1183,21 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioPowerOff
   {
-    preset Bounds = <714,35,789,79>;
+    preset Bounds = <713,38,757,82>;
     preset OutletSelector = 1;
-    preset Outlet = ^Thermostat::Device.SettingNo;
+    preset Outlet = null;
+    preset Icon = null;
     preset Label = "";
     preset Appearance = Thermostat::RadioButtonPowerOff;
   }
 
-  $rect <840,179,1040,219>
+  $rect <830,170,1030,210>
   slot ExitScreenSlot
   {
     sender;
+    Overlay.Opacity = 0x00;
+    FadeEffect.Enabled = false;
+
     Background.Visible=false;
     Overlay.Visible=false;
     ToggleButton.Visible=false;
@@ -1212,7 +1216,7 @@ class Thermostat : Core::Group
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
     ExitScreen.Visible = true;
-
+    FadeEffect.Enabled = true;
 
 
   }
@@ -1220,11 +1224,20 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandler
   {
-    preset Point4 = <693,18>;
-    preset Point3 = <757,18>;
-    preset Point2 = <755,107>;
-    preset Point1 = <693,107>;
+    preset Point4 = <702,25>;
+    preset Point3 = <766,25>;
+    preset Point2 = <764,114>;
+    preset Point1 = <702,114>;
     preset OnPress = ExitScreenSlot;
+  }
+
+  $rect <830,220,1030,260>
+  object Effects::Int32Effect FadeEffectPowerOff
+  {
+    preset OnFinished = ExitScreenSlot;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 1000;
+    preset Outlet = ^ExitScreen.Opacity;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1251,6 +1264,7 @@ class Thermostat : Core::Group
   $member FanText
   $member ExitScreenSlot
   $member SimpleTouchHandler
+  $member FadeEffectPowerOff
 }
 
 $rect <750,80,950,120>
@@ -1323,7 +1337,7 @@ resource Resources::Bitmap BackgroundDefault
 // Widgets
 note group Note1
 {
-  attr Bounds = <170,110,520,420>;
+  attr Bounds = <170,110,519,439>;
 }
 
 // Main Screen Temperature Controller
@@ -1361,6 +1375,7 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonPowerOff
   preset FaceOnBitmapFocused = Thermostat::PowerOffIcon;
   preset FaceOnBitmapDisabled = Thermostat::PowerOffIcon;
   preset FaceOnBitmapDefault = Thermostat::PowerOffIcon;
+  preset FaceOffTintDefault = #FFFFFFFF;
   preset FaceOffFrameActive = 0;
   preset FaceOffFrameFocused = 0;
   preset FaceOffFrameDisabled = 0;
@@ -1410,6 +1425,7 @@ class ExitScreen : Core::Group
   $rect <880,59,1080,99>
   object Effects::ColorEffect ColorEffect
   {
+    preset OnFinished = null;
     preset InterCycleDelay = 500;
     preset InitialDelay = 500;
     preset Enabled = true;
@@ -1421,7 +1437,7 @@ class ExitScreen : Core::Group
   $rect <880,110,1080,150>
   object Core::Timer Timer
   {
-    preset OnTrigger = ColorEffect.StartEffect;
+    preset OnTrigger = Background.StopAnimation;
     preset Period = 2000;
     preset Begin = 1000;
     preset Enabled = true;
