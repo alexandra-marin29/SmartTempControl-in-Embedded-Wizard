@@ -1183,9 +1183,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioPowerOff
   {
-    preset Bounds = <720,38,764,82>;
+    preset Bounds = <713,38,757,82>;
     preset OutletSelector = 1;
-    preset Outlet = ^Thermostat::Device.SettingNo;
+    preset Outlet = null;
+    preset Icon = null;
     preset Label = "";
     preset Appearance = Thermostat::RadioButtonPowerOff;
   }
@@ -1223,10 +1224,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandler
   {
-    preset Point4 = <702,21>;
-    preset Point3 = <766,21>;
-    preset Point2 = <764,110>;
-    preset Point1 = <702,110>;
+    preset Point4 = <702,25>;
+    preset Point3 = <766,25>;
+    preset Point2 = <764,114>;
+    preset Point1 = <702,114>;
     preset OnPress = ExitScreenSlot;
   }
 

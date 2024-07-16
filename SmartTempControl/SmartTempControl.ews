@@ -1,6 +1,5 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Thermostat::Thermostat.onSettingChanged;
@@ -32,7 +31,7 @@ view Project
   attr enableGrid = true;
   attr enableWireMode = false;
   attr grid = 10;
-  attr scrollTo = <-52,0>;
+  attr scrollTo = <76,0>;
   attr zoom = 0.75;
 }
 
@@ -77,8 +76,8 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <836,-42>;
-  attr zoom = 1.75;
+  attr scrollTo = <-69,-82>;
+  attr zoom = 0.75;
 }
 
 view class Core::PropertyObserver
