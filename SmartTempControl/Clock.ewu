@@ -37,6 +37,7 @@ class Digit : Core::Group
   object Views::Image BackgroundImage
   {
     preset Bounds = <0,0,36,52>;
+    preset Color = #FFFFFFFF;
     preset FrameNumber = 10;
     preset Bitmap = Clock::DigitImages;
     preset Opacity = 40;
@@ -46,6 +47,8 @@ class Digit : Core::Group
   object Views::Image DigitImage
   {
     preset Bounds = <0,0,36,52>;
+    preset ColorTL = #FFFFFFFF;
+    preset Color = #FFFFFFFF;
     preset FrameNumber = 0;
     preset Bitmap = Clock::DigitImages;
   }
@@ -306,6 +309,14 @@ class Clock : Core::Group
   }
 
   $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,236,67>;
+    preset Bitmap = Clock::BackgroundClock;
+    preset Opacity = 50;
+  }
+
+  $rect <20,20,160,60>
   object Clock::Digit Hour1
   {
     preset Bounds = <0,0,36,52>;
@@ -351,6 +362,7 @@ class Clock : Core::Group
   object Clock::Digit Sec2
   {
     preset Bounds = <200,0,236,52>;
+    preset Opacity = 255;
   }
 
   // This is a timer object. The timer forces the clock update. Each time the timer \
@@ -458,6 +470,7 @@ class Clock : Core::Group
   // project files is simplified.
   $member Init
   $member Bounds
+  $member Image
   $member Hour1
   $member Hour2
   $member Dots1
@@ -509,6 +522,18 @@ resource Resources::Bitmap DOWImages
   attr bitmapfile FileName = .\Res\DayOfWeek.png;
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize = <28,14>;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <250,140,450,180>
+$output false
+resource Resources::Bitmap BackgroundClock
+{
+  attr bitmapfile FileName = .\Res\BackgroundClock.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
   attr framedelay FrameDelay;
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;

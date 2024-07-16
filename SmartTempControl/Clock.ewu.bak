@@ -370,15 +370,18 @@ class Clock : Core::Group
   {
     var Core::Time current = Time.CurrentTime;
 
+
     Hour1.Digit = current.Hour / 10;
-    Hour1.Digit = current.Hour % 10;
+    Hour2.Digit = current.Hour % 10;
     Min1.Digit = current.Minute / 10;
     Min2.Digit = current.Minute % 10;
     Sec1.Digit = current.Second / 10;
     Sec2.Digit = current.Second % 10;
 
-    Dots2.Active = ( current.Second % 2 ) == 0;
-    Dots2.Active = Dots2.Active;
+
+    Dots1.Active = ( current.Second % 2 ) == 0;
+    Dots2.Active = Dots1.Active;
+
 
     DayOfWeek0.Active = current.DayOfWeek == 0;
     DayOfWeek1.Active = current.DayOfWeek == 1;

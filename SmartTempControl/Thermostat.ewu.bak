@@ -1168,8 +1168,8 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text FanText
   {
-    preset Bounds = <409,363,509,393>;
-    preset String = "Fan";
+    preset Bounds = <399,363,499,393>;
+    preset String = "FAN";
     preset Font = Thermostat::FontM;
   }
 
