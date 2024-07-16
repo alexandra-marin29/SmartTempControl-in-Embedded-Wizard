@@ -3,7 +3,7 @@ $version 1.0
 attr active = Clock::Clock;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Clock::Clock.Init;
+attr currentCodeInspector = Clock::Clock.updateSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -147,7 +147,7 @@ view class Clock::DayOfWeek
 view class Clock::Clock
 {
   attr enableWireMode = false;
-  attr scrollTo = <-37,-93>;
+  attr scrollTo = <-37,-109>;
   attr zoom = 1.25;
 }
 
@@ -418,7 +418,7 @@ codeview Clock::Clock.Init
 codeview Clock::Clock.updateSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,3>;
-  attr codeSelEnd = <0,10>;
-  attr codeSelStart = <0,10>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
 }
