@@ -1058,7 +1058,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::ToggleButton ToggleButton
   {
-    preset Bounds = <509,125,584,169>;
+    preset Bounds = <375,363,450,407>;
     preset Outlet = ^Thermostat::Device.SwingMode;
     preset Label = "Caption";
     preset Appearance = Thermostat::SwingSwitchConfig;
@@ -1093,14 +1093,6 @@ class Thermostat : Core::Group
     preset Appearance = Thermostat::RadioButtonVacationConfig;
   }
 
-  $rect <20,20,160,60>
-  object WidgetSet::VerticalSlider VerticalSlider
-  {
-    preset Bounds = <439,125,459,345>;
-    preset Outlet = ^Thermostat::Device.FanSpeed;
-    preset Appearance = Thermostat::VerticalSliderConfig;
-  }
-
   $rect <830,10,1030,50>
   var Thermostat::DeviceClass Device = Thermostat::Device;
 
@@ -1115,7 +1107,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text OnOffButtonText
   {
-    preset Bounds = <509,189,579,219>;
+    preset Bounds = <377,407,447,437>;
     preset String = "SWING";
     preset Font = Thermostat::FontM;
   }
@@ -1163,14 +1155,6 @@ class Thermostat : Core::Group
 
     FadeEffect.Enabled = true;
 
-  }
-
-  $rect <20,20,160,60>
-  object Views::Text FanText
-  {
-    preset Bounds = <399,363,499,393>;
-    preset String = "FAN";
-    preset Font = Thermostat::FontM;
   }
 
   $rect <20,20,160,60>
@@ -1244,7 +1228,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Clock::Clock Clock
   {
-    preset Bounds = <517,363,754,430>;
+    preset Bounds = <517,198,754,265>;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1260,7 +1244,6 @@ class Thermostat : Core::Group
   $member RadioDay
   $member RadioNight
   $member RadioVacation
-  $member VerticalSlider
   $member Device
   $member TemperatureController
   $member OnOffButtonText
@@ -1268,7 +1251,6 @@ class Thermostat : Core::Group
   $member FadeEffect
   $member SettingsObserver
   $member onSettingChanged
-  $member FanText
   $member ExitScreenSlot
   $member SimpleTouchHandler
   $member FadeEffectPowerOff

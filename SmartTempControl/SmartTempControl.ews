@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Clock::Clock;
+attr active = Thermostat::ExitScreen;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.ExitScreenSlot;
+attr currentCodeInspector = Core::Group.Add;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -44,6 +44,7 @@ view class Application::Application
 
 view unit Thermostat
 {
+  attr enableWireMode = false;
   attr scrollTo = <-155,-33>;
   attr zoom = 1.0;
 }
@@ -63,7 +64,7 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <100,14>;
+  attr scrollTo = <-76,-18>;
   attr zoom = 0.75;
 }
 
@@ -81,7 +82,8 @@ view class Effects::Int32Effect
 
 view class Thermostat::ExitScreen
 {
-  attr scrollTo = <-285,-31>;
+  attr enableWireMode = false;
+  attr scrollTo = <-157,-71>;
   attr zoom = 0.5;
 }
 
@@ -125,7 +127,7 @@ view class Clock::DayOfWeek
 view class Clock::Clock
 {
   attr enableWireMode = false;
-  attr scrollTo = <-37,-109>;
+  attr scrollTo = <-69,-109>;
   attr zoom = 1.25;
 }
 
@@ -285,8 +287,8 @@ codeview Thermostat::Thermostat.ExitScreenSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,11>;
-  attr codeSelEnd = <22,21>;
-  attr codeSelStart = <22,21>;
+  attr codeSelEnd = <30,15>;
+  attr codeSelStart = <30,15>;
 }
 
 codeview Thermostat::DeviceClass.OnSetSettingNo
@@ -325,8 +327,8 @@ codeview Core::Group.Add
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <16,6>;
-  attr codeSelStart = <16,6>;
+  attr codeSelEnd = <2,1>;
+  attr codeSelStart = <2,1>;
 }
 
 codeview Thermostat::DeviceClass.OnSetSwingMode
