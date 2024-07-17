@@ -45,7 +45,7 @@ view class Application::Application
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-155,-161>;
+  attr scrollTo = <254,218>;
   attr zoom = 1.0;
 }
 
@@ -134,8 +134,8 @@ view class Clock::Clock
 view class Thermostat::SplashScreen
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-170>;
-  attr zoom = 0.75;
+  attr scrollTo = <-135,-10>;
+  attr zoom = 0.5;
 }
 
 codeview Thermostat::Thermostat.changeBackFinished
