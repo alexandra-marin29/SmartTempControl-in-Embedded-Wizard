@@ -1192,11 +1192,8 @@ class Thermostat : Core::Group
     RadioNight.Visible=false;
     RadioVacation.Enabled=false;
     RadioVacation.Visible=false;
-    VerticalSlider.Visible=false;
-    VerticalSlider.Enabled=false;
     TemperatureController.Visible=false;
     OnOffButtonText.Visible=false;
-    FanText.Visible=false;
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
     Clock.Visible = false;
@@ -1398,13 +1395,6 @@ class ExitScreen : Core::Group
   inherited property Bounds = <0,0,800,480>;
 
   $rect <20,20,160,60>
-  object Views::Wallpaper Background
-  {
-    preset Bounds = <0,0,800,480>;
-    preset Bitmap = Thermostat::BackgroundDefault;
-  }
-
-  $rect <20,20,160,60>
   object Views::Text Text
   {
     preset Bounds = <285,186,516,297>;
@@ -1419,19 +1409,27 @@ class ExitScreen : Core::Group
     preset InterCycleDelay = 500;
     preset InitialDelay = 500;
     preset Enabled = true;
-    preset Value2 = #5892FFFF;
-    preset Value1 = #73D0FF00;
+    preset Value2 = Thermostat::Cold;
+    preset Value1 = Thermostat::Hot;
     preset Outlet = ^Text.Color;
   }
 
-  $rect <880,110,1080,150>
-  object Core::Timer Timer
+  $rect <20,20,160,60>
+  object Views::Rectangle Background
   {
-    preset OnTrigger = Background.StopAnimation;
-    preset Period = 2000;
-    preset Begin = 1000;
-    preset Enabled = true;
+    preset Bounds = <0,0,800,480>;
+    preset ColorTR = #D7D7D7FF;
+    preset ColorTL = #DDDDDDFF;
   }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Bounds
+  $member Background
+  $member Text
+  $member ColorEffect
 }
 
 $rect <550,330,750,370>

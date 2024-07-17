@@ -1,6 +1,6 @@
 $version 1.0
 
-attr active = Thermostat::ExitScreen;
+attr active = Thermostat::SplashScreen;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Core::Group.Add;
@@ -45,7 +45,7 @@ view class Application::Application
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-155,-33>;
+  attr scrollTo = <-155,-161>;
   attr zoom = 1.0;
 }
 
@@ -102,7 +102,7 @@ view class Core::Timer
 view unit Clock
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-39>;
+  attr scrollTo = <-7,-55>;
   attr zoom = 1.0;
 }
 
@@ -129,6 +129,13 @@ view class Clock::Clock
   attr enableWireMode = false;
   attr scrollTo = <-69,-109>;
   attr zoom = 1.25;
+}
+
+view class Thermostat::SplashScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-170>;
+  attr zoom = 0.75;
 }
 
 codeview Thermostat::Thermostat.changeBackFinished
