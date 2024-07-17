@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::SplashScreen;
+attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Core::Group.Add;
+attr currentCodeInspector = Clock::Clock.updateSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -38,14 +38,15 @@ view Project
 
 view class Application::Application
 {
-  attr scrollTo = <-52,25>;
+  attr enableWireMode = false;
+  attr scrollTo = <-52,-23>;
   attr zoom = 0.75;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <254,218>;
+  attr scrollTo = <-514,-118>;
   attr zoom = 1.0;
 }
 
@@ -64,7 +65,7 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-76,-18>;
+  attr scrollTo = <45,68>;
   attr zoom = 0.75;
 }
 
