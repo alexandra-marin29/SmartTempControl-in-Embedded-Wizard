@@ -1,6 +1,6 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Clock::Clock;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Thermostat::Thermostat.ExitScreenSlot;
@@ -32,34 +32,30 @@ view Project
   attr enableGrid = true;
   attr enableWireMode = false;
   attr grid = 10;
-  attr scrollTo = <188,0>;
+  attr scrollTo = <-20,0>;
   attr zoom = 0.75;
 }
 
 view class Application::Application
 {
-  attr enableWireMode = false;
-  attr scrollTo = <-52,-119>;
+  attr scrollTo = <-52,25>;
   attr zoom = 0.75;
 }
 
 view unit Thermostat
 {
-  attr enableWireMode = false;
-  attr scrollTo = <-27,-129>;
-  attr zoom = 0.75;
+  attr scrollTo = <-155,-33>;
+  attr zoom = 1.0;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr enableWireMode = false;
   attr scrollTo = <-23,249>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::TemperatureController
 {
-  attr enableWireMode = false;
   attr scrollTo = <-132,15>;
   attr zoom = 0.75;
 }
@@ -67,41 +63,36 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <123,-18>;
+  attr scrollTo = <100,14>;
   attr zoom = 0.75;
 }
 
 view class Core::PropertyObserver
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view class Effects::Int32Effect
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::ExitScreen
 {
-  attr enableWireMode = false;
   attr scrollTo = <-285,-31>;
   attr zoom = 0.5;
 }
 
 view unit Core
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,389>;
   attr zoom = 1.0;
 }
 
 view class Core::Timer
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-39>;
   attr zoom = 1.0;
 }
@@ -115,21 +106,18 @@ view unit Clock
 
 view class Clock::Digit
 {
-  attr enableWireMode = false;
   attr scrollTo = <-45,-241>;
   attr zoom = 1.0;
 }
 
 view class Clock::Dots
 {
-  attr enableWireMode = false;
   attr scrollTo = <-84,-40>;
   attr zoom = 1.75;
 }
 
 view class Clock::DayOfWeek
 {
-  attr enableWireMode = false;
   attr scrollTo = <-487,-143>;
   attr zoom = 1.25;
 }
@@ -137,7 +125,7 @@ view class Clock::DayOfWeek
 view class Clock::Clock
 {
   attr enableWireMode = false;
-  attr scrollTo = <-293,-109>;
+  attr scrollTo = <-37,-109>;
   attr zoom = 1.25;
 }
 

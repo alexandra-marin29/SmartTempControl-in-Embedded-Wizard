@@ -464,6 +464,38 @@ class Clock : Core::Group
     preset Day = 6;
   }
 
+  $rect <20,20,160,60>
+  object Views::Border Border
+  {
+    preset Bounds = <0,0,237,67>;
+    preset Width = 3;
+    preset ColorBL = Thermostat::Vac;
+    preset ColorBR = Thermostat::Hot;
+    preset ColorTR = Thermostat::Cold;
+    preset ColorTL = Thermostat::Hot;
+    preset Color = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Glass1
+  {
+    preset Bounds = <0,0,236,26>;
+    preset ColorBL = #FFFFFFA0;
+    preset ColorBR = #FFFFFFA0;
+    preset ColorTR = #FFFFFF00;
+    preset ColorTL = #FFFFFF00;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Glass2
+  {
+    preset Bounds = <0,26,236,66>;
+    preset ColorBL = #FFFFFF00;
+    preset ColorBR = #FFFFFF00;
+    preset ColorTR = #FFFFFFA0;
+    preset ColorTL = #FFFFFFA0;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -489,6 +521,9 @@ class Clock : Core::Group
   $member DayOfWeek4
   $member DayOfWeek5
   $member DayOfWeek6
+  $member Border
+  $member Glass1
+  $member Glass2
 }
 
 $rect <250,20,450,60>

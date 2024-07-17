@@ -1215,6 +1215,7 @@ class Thermostat : Core::Group
     FanText.Visible=false;
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
+    Clock.Visible = false;
     ExitScreen.Visible = true;
     FadeEffect.Enabled = true;
 
