@@ -2,8 +2,7 @@ $version 1.0
 
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
-attr connectInspectors = false;
-attr currentCodeInspector = Clock::Clock.updateSlot;
+attr connectInspectors = true;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -65,7 +64,7 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <45,68>;
+  attr scrollTo = <-35,-108>;
   attr zoom = 0.75;
 }
 
@@ -102,7 +101,6 @@ view class Core::Timer
 
 view unit Clock
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-55>;
   attr zoom = 1.0;
 }
@@ -115,6 +113,7 @@ view class Clock::Digit
 
 view class Clock::Dots
 {
+  attr enableWireMode = false;
   attr scrollTo = <-84,-40>;
   attr zoom = 1.75;
 }
@@ -127,16 +126,15 @@ view class Clock::DayOfWeek
 
 view class Clock::Clock
 {
-  attr enableWireMode = false;
   attr scrollTo = <-69,-109>;
   attr zoom = 1.25;
 }
 
-view class Thermostat::SplashScreen
+view class Views::Rectangle
 {
   attr enableWireMode = false;
-  attr scrollTo = <-135,-10>;
-  attr zoom = 0.5;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
 }
 
 codeview Thermostat::Thermostat.changeBackFinished

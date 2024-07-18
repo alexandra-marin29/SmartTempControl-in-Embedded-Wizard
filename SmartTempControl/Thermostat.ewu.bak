@@ -1489,7 +1489,7 @@ resource Resources::Bitmap HouseSplashScreen
   attr bitmapmode Mode = Default;
 }
 
-$rect <560,370,760,410>
+$rect <550,370,750,410>
 $output false
 resource Resources::Bitmap HeatSplashScreen
 {
