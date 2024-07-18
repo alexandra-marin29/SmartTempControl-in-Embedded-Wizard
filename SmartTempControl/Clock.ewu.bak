@@ -469,10 +469,10 @@ class Clock : Core::Group
   {
     preset Bounds = <0,0,237,67>;
     preset Width = 3;
-    preset ColorBL = #E061FFFF;
-    preset ColorBR = #5157FFFF;
-    preset ColorTR = #CA91FFFF;
-    preset ColorTL = #A0BBFFFF;
+    preset ColorBL = Thermostat::Vac;
+    preset ColorBR = Thermostat::Hot;
+    preset ColorTR = Thermostat::Cold;
+    preset ColorTL = Thermostat::Hot;
     preset Color = #FFFFFFFF;
   }
 
@@ -482,6 +482,7 @@ class Clock : Core::Group
     preset Bounds = <0,0,236,26>;
     preset ColorBL = #FFFFFFA0;
     preset ColorBR = #FFFFFFA0;
+    preset ColorTR = #FFFFFF00;
     preset ColorTL = #FFFFFF00;
   }
 

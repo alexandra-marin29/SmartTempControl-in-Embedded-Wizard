@@ -526,7 +526,7 @@ class Clock : Core::Group
   $member Glass2
 }
 
-$rect <250,20,450,60>
+$rect <370,20,570,60>
 $output false
 resource Resources::Bitmap DigitImages
 {
@@ -538,7 +538,7 @@ resource Resources::Bitmap DigitImages
   attr bitmapmode Mode = Default;
 }
 
-$rect <250,60,450,100>
+$rect <370,60,570,100>
 $output false
 resource Resources::Bitmap DotsImages
 {
@@ -550,7 +550,7 @@ resource Resources::Bitmap DotsImages
   attr bitmapmode Mode = Default;
 }
 
-$rect <250,100,450,140>
+$rect <370,100,570,140>
 $output false
 resource Resources::Bitmap DOWImages
 {
@@ -562,7 +562,7 @@ resource Resources::Bitmap DOWImages
   attr bitmapmode Mode = Default;
 }
 
-$rect <250,140,450,180>
+$rect <370,140,570,180>
 $output false
 resource Resources::Bitmap BackgroundClock
 {
@@ -572,4 +572,16 @@ resource Resources::Bitmap BackgroundClock
   attr framedelay FrameDelay;
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
+}
+
+// Components
+note group Note
+{
+  attr Bounds = <-20,-20,280,210>;
+}
+
+// Images
+note group Note1
+{
+  attr Bounds = <330,-20,630,200>;
 }
