@@ -1397,7 +1397,7 @@ class ExitScreen : Core::Group
   $rect <20,20,160,60>
   object Views::Text Text
   {
-    preset Bounds = <285,186,516,297>;
+    preset Bounds = <285,370,516,481>;
     preset String = "Goodbye!";
     preset Font = Resources::FontExtraLarge;
   }
@@ -1422,6 +1422,20 @@ class ExitScreen : Core::Group
     preset ColorTL = #DDDDDDFF;
   }
 
+  $rect <20,20,160,60>
+  object Views::Image House
+  {
+    preset Bounds = <230,99,568,381>;
+    preset Bitmap = Thermostat::HouseSplashScreen;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Icon
+  {
+    preset Bounds = <326,197,472,334>;
+    preset Bitmap = Thermostat::HeatSplashScreen;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1430,6 +1444,8 @@ class ExitScreen : Core::Group
   $member Background
   $member Text
   $member ColorEffect
+  $member House
+  $member Icon
 }
 
 $rect <550,330,750,370>
@@ -1447,35 +1463,6 @@ resource Resources::Bitmap BackgroundVacation
 $rect <-50,230,150,270>
 $output false
 const color Vac = #FF8B4FFF;
-
-$rect <210,40,410,80>
-$output false
-class SplashScreen : Core::Group
-{
-  $rect <829,-10,1029,30>
-  inherited property Bounds = <0,0,800,480>;
-
-  $rect <20,20,160,60>
-  object Views::Rectangle BackgroundSplashScreen
-  {
-    preset Bounds = <0,0,800,480>;
-    preset ColorTL = #CCCCCCFF;
-  }
-
-  $rect <20,20,160,60>
-  object Views::Image HouseSplashScreen
-  {
-    preset Bounds = <259,96,537,384>;
-    preset Bitmap = Thermostat::HouseSplashScreen;
-  }
-
-  $rect <20,20,160,60>
-  object Views::Image Image
-  {
-    preset Bounds = <326,222,472,345>;
-    preset Bitmap = Thermostat::HeatSplashScreen;
-  }
-}
 
 $rect <760,330,960,370>
 $output false

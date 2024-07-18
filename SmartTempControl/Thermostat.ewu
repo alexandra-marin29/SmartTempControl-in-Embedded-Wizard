@@ -1278,18 +1278,6 @@ resource Resources::Bitmap BackgroundNight
   attr bitmapmode Mode = Default;
 }
 
-$rect <750,160,950,200>
-$output false
-resource Resources::Bitmap SymbolFan
-{
-  attr bitmapfile FileName = .\Res\SymbolFan.png;
-  attr bitmapdithering Dithering = Auto;
-  attr framesize FrameSize = <36,36>;
-  attr framedelay FrameDelay;
-  attr bitmapformat Format = Alpha8;
-  attr bitmapmode Mode = Default;
-}
-
 // Font resources used for the different widgets. If you want to change the fonts \
 // within your project, just create a variant of these font resources and define \
 // the attributes of the font resources according your design ideas.
@@ -1481,6 +1469,18 @@ $output false
 resource Resources::Bitmap HeatSplashScreen
 {
   attr bitmapfile FileName = .\Res\HeatSplashScreen.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <760,160,960,200>
+$output false
+resource Resources::Bitmap SymbolFan
+{
+  attr bitmapfile FileName = .\Res\SymbolFan.png;
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;

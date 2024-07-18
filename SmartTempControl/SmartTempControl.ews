@@ -1,8 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Thermostat::DeviceClass;
 attr callStackMonitor_Show = false;
-attr connectInspectors = true;
+attr connectInspectors = false;
+attr currentCodeInspector = Thermostat::DeviceClass.ChangeActualTemp;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -31,13 +32,12 @@ view Project
   attr enableGrid = true;
   attr enableWireMode = false;
   attr grid = 10;
-  attr scrollTo = <-20,0>;
+  attr scrollTo = <284,0>;
   attr zoom = 0.75;
 }
 
 view class Application::Application
 {
-  attr enableWireMode = false;
   attr scrollTo = <-52,-23>;
   attr zoom = 0.75;
 }
@@ -45,14 +45,15 @@ view class Application::Application
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-514,-118>;
-  attr zoom = 1.0;
+  attr scrollTo = <-177,100>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr scrollTo = <-23,249>;
-  attr zoom = 1.0;
+  attr enableWireMode = false;
+  attr scrollTo = <-223,10>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::TemperatureController
@@ -64,7 +65,7 @@ view class Thermostat::TemperatureController
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-35,-108>;
+  attr scrollTo = <13,-60>;
   attr zoom = 0.75;
 }
 
@@ -82,7 +83,6 @@ view class Effects::Int32Effect
 
 view class Thermostat::ExitScreen
 {
-  attr enableWireMode = false;
   attr scrollTo = <-157,-71>;
   attr zoom = 0.5;
 }
@@ -113,7 +113,6 @@ view class Clock::Digit
 
 view class Clock::Dots
 {
-  attr enableWireMode = false;
   attr scrollTo = <-84,-40>;
   attr zoom = 1.75;
 }
@@ -132,7 +131,6 @@ view class Clock::Clock
 
 view class Views::Rectangle
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
@@ -149,8 +147,8 @@ codeview Thermostat::Thermostat.onSettingChanged
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <54,6>;
-  attr codeSelStart = <54,6>;
+  attr codeSelEnd = <30,4>;
+  attr codeSelStart = <30,4>;
 }
 
 codeview Thermostat::DeviceClass.UpdateActualTemp
@@ -309,8 +307,8 @@ codeview Thermostat::DeviceClass.ChangeActualTemp
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <28,0>;
-  attr codeSelStart = <28,0>;
+  attr codeSelEnd = <34,3>;
+  attr codeSelStart = <34,3>;
 }
 
 codeview Thermostat::DeviceClass.OnSetNominalTemp
