@@ -265,6 +265,7 @@ class DeviceClass : Templates::DeviceClass
   $output true
   method void UpdateActualTemp( arg int32 aNewValue )
   {
+
     if ( aNewValue != pure ActualTemp )
     {
       pure ActualTemp = aNewValue;
@@ -293,6 +294,7 @@ class DeviceClass : Templates::DeviceClass
 
     // Remember the new value in the internal memory of the property.
     pure NominalTemp = value;
+
 
     // For target code generation you will use your specific device API 
     // to change the affected value.
@@ -406,7 +408,7 @@ class DeviceClass : Templates::DeviceClass
       NominalTemp = 190;
     if(SettingNo == 2)
       NominalTemp = 170;
-    if ( temp < NominalTemp )
+    if ( temp < NominalTemp)
       temp = temp + 1;
     else if ( temp > NominalTemp )
       temp = temp - 1;
@@ -1073,7 +1075,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioDay
   {
-    preset Bounds = <27,38,222,82>;
+    preset Bounds = <205,38,328,82>;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Day";
     preset Appearance = Thermostat::RadioButtonDayConfig;
@@ -1082,7 +1084,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioNight
   {
-    preset Bounds = <205,38,400,82>;
+    preset Bounds = <347,38,478,82>;
     preset OutletSelector = 1;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Night";
@@ -1092,7 +1094,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioVacation
   {
-    preset Bounds = <420,38,615,82>;
+    preset Bounds = <518,38,713,82>;
     preset OutletSelector = 2;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Vacation";
@@ -1234,12 +1236,56 @@ class Thermostat : Core::Group
     preset Bounds = <517,198,754,265>;
   }
 
+  $rect <20,20,160,60>
+  object Thermostat::DefaultThermostat DefaultThermostat
+  {
+    preset Bounds = <-3,0,797,480>;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::RadioButton Default
+  {
+    preset Bounds = <35,35,185,85>;
+    preset OnSelect = DefaultThermSlot;
+    preset Label = "Default";
+    preset Appearance = WidgetSet::RadioButton_Mono_Medium;
+  }
+
+  $rect <1040,170,1240,210>
+  slot DefaultThermSlot
+  {
+    sender;
+    Overlay.Opacity = 0x00;
+    FadeEffect.Enabled = false;
+
+    Background.Visible=false;
+    Overlay.Visible=false;
+    ToggleButton.Visible=false;
+    ToggleButton.Enabled=false;
+    RadioDay.Visible=false;
+    RadioDay.Enabled=false;
+    RadioNight.Enabled=false;
+    RadioNight.Visible=false;
+    RadioVacation.Enabled=false;
+    RadioVacation.Visible=false;
+    TemperatureController.Visible=false;
+    OnOffButtonText.Visible=false;
+    RadioPowerOff.Enabled=false;
+    RadioPowerOff.Visible=false;
+    Clock.Visible = false;
+    DefaultThermostat.Visible = true;
+    FadeEffect.Enabled = true;
+
+
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
   // project files is simplified.
   $member Bounds
   $member ExitScreen
+  $member DefaultThermostat
   $member Background
   $member Overlay
   $member RadioPowerOff
@@ -1258,6 +1304,8 @@ class Thermostat : Core::Group
   $member SimpleTouchHandler
   $member FadeEffectPowerOff
   $member Clock
+  $member Default
+  $member DefaultThermSlot
 }
 
 $rect <750,80,950,120>
@@ -1492,4 +1540,27 @@ resource Resources::Bitmap SymbolFan
   attr framedelay FrameDelay;
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
+}
+
+$rect <210,40,410,80>
+$output false
+class DefaultThermostat : Core::Group
+{
+  $rect <850,10,1050,50>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Image BackgroundImage
+  {
+    preset Bounds = <0,0,800,480>;
+    preset Bitmap = Thermostat::BackgroundDay;
+  }
+
+  $rect <20,20,160,60>
+  object Thermostat::TemperatureController TemperatureController
+  {
+    preset Bounds = <230,70,570,410>;
+    preset OutletNominal = ^Thermostat::Device.NominalTemp;
+    preset OutletActual = ^Thermostat::Device.ActualTemp;
+  }
 }
