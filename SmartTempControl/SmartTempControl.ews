@@ -28,7 +28,6 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr enableWireMode = false;
   attr scrollTo = <361,89>;
   attr zoom = 1.0;
 }
@@ -36,34 +35,35 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <153,217>;
+  attr scrollTo = <-263,105>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-303,-107>;
-  attr zoom = 0.5;
+  attr scrollTo = <64,8>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::DefaultThermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-455,-113>;
-  attr zoom = 0.5;
+  attr scrollTo = <-256,-49>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::TemperatureController
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,71>;
-  attr zoom = 1.0;
+  attr scrollTo = <-151,-64>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr scrollTo = <-7,201>;
+  attr enableWireMode = false;
+  attr scrollTo = <-215,41>;
   attr zoom = 1.0;
 }
 
@@ -79,8 +79,8 @@ codeview Thermostat::Thermostat.onSettingChanged
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <44,3>;
-  attr codeSelStart = <44,3>;
+  attr codeSelEnd = <53,8>;
+  attr codeSelStart = <53,8>;
 }
 
 codeview Thermostat::DeviceClass.UpdateActualTemp
@@ -198,7 +198,7 @@ codeview Thermostat::TemperatureController.incrNominal
 codeview Thermostat::TemperatureController.decrNominal
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
+  attr codeFirstPos = <0,4>;
   attr codeSelEnd = <0,16>;
   attr codeSelStart = <0,16>;
 }
@@ -230,17 +230,17 @@ codeview Thermostat::Thermostat.ExitScreenSlot
 codeview Thermostat::DeviceClass.OnSetSettingNo
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,19>;
-  attr codeSelEnd = <16,32>;
-  attr codeSelStart = <16,32>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <16,0>;
+  attr codeSelStart = <16,0>;
 }
 
 codeview Thermostat::DeviceClass.ChangeActualTemp
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <20,7>;
-  attr codeSelStart = <20,7>;
+  attr codeSelEnd = <2,8>;
+  attr codeSelStart = <2,8>;
 }
 
 codeview Thermostat::DeviceClass.OnSetNominalTemp
@@ -374,15 +374,15 @@ codeview Core::Root.DriveCursorHitting
 codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,9>;
-  attr codeSelEnd = <0,21>;
-  attr codeSelStart = <22,22>;
+  attr codeFirstPos = <0,8>;
+  attr codeSelEnd = <36,14>;
+  attr codeSelStart = <36,14>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,12>;
-  attr codeSelEnd = <25,23>;
-  attr codeSelStart = <25,23>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <32,6>;
+  attr codeSelStart = <32,6>;
 }
