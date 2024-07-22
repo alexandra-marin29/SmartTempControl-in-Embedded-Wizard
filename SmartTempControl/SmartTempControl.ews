@@ -36,14 +36,14 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <585,361>;
+  attr scrollTo = <153,217>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-151,-59>;
+  attr scrollTo = <-303,-107>;
   attr zoom = 0.5;
 }
 

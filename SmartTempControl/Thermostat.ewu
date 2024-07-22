@@ -15,7 +15,7 @@ note group ConstantsNote
 // Resources
 note group Note
 {
-  attr Bounds = <530,0,1010,420>;
+  attr Bounds = <530,0,1010,470>;
 }
 
 $rect <210,150,450,190>
@@ -1244,12 +1244,13 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton Default
   {
-    preset Bounds = <35,35,185,85>;
+    preset Bounds = <14,38,175,82>;
+    preset Outlet = null;
     preset OnRelease = null;
     preset OnPress = null;
     preset OnSelect = DefaultThermSlot;
     preset Label = "Default";
-    preset Appearance = WidgetSet::RadioButton_Mono_Medium;
+    preset Appearance = Thermostat::RadioButtonDefaultConfig;
   }
 
   $rect <1040,170,1240,210>
@@ -1426,7 +1427,7 @@ note group Note2
   attr Bounds = <1030,0,1330,200>;
 }
 
-$rect <210,360,450,400>
+$rect <210,350,450,390>
 $output false
 autoobject WidgetSet::RadioButtonConfig RadioButtonPowerOff
 {
@@ -1624,6 +1625,53 @@ $output false
 resource Resources::Bitmap GoBackArrow
 {
   attr bitmapfile FileName = .\Res\GoBackArrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <210,390,450,430>
+$output false
+autoobject WidgetSet::RadioButtonConfig RadioButtonDefaultConfig
+{
+  preset LabelOnColorActive = #FFFFFFFF;
+  preset LabelOnColorFocused = #FFFFFFFF;
+  preset LabelOnColorDefault = Thermostat::Hot;
+  preset LabelOffColorActive = #FFFFFFFF;
+  preset LabelOffColorFocused = #FFFFFFFF;
+  preset LabelOffColorDefault = Thermostat::Hot;
+  preset LabelMarginLeft = 50;
+  preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
+  preset LabelOnFont = Thermostat::FontL;
+  preset LabelOffFont = Thermostat::FontL;
+  preset FaceLayout = Core::Layout[AlignToBottom, AlignToLeft, AlignToTop];
+  preset FaceOnFrameActive = 1;
+  preset FaceOnFrameFocused = 1;
+  preset FaceOnFrameDisabled = 1;
+  preset FaceOnFrameDefault = 1;
+  preset FaceOnBitmapActive = null;
+  preset FaceOnBitmapFocused = null;
+  preset FaceOnBitmapDisabled = null;
+  preset FaceOnBitmapDefault = null;
+  preset FaceOffFrameActive = 0;
+  preset FaceOffFrameFocused = 0;
+  preset FaceOffFrameDisabled = 0;
+  preset FaceOffFrameDefault = 0;
+  preset FaceOffBitmapActive = null;
+  preset FaceOffBitmapFocused = null;
+  preset FaceOffBitmapDisabled = null;
+  preset FaceOffBitmapDefault = null;
+  preset WidgetMaxSize = <440,44>;
+  preset WidgetMinSize = <44,44>;
+}
+
+$rect <550,410,750,450>
+$output false
+resource Resources::Bitmap ButtonDefault
+{
+  attr bitmapfile FileName = .\Res\ButtonDefault.png;
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;

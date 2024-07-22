@@ -265,7 +265,6 @@ class DeviceClass : Templates::DeviceClass
   $output true
   method void UpdateActualTemp( arg int32 aNewValue )
   {
-
     if ( aNewValue != pure ActualTemp )
     {
       pure ActualTemp = aNewValue;
@@ -1246,6 +1245,8 @@ class Thermostat : Core::Group
   object WidgetSet::RadioButton Default
   {
     preset Bounds = <35,35,185,85>;
+    preset OnRelease = null;
+    preset OnPress = null;
     preset OnSelect = DefaultThermSlot;
     preset Label = "Default";
     preset Appearance = WidgetSet::RadioButton_Mono_Medium;
@@ -1275,7 +1276,49 @@ class Thermostat : Core::Group
     Clock.Visible = false;
     DefaultThermostat.Visible = true;
     FadeEffect.Enabled = true;
+    Default.Visible = false;
+    Default.Enabled=false;
 
+
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler GoBackTouchHandler
+  {
+    preset Point4 = <6,9>;
+    preset Point3 = <106,9>;
+    preset Point2 = <106,109>;
+    preset Point1 = <6,109>;
+    preset OnPress = GoBackSlot;
+  }
+
+  $rect <1040,219,1240,259>
+  slot GoBackSlot
+  {
+    sender;
+    sender;
+    Overlay.Opacity = 0x00;
+    FadeEffect.Enabled = false;
+
+    DefaultThermostat.Visible = false;
+    Background.Visible=true;
+    Overlay.Visible=true;
+    ToggleButton.Visible=true;
+    ToggleButton.Enabled=true;
+    RadioDay.Visible=true;
+    RadioDay.Enabled=true;
+    RadioNight.Enabled=true;
+    RadioNight.Visible=true;
+    RadioVacation.Enabled=true;
+    RadioVacation.Visible=true;
+    TemperatureController.Visible=true;
+    OnOffButtonText.Visible=true;
+    RadioPowerOff.Enabled=true;
+    RadioPowerOff.Visible=true;
+    Clock.Visible =true;
+    Default.Visible =true;
+    Default.Enabled=true;
+    Default.Selected = false;
 
   }
 
@@ -1286,6 +1329,7 @@ class Thermostat : Core::Group
   $member Bounds
   $member ExitScreen
   $member DefaultThermostat
+  $member GoBackTouchHandler
   $member Background
   $member Overlay
   $member RadioPowerOff
@@ -1306,6 +1350,7 @@ class Thermostat : Core::Group
   $member Clock
   $member Default
   $member DefaultThermSlot
+  $member GoBackSlot
 }
 
 $rect <750,80,950,120>
@@ -1563,4 +1608,25 @@ class DefaultThermostat : Core::Group
     preset OutletNominal = ^Thermostat::Device.NominalTemp;
     preset OutletActual = ^Thermostat::Device.ActualTemp;
   }
+
+  $rect <20,20,160,60>
+  object Views::Image GoBackImage
+  {
+    preset Bounds = <6,18,122,107>;
+    preset ColorTL = #FFFFFFFF;
+    preset Color = #FFFFFFFF;
+    preset Bitmap = Thermostat::GoBackArrow;
+  }
+}
+
+$rect <760,370,960,410>
+$output false
+resource Resources::Bitmap GoBackArrow
+{
+  attr bitmapfile FileName = .\Res\GoBackArrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
 }
