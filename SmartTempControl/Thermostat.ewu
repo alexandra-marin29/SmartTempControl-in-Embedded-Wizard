@@ -1189,6 +1189,7 @@ class Thermostat : Core::Group
     RadioPowerOff.Visible=false;
     Clock.Visible = false;
     Default.Visible = false;
+    FilledRectangle.Visible=false;
     DefaultThermostat.Visible=false;
     Logo.Visible = false;
 
@@ -1242,7 +1243,7 @@ class Thermostat : Core::Group
     preset Appearance = Thermostat::RadioButtonDefaultConfig;
   }
 
-  $rect <1040,170,1240,210>
+  $rect <1040,170,1239,210>
   slot DefaultThermSlot
   {
     sender;
@@ -1260,6 +1261,7 @@ class Thermostat : Core::Group
     RadioNight.Visible=false;
     RadioVacation.Enabled=false;
     RadioVacation.Visible=false;
+    FilledRectangle.Visible=false;
     TemperatureController.Visible=false;
     TemperatureController.Enabled=false;
     OnOffButtonText.Visible=false;
@@ -1301,6 +1303,7 @@ class Thermostat : Core::Group
     RadioDay.Enabled=true;
     RadioNight.Enabled=true;
     RadioNight.Visible=true;
+    FilledRectangle.Visible=false;
     RadioVacation.Enabled=true;
     RadioVacation.Visible=true;
     TemperatureController.Visible=true;
@@ -1325,6 +1328,13 @@ class Thermostat : Core::Group
   {
     preset Bounds = <700,380,800,480>;
     preset Opacity = 255;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle FilledRectangle
+  {
+    preset Bounds = <130,240,285,290>;
+    preset Color = #000000FF;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1358,6 +1368,7 @@ class Thermostat : Core::Group
   $member DefaultThermSlot
   $member GoBackSlot
   $member Logo
+  $member FilledRectangle
 }
 
 $rect <760,21,960,61>

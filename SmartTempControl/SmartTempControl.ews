@@ -28,14 +28,12 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr enableWireMode = false;
   attr scrollTo = <201,73>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
-  attr enableWireMode = false;
   attr scrollTo = <-185,-188>;
   attr zoom = 1.0;
 }
@@ -43,76 +41,66 @@ view unit Thermostat
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-165,-114>;
-  attr zoom = 0.5;
+  attr scrollTo = <431,-87>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::DefaultThermostat
 {
-  attr enableWireMode = false;
   attr scrollTo = <-56,-120>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::TemperatureController
 {
-  attr enableWireMode = false;
   attr scrollTo = <-151,144>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr enableWireMode = false;
   attr scrollTo = <-215,121>;
   attr zoom = 1.0;
 }
 
 view unit Application
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-151>;
   attr zoom = 1.0;
 }
 
 view class Application::Application
 {
-  attr enableWireMode = false;
   attr scrollTo = <479,243>;
   attr zoom = 1.0;
 }
 
 view class Effects::Int32Effect
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::ExitScreen
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 0.75;
 }
 
 view class Graphics::Path
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Logo
 {
-  attr enableWireMode = false;
   attr scrollTo = <-129,-101>;
   attr zoom = 1.0;
 }
 
 view class Core::Timer
 {
-  attr enableWireMode = false;
   attr scrollTo = <-23,-23>;
   attr zoom = 1.0;
 }
@@ -273,8 +261,8 @@ codeview Thermostat::Thermostat.ExitScreenSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,14>;
-  attr codeSelEnd = <18,25>;
-  attr codeSelStart = <18,25>;
+  attr codeSelEnd = <30,21>;
+  attr codeSelStart = <30,21>;
 }
 
 codeview Thermostat::DeviceClass.OnSetSettingNo
@@ -424,17 +412,17 @@ codeview Core::Root.DriveCursorHitting
 codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <33,3>;
-  attr codeSelStart = <33,3>;
+  attr codeFirstPos = <0,3>;
+  attr codeSelEnd = <30,15>;
+  attr codeSelStart = <30,15>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,11>;
-  attr codeSelStart = <19,11>;
+  attr codeFirstPos = <0,1>;
+  attr codeSelEnd = <30,14>;
+  attr codeSelStart = <30,14>;
 }
 
 codeview Core::Timer.OnSetBegin
