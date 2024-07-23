@@ -406,7 +406,7 @@ class DeviceClass : Templates::DeviceClass
   object Core::Timer ChangeTempTimer
   {
     preset OnTrigger = ChangeActualTemp;
-    preset Period = 150;
+    preset Period = 350;
     preset Enabled = true;
   }
 
@@ -1169,8 +1169,9 @@ class Thermostat : Core::Group
   slot ExitScreenSlot
   {
     sender;
-    Overlay.Opacity = 0x00;
-    FadeEffect.Enabled = false;
+    ExitScreen.Opacity = 0x00;
+    FadeEffectPowerOff.Enabled = false;
+
 
     Background.Visible=false;
     Overlay.Visible=false;
@@ -1187,11 +1188,12 @@ class Thermostat : Core::Group
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
     Clock.Visible = false;
-    ExitScreen.Visible = true;
-    FadeEffect.Enabled = true;
     Default.Visible = false;
     DefaultThermostat.Visible=false;
+    Logo.Visible = false;
 
+    ExitScreen.Visible = true;
+    FadeEffectPowerOff.Enabled = true;
 
 
   }
@@ -1209,7 +1211,7 @@ class Thermostat : Core::Group
   $rect <830,220,1030,260>
   object Effects::Int32Effect FadeEffectPowerOff
   {
-    preset OnFinished = ExitScreenSlot;
+    preset OnFinished = null;
     preset NoOfCycles = 1;
     preset CycleDuration = 1000;
     preset Outlet = ^ExitScreen.Opacity;
@@ -1313,6 +1315,12 @@ class Thermostat : Core::Group
   }
 
   $rect <20,20,160,60>
+  object Views::Rectangle FilledBackground
+  {
+    preset Bounds = <-3,0,799,480>;
+  }
+
+  $rect <20,20,160,60>
   object Thermostat::Logo Logo
   {
     preset Bounds = <700,380,800,480>;
@@ -1324,6 +1332,7 @@ class Thermostat : Core::Group
   // and the expected order of the members don't depend. Merging of changes in the 
   // project files is simplified.
   $member Bounds
+  $member FilledBackground
   $member ExitScreen
   $member DefaultThermostat
   $member GoBackTouchHandler
