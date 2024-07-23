@@ -1243,6 +1243,8 @@ class Thermostat : Core::Group
     sender;
     Overlay.Opacity = 0x00;
 
+
+    Thermostat::Device.SettingNo= 3;
     Background.Visible=false;
     Overlay.Visible=false;
     ToggleButton.Visible=false;
@@ -1595,34 +1597,11 @@ class DefaultThermostat : Core::Group
   }
 
   $rect <20,20,160,60>
-  object Views::Image GoBackImage
+  object Views::Image GoBackArrow
   {
-    preset Bounds = <6,18,122,107>;
-    preset ColorTL = #FFFFFFFF;
-    preset Color = #FFFFFFFF;
+    preset Bounds = <11,11,78,81>;
     preset Bitmap = Thermostat::GoBackArrow;
   }
-
-  // Directives to adapt the order of the above members according to how these members 
-  // where arranged when the project content was stored. In this manner the storage 
-  // and the expected order of the members don't depend. Merging of changes in the 
-  // project files is simplified.
-  $member Bounds
-  $member BackgroundImage
-  $member GoBackImage
-  $member TemperatureController
-}
-
-$rect <770,311,970,351>
-$output false
-resource Resources::Bitmap GoBackArrow
-{
-  attr bitmapfile FileName = .\Res\GoBackArrow.png;
-  attr bitmapdithering Dithering = Auto;
-  attr framesize FrameSize;
-  attr framedelay FrameDelay;
-  attr bitmapformat Format = Native;
-  attr bitmapmode Mode = Default;
 }
 
 $rect <210,390,450,430>
@@ -1665,6 +1644,18 @@ $output false
 resource Resources::Bitmap ButtonDefault
 {
   attr bitmapfile FileName = .\Res\ButtonDefault.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <770,310,970,350>
+$output false
+resource Resources::Bitmap GoBackArrow
+{
+  attr bitmapfile FileName = .\Res\GoBackArrow.png;
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;

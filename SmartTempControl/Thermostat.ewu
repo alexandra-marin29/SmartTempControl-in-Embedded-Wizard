@@ -15,7 +15,7 @@ note group ConstantsNote
 // Resources
 note group Note
 {
-  attr Bounds = <530,-80,1010,430>;
+  attr Bounds = <530,-80,1010,440>;
 }
 
 $rect <210,150,450,190>
@@ -1189,6 +1189,9 @@ class Thermostat : Core::Group
     Clock.Visible = false;
     ExitScreen.Visible = true;
     FadeEffect.Enabled = true;
+    Default.Visible = false;
+    DefaultThermostat.Visible=false;
+
 
 
   }
@@ -1309,6 +1312,13 @@ class Thermostat : Core::Group
 
   }
 
+  $rect <20,20,160,60>
+  object Thermostat::Logo Logo
+  {
+    preset Bounds = <700,380,800,480>;
+    preset Opacity = 255;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1338,6 +1348,7 @@ class Thermostat : Core::Group
   $member Default
   $member DefaultThermSlot
   $member GoBackSlot
+  $member Logo
 }
 
 $rect <760,21,960,61>
@@ -1656,6 +1667,60 @@ $output false
 resource Resources::Bitmap GoBackArrow
 {
   attr bitmapfile FileName = .\Res\GoBackArrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <-40,40,160,80>
+$output false
+class Logo : Core::Group
+{
+  $rect <10,230,210,270>
+  inherited property Bounds = <0,0,100,100>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Background
+  {
+    preset Bounds = <0,0,100,100>;
+    preset Color = #FFFFFF00;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image HouseImage
+  {
+    preset Bounds = <0,0,100,100>;
+    preset Color = #FFFFFFFF;
+    preset Bitmap = Thermostat::HouseImage;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image HeatSymbol
+  {
+    preset Bounds = <25,30,75,80>;
+    preset Bitmap = Thermostat::HeatHandsSymbol;
+  }
+}
+
+$rect <770,350,970,390>
+$output false
+resource Resources::Bitmap HouseImage
+{
+  attr bitmapfile FileName = .\Res\HouseImage.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <560,390,760,430>
+$output false
+resource Resources::Bitmap HeatHandsSymbol
+{
+  attr bitmapfile FileName = .\Res\HeatHandsSymbol.png;
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
