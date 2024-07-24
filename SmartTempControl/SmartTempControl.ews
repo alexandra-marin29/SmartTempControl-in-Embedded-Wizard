@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
+attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -41,7 +41,7 @@ view unit Thermostat
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <771,60>;
+  attr scrollTo = <563,59>;
   attr zoom = 1.0;
 }
 
@@ -420,9 +420,9 @@ codeview Thermostat::Thermostat.DefaultThermSlot
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,1>;
-  attr codeSelEnd = <30,14>;
-  attr codeSelStart = <30,14>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <46,9>;
+  attr codeSelStart = <46,9>;
 }
 
 codeview Core::Timer.OnSetBegin

@@ -1292,8 +1292,8 @@ class Thermostat : Core::Group
   slot GoBackSlot
   {
     sender;
-    Overlay.Opacity = 0x00;
-    FadeEffect.Enabled = false;
+    TemperatureController.Opacity = 0x00;
+    FadeEffectGoBack.Enabled = false;
 
     DefaultThermostat.Visible = false;
     DefaultThermostat.Enabled=false;
@@ -1317,6 +1317,7 @@ class Thermostat : Core::Group
     Default.Enabled=true;
     Default.Selected = false;
 
+    FadeEffectGoBack.Enabled = true;
   }
 
   $rect <20,20,160,60>
@@ -1344,6 +1345,13 @@ class Thermostat : Core::Group
   {
     preset NoOfCycles = 1;
     preset Outlet = ^DefaultThermostat.Opacity;
+  }
+
+  $rect <1040,270,1240,310>
+  object Effects::Int32Effect FadeEffectGoBack
+  {
+    preset NoOfCycles = 1;
+    preset Outlet = ^TemperatureController.Opacity;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1379,6 +1387,7 @@ class Thermostat : Core::Group
   $member Logo
   $member FilledRectangle
   $member FadeEffectManual
+  $member FadeEffectGoBack
 }
 
 $rect <760,21,960,61>
