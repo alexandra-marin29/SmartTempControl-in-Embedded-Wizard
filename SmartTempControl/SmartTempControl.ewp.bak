@@ -105,5 +105,11 @@ note group Note3
 // Units
 note group Note5
 {
-  attr Bounds = <280,139,520,279>;
+  attr Bounds = <280,139,519,330>;
+}
+
+$rect <300,260,500,300>
+unit Clock
+{
+  attr Directory = .\;
 }
