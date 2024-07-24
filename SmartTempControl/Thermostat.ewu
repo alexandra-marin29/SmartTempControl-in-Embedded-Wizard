@@ -1247,7 +1247,8 @@ class Thermostat : Core::Group
   slot DefaultThermSlot
   {
     sender;
-    Overlay.Opacity = 0x00;
+    DefaultThermostat.Opacity = 0x00;
+    FadeEffectManual.Enabled = false;
 
 
     Thermostat::Device.SettingNo= 3;
@@ -1268,10 +1269,11 @@ class Thermostat : Core::Group
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
     Clock.Visible = false;
-    DefaultThermostat.Visible = true;
-    FadeEffect.Enabled = true;
     Default.Visible = false;
     Default.Enabled=false;
+    DefaultThermostat.Visible = true;
+    FadeEffectManual.Enabled = true;
+
 
 
   }
@@ -1337,6 +1339,13 @@ class Thermostat : Core::Group
     preset Color = #000000FF;
   }
 
+  $rect <830,270,1030,310>
+  object Effects::Int32Effect FadeEffectManual
+  {
+    preset NoOfCycles = 1;
+    preset Outlet = ^DefaultThermostat.Opacity;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1369,6 +1378,7 @@ class Thermostat : Core::Group
   $member GoBackSlot
   $member Logo
   $member FilledRectangle
+  $member FadeEffectManual
 }
 
 $rect <760,21,960,61>
