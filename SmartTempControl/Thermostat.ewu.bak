@@ -1185,13 +1185,13 @@ class Thermostat : Core::Group
     RadioVacation.Visible=false;
     TemperatureController.Visible=false;
     OnOffButtonText.Visible=false;
-    RadioPowerOff.Enabled=false;
-    RadioPowerOff.Visible=false;
     Clock.Visible = false;
     Default.Visible = false;
     FilledRectangle.Visible=false;
     DefaultThermostat.Visible=false;
     Logo.Visible = false;
+    RadioPowerOff.Enabled=false;
+    RadioPowerOff.Visible=false;
 
     ExitScreen.Visible = true;
     FadeEffectPowerOff.Enabled = true;
@@ -1266,8 +1266,6 @@ class Thermostat : Core::Group
     TemperatureController.Visible=false;
     TemperatureController.Enabled=false;
     OnOffButtonText.Visible=false;
-    RadioPowerOff.Enabled=false;
-    RadioPowerOff.Visible=false;
     Clock.Visible = false;
     Default.Visible = false;
     Default.Enabled=false;

@@ -1,6 +1,6 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Thermostat::FanMode;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
@@ -29,82 +29,28 @@ attr search_WildCards = false;
 view Project
 {
   attr enableWireMode = false;
-  attr scrollTo = <233,169>;
+  attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-185,-188>;
+  attr scrollTo = <-215,249>;
   attr zoom = 1.0;
 }
 
-view class Thermostat::Thermostat
+view class Thermostat::FanMode
 {
   attr enableWireMode = false;
-  attr scrollTo = <297,59>;
-  attr zoom = 1.0;
-}
-
-view class Thermostat::DefaultThermostat
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-235,-39>;
+  attr scrollTo = <-247,-55>;
   attr zoom = 0.5;
-}
-
-view class Thermostat::TemperatureController
-{
-  attr scrollTo = <-151,144>;
-  attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr scrollTo = <-215,121>;
-  attr zoom = 1.0;
-}
-
-view unit Application
-{
-  attr scrollTo = <-7,-151>;
-  attr zoom = 1.0;
-}
-
-view class Application::Application
-{
-  attr scrollTo = <479,243>;
-  attr zoom = 1.0;
-}
-
-view class Effects::Int32Effect
-{
+  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
-}
-
-view class Thermostat::ExitScreen
-{
-  attr scrollTo = <-7,-7>;
-  attr zoom = 0.75;
-}
-
-view class Graphics::Path
-{
-  attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
-}
-
-view class Thermostat::Logo
-{
-  attr scrollTo = <-129,-101>;
-  attr zoom = 1.0;
-}
-
-view class Core::Timer
-{
-  attr scrollTo = <-23,-23>;
   attr zoom = 1.0;
 }
 
