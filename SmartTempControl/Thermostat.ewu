@@ -1257,6 +1257,8 @@ class Thermostat : Core::Group
     Clock.Visible = false;
     Default.Visible = false;
     Default.Enabled=false;
+
+    DefaultThermostat.StackingPriority=1;
     DefaultThermostat.Visible = true;
     FadeEffectManual.Enabled = true;
 
@@ -1274,7 +1276,7 @@ class Thermostat : Core::Group
     preset OnPress = GoBackSlot;
   }
 
-  $rect <1040,219,1240,259>
+  $rect <1040,219,1239,259>
   slot GoBackSlot
   {
     sender;
@@ -1340,12 +1342,84 @@ class Thermostat : Core::Group
     preset Outlet = ^TemperatureController.Opacity;
   }
 
+  $rect <20,20,160,60>
+  object Thermostat::FanMode FanMode
+  {
+    preset Bounds = <-3,0,797,480>;
+    preset Visible = false;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Fan
+  {
+    preset Bounds = <517,348,578,407>;
+    preset Bitmap = Thermostat::SymbolFanBig;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text FanText
+  {
+    preset Bounds = <497,407,597,437>;
+    preset String = "FAN ";
+    preset Font = Thermostat::FontM;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler FanTouchHandler
+  {
+    preset Point4 = <497,337>;
+    preset Point3 = <597,337>;
+    preset Point2 = <597,437>;
+    preset Point1 = <497,437>;
+    preset OnPress = SlotFan;
+  }
+
+  $rect <830,320,1030,360>
+  slot SlotFan
+  {
+    sender;
+    FanMode.Opacity = 0x00;
+    FadeEffectFanMode.Enabled = false;
+
+    Background.Visible=false;
+    Overlay.Visible=false;
+    ToggleButton.Visible=false;
+    ToggleButton.Enabled=false;
+    RadioDay.Visible=false;
+    RadioDay.Enabled=false;
+    RadioNight.Enabled=false;
+    RadioNight.Visible=false;
+    RadioVacation.Enabled=false;
+    RadioVacation.Visible=false;
+    FilledRectangle.Visible=false;
+    TemperatureController.Visible=false;
+    TemperatureController.Enabled=false;
+    OnOffButtonText.Visible=false;
+    Clock.Visible = false;
+    Default.Visible = false;
+    Default.Enabled=false;
+    FanMode.StackingPriority=1;
+    FanMode.Visible = true;
+    FadeEffectFanMode.Enabled = true;
+
+
+
+  }
+
+  $rect <1040,320,1240,360>
+  object Effects::Int32Effect FadeEffectFanMode
+  {
+    preset NoOfCycles = 1;
+    preset Outlet = ^FanMode.Opacity;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
   // project files is simplified.
   $member Bounds
   $member FilledBackground
+  $member FanMode
   $member ExitScreen
   $member DefaultThermostat
   $member GoBackTouchHandler
@@ -1374,6 +1448,11 @@ class Thermostat : Core::Group
   $member FilledRectangle
   $member FadeEffectManual
   $member FadeEffectGoBack
+  $member Fan
+  $member FanText
+  $member FanTouchHandler
+  $member SlotFan
+  $member FadeEffectFanMode
 }
 
 $rect <770,-10,970,30>

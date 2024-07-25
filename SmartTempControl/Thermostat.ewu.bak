@@ -214,18 +214,6 @@ resource Resources::Font FontL
   attr fontrowdistance RowDistance;
 }
 
-$rect <769,191,969,231>
-$output false
-resource Resources::Bitmap VertBar
-{
-  attr bitmapfile FileName = .\Res\VertBar.png;
-  attr bitmapdithering Dithering = Auto;
-  attr framesize FrameSize = <20,220>;
-  attr framedelay FrameDelay;
-  attr bitmapformat Format = Alpha8;
-  attr bitmapmode Mode = Default;
-}
-
 $rect <210,190,450,230>
 $output false
 autoobject WidgetSet::VerticalSliderConfig VerticalSliderConfig
@@ -246,8 +234,8 @@ autoobject WidgetSet::VerticalSliderConfig VerticalSliderConfig
   preset TrackBelowBitmapFocused = Thermostat::VertBar;
   preset TrackBelowBitmapDisabled = Thermostat::VertBar;
   preset TrackBelowBitmapDefault = Thermostat::VertBar;
-  preset WidgetMaxSize = <20,220>;
-  preset WidgetMinSize = <20,220>;
+  preset WidgetMaxSize = <40,320>;
+  preset WidgetMinSize = <40,320>;
 }
 
 $rect <-50,330,150,370>
@@ -316,7 +304,7 @@ class DeviceClass : Templates::DeviceClass
   }
 
   $rect <220,140,420,180>
-  property int32 FanSpeed = 30;
+  property int32 FanSpeed = 15;
 
   $rect <420,140,620,180>
   onset FanSpeed
@@ -1388,7 +1376,7 @@ class Thermostat : Core::Group
   $member FadeEffectGoBack
 }
 
-$rect <760,21,960,61>
+$rect <770,-10,970,30>
 $output false
 resource Resources::Bitmap BackgroundDay
 {
@@ -1400,7 +1388,7 @@ resource Resources::Bitmap BackgroundDay
   attr bitmapmode Mode = Default;
 }
 
-$rect <760,61,960,101>
+$rect <770,30,970,70>
 $output false
 resource Resources::Bitmap BackgroundNight
 {
@@ -1431,7 +1419,7 @@ resource Resources::Font FontM
   attr fontrowdistance RowDistance;
 }
 
-$rect <760,-19,960,21>
+$rect <770,-50,970,-10>
 $output false
 resource Resources::Bitmap BackgroundDefault
 {
@@ -1610,18 +1598,6 @@ resource Resources::Bitmap HeatSplashScreen
   attr bitmapmode Mode = Default;
 }
 
-$rect <770,101,970,141>
-$output false
-resource Resources::Bitmap SymbolFan
-{
-  attr bitmapfile FileName = .\Res\SymbolFan.png;
-  attr bitmapdithering Dithering = Auto;
-  attr framesize FrameSize;
-  attr framedelay FrameDelay;
-  attr bitmapformat Format = Native;
-  attr bitmapmode Mode = Default;
-}
-
 $rect <230,0,430,40>
 $output false
 class DefaultThermostat : Core::Group
@@ -1764,3 +1740,130 @@ resource Resources::Bitmap HeatHandsSymbol
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
+
+$rect <769,191,969,231>
+$output false
+resource Resources::Bitmap VertBar
+{
+  attr bitmapfile FileName = .\Res\VertBar.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize = <20,220>;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Alpha8;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <230,40,430,80>
+$output false
+class FanMode : Core::Group
+{
+  $rect <899,19,1099,59>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Image BackgroundImage
+  {
+    preset Bounds = <0,0,800,480>;
+    preset Bitmap = Thermostat::BackgroundDay;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::VerticalSlider VerticalSlider
+  {
+    preset Bounds = <359,80,399,400>;
+    preset Outlet = ^Thermostat::Device.FanSpeed;
+    preset Appearance = Thermostat::VerticalSliderConfig;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image FanSmall
+  {
+    preset Bounds = <298,344,348,394>;
+    preset Bitmap = Thermostat::SymbolFanSmall;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image FanBig
+  {
+    preset Bounds = <298,78,348,128>;
+    preset Bitmap = Thermostat::SymbolFanBig;
+  }
+}
+
+$rect <770,70,970,110>
+$output false
+resource Resources::Bitmap SymbolFanBig
+{
+  attr bitmapfile FileName = .\Res\SymbolFanBig.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <770,110,970,150>
+$output false
+resource Resources::Bitmap SymbolFanSmall
+{
+  attr bitmapfile FileName = .\Res\SymbolFanSmall.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+// Directives to adapt the order of the above members according to how these members 
+// where arranged when the project content was stored. In this manner the storage 
+// and the expected order of the members don't depend. Merging of changes in the 
+// project files is simplified.
+$member GlobalsNote
+$member ConstantsNote
+$member Note
+$member SwingSwitchConfig
+$member SwingSwitch
+$member ButtonDay
+$member ButtonNight
+$member ButtonVacation
+$member RadioButtonDayConfig
+$member RadioButtonNightConfig
+$member RadioButtonVacationConfig
+$member FontL
+$member VertBar
+$member VerticalSliderConfig
+$member DeviceClass
+$member Device
+$member Wheels
+$member Controller
+$member TemperatureController
+$member Needle
+$member Cold
+$member Hot
+$member SymbolHeadCool
+$member FontXXL
+$member Thermostat
+$member BackgroundDay
+$member BackgroundNight
+$member FontM
+$member BackgroundDefault
+$member Note1
+$member Note4
+$member Note2
+$member RadioButtonPowerOff
+$member PowerOffIcon
+$member ExitScreen
+$member BackgroundVacation
+$member Vac
+$member HouseSplashScreen
+$member HeatSplashScreen
+$member DefaultThermostat
+$member RadioButtonDefaultConfig
+$member ButtonDefault
+$member GoBackArrow
+$member Logo
+$member HouseImage
+$member HeatHandsSymbol
+$member FanMode
+$member SymbolFanBig
+$member SymbolFanSmall
