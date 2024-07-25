@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
+attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -56,7 +56,7 @@ view class Thermostat::DeviceClass
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <56,12>;
+  attr scrollTo = <-24,28>;
   attr zoom = 0.75;
 }
 
@@ -383,8 +383,8 @@ codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <48,13>;
-  attr codeSelStart = <48,13>;
+  attr codeSelEnd = <0,1>;
+  attr codeSelStart = <33,2>;
 }
 
 codeview Core::Timer.OnSetBegin
@@ -415,6 +415,6 @@ codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,1>;
-  attr codeSelStart = <0,1>;
+  attr codeSelEnd = <16,13>;
+  attr codeSelStart = <16,13>;
 }

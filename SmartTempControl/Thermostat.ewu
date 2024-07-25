@@ -1431,6 +1431,8 @@ class Thermostat : Core::Group
   slot SlotGoBackFanMode
   {
     sender;
+    TemperatureController.Opacity = 0x00;
+    FadeEffectGoBack.Enabled = false;
 
     FanMode.Visible=false;
     FanMode.Enabled=false;
@@ -1454,7 +1456,7 @@ class Thermostat : Core::Group
     Default.Visible =true;
     Default.Enabled=true;
 
-
+    FadeEffectGoBack.Enabled=true;
   }
 
   // Directives to adapt the order of the above members according to how these members 
