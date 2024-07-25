@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
+attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -43,7 +43,7 @@ view unit Thermostat
 view class Thermostat::FanMode
 {
   attr enableWireMode = false;
-  attr scrollTo = <-76,-82>;
+  attr scrollTo = <-108,-34>;
   attr zoom = 0.75;
 }
 
@@ -56,7 +56,14 @@ view class Thermostat::DeviceClass
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <232,29>;
+  attr scrollTo = <56,12>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::DefaultThermostat
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,198>;
   attr zoom = 0.75;
 }
 
@@ -367,17 +374,17 @@ codeview Core::Root.DriveCursorHitting
 codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,14>;
-  attr codeSelEnd = <37,24>;
-  attr codeSelStart = <37,24>;
+  attr codeFirstPos = <0,16>;
+  attr codeSelEnd = <32,26>;
+  attr codeSelStart = <32,26>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,13>;
-  attr codeSelEnd = <18,22>;
-  attr codeSelStart = <18,22>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <48,13>;
+  attr codeSelStart = <48,13>;
 }
 
 codeview Core::Timer.OnSetBegin
@@ -399,7 +406,15 @@ codeview Core::Timer.OnSetPeriod
 codeview Thermostat::Thermostat.SlotFan
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,7>;
-  attr codeSelEnd = <29,21>;
-  attr codeSelStart = <29,21>;
+  attr codeFirstPos = <0,13>;
+  attr codeSelEnd = <33,24>;
+  attr codeSelStart = <33,24>;
+}
+
+codeview Thermostat::Thermostat.SlotGoBackFanMode
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,1>;
+  attr codeSelStart = <0,1>;
 }

@@ -1260,6 +1260,7 @@ class Thermostat : Core::Group
 
     DefaultThermostat.StackingPriority=1;
     DefaultThermostat.Visible = true;
+    GoBackTouchHandler.Enabled=true;
     FadeEffectManual.Enabled = true;
 
 
@@ -1285,6 +1286,7 @@ class Thermostat : Core::Group
 
     DefaultThermostat.Visible = false;
     DefaultThermostat.Enabled=false;
+    GoBackTouchHandler.Enabled=false;
     Background.Visible=true;
     Overlay.Visible=true;
     ToggleButton.Visible=true;
@@ -1350,6 +1352,16 @@ class Thermostat : Core::Group
   }
 
   $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandlerFanMode
+  {
+    preset Point4 = <-3,9>;
+    preset Point3 = <85,9>;
+    preset Point2 = <85,82>;
+    preset Point1 = <0,82>;
+    preset OnPress = SlotGoBackFanMode;
+  }
+
+  $rect <20,20,160,60>
   object Views::Image Fan
   {
     preset Bounds = <517,348,578,407>;
@@ -1398,9 +1410,11 @@ class Thermostat : Core::Group
     Clock.Visible = false;
     Default.Visible = false;
     Default.Enabled=false;
+
     FanMode.StackingPriority=1;
     FanMode.Visible = true;
     FadeEffectFanMode.Enabled = true;
+    SimpleTouchHandlerFanMode.Enabled=true;
 
 
 
@@ -1413,6 +1427,36 @@ class Thermostat : Core::Group
     preset Outlet = ^FanMode.Opacity;
   }
 
+  $rect <830,370,1030,410>
+  slot SlotGoBackFanMode
+  {
+    sender;
+
+    FanMode.Visible=false;
+    FanMode.Enabled=false;
+    SimpleTouchHandlerFanMode.Enabled=false;
+    Background.Visible=true;
+    Overlay.Visible=true;
+    ToggleButton.Visible=true;
+    ToggleButton.Enabled=true;
+    RadioDay.Visible=true;
+    RadioDay.Enabled=true;
+    RadioNight.Enabled=true;
+    RadioNight.Visible=true;
+    FilledRectangle.Visible=false;
+    RadioVacation.Enabled=true;
+    RadioVacation.Visible=true;
+    TemperatureController.Visible=true;
+    OnOffButtonText.Visible=true;
+    RadioPowerOff.Enabled=true;
+    RadioPowerOff.Visible=true;
+    Clock.Visible =true;
+    Default.Visible =true;
+    Default.Enabled=true;
+
+
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1420,6 +1464,7 @@ class Thermostat : Core::Group
   $member Bounds
   $member FilledBackground
   $member FanMode
+  $member SimpleTouchHandlerFanMode
   $member ExitScreen
   $member DefaultThermostat
   $member GoBackTouchHandler
@@ -1453,6 +1498,7 @@ class Thermostat : Core::Group
   $member FanTouchHandler
   $member SlotFan
   $member FadeEffectFanMode
+  $member SlotGoBackFanMode
 }
 
 $rect <770,-10,970,30>
@@ -1866,6 +1912,13 @@ class FanMode : Core::Group
   {
     preset Bounds = <298,78,348,128>;
     preset Bitmap = Thermostat::SymbolFanBig;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image GoBackFanMode
+  {
+    preset Bounds = <0,6,87,78>;
+    preset Bitmap = Thermostat::GoBackArrow;
   }
 }
 
