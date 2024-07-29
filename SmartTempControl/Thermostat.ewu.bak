@@ -1922,6 +1922,12 @@ class FanMode : Core::Group
     preset Bounds = <0,6,87,78>;
     preset Bitmap = Thermostat::GoBackArrow;
   }
+
+  $rect <20,20,160,60>
+  object Thermostat::Logo Logo
+  {
+    preset Bounds = <700,380,800,480>;
+  }
 }
 
 $rect <770,70,970,110>

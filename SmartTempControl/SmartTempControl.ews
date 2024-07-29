@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::FanMode;
+attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.SlotFan;
+attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -28,7 +28,6 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
@@ -36,33 +35,33 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-215,-55>;
+  attr scrollTo = <-215,265>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::FanMode
 {
   attr enableWireMode = false;
-  attr scrollTo = <-108,158>;
+  attr scrollTo = <-284,-18>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr scrollTo = <-7,-7>;
+  attr enableWireMode = false;
+  attr scrollTo = <-7,169>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-40,44>;
+  attr scrollTo = <8,44>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DefaultThermostat
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,198>;
   attr zoom = 0.75;
 }
@@ -223,8 +222,8 @@ codeview Thermostat::Thermostat.ExitScreenSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <28,23>;
-  attr codeSelStart = <28,23>;
+  attr codeSelEnd = <22,21>;
+  attr codeSelStart = <22,21>;
 }
 
 codeview Thermostat::DeviceClass.OnSetSettingNo
@@ -239,8 +238,8 @@ codeview Thermostat::DeviceClass.ChangeActualTemp
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,2>;
-  attr codeSelEnd = <25,8>;
-  attr codeSelStart = <25,8>;
+  attr codeSelEnd = <32,12>;
+  attr codeSelStart = <32,12>;
 }
 
 codeview Thermostat::DeviceClass.OnSetNominalTemp
@@ -382,9 +381,9 @@ codeview Thermostat::Thermostat.DefaultThermSlot
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,1>;
-  attr codeSelStart = <33,2>;
+  attr codeFirstPos = <0,10>;
+  attr codeSelEnd = <29,21>;
+  attr codeSelStart = <29,21>;
 }
 
 codeview Core::Timer.OnSetBegin
@@ -407,14 +406,14 @@ codeview Thermostat::Thermostat.SlotFan
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,13>;
-  attr codeSelEnd = <0,21>;
-  attr codeSelStart = <0,21>;
+  attr codeSelEnd = <21,25>;
+  attr codeSelStart = <21,25>;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,9>;
-  attr codeSelEnd = <19,4>;
-  attr codeSelStart = <19,4>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,1>;
+  attr codeSelStart = <0,1>;
 }

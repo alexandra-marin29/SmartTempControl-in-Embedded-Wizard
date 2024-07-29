@@ -381,6 +381,10 @@ class DeviceClass : Templates::DeviceClass
     if(SettingNo == 2)
       NominalTemp = 170;
 
+    if(FanSpeed>30 && FanSpeed < 50)
+      NominalTemp = NominalTemp-10;
+    if(FanSpeed>50)
+      NominalTemp = NominalTemp -20;
     if ( temp < NominalTemp)
       temp = temp + 1;
     else if ( temp > NominalTemp )
@@ -1177,6 +1181,7 @@ class Thermostat : Core::Group
     Default.Visible = false;
     FilledRectangle.Visible=false;
     DefaultThermostat.Visible=false;
+    FanMode.Visible=false;
     Logo.Visible = false;
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
@@ -1301,6 +1306,7 @@ class Thermostat : Core::Group
     TemperatureController.Visible=true;
     OnOffButtonText.Visible=true;
     RadioPowerOff.Enabled=true;
+    FilledRectangle.Visible=true;
     RadioPowerOff.Visible=true;
     Clock.Visible =true;
     Default.Visible =true;
@@ -1308,6 +1314,7 @@ class Thermostat : Core::Group
     Default.Selected = false;
 
     FadeEffectGoBack.Enabled = true;
+
   }
 
   $rect <20,20,160,60>
@@ -1328,6 +1335,8 @@ class Thermostat : Core::Group
   {
     preset Bounds = <130,240,285,290>;
     preset Color = #000000FF;
+    preset AlphaBlended = true;
+    preset Visible = true;
   }
 
   $rect <830,270,1030,310>
@@ -1414,6 +1423,7 @@ class Thermostat : Core::Group
     FanMode.StackingPriority=1;
     FanMode.Visible = true;
     FadeEffectFanMode.Enabled = true;
+    FanMode.Enabled=true;
     SimpleTouchHandlerFanMode.Enabled=true;
 
 
