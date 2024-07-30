@@ -381,10 +381,12 @@ class DeviceClass : Templates::DeviceClass
     if(SettingNo == 2)
       NominalTemp = 170;
 
-    if(FanSpeed>30 && FanSpeed < 50)
-      NominalTemp = NominalTemp-10;
-    if(FanSpeed>50)
-      NominalTemp = NominalTemp -20;
+    if(SwingMode==true){
+        if(FanSpeed>30 && FanSpeed < 50)
+          NominalTemp = NominalTemp-10;
+        if(FanSpeed>50)
+          NominalTemp = NominalTemp -20;
+    }
     if ( temp < NominalTemp)
       temp = temp + 1;
     else if ( temp > NominalTemp )
@@ -1088,8 +1090,8 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text OnOffButtonText
   {
-    preset Bounds = <377,407,447,437>;
-    preset String = "SWING";
+    preset Bounds = <347,407,478,437>;
+    preset String = "ENABLE FAN";
     preset Font = Thermostat::FontM;
   }
 
@@ -1265,6 +1267,7 @@ class Thermostat : Core::Group
 
     DefaultThermostat.StackingPriority=1;
     DefaultThermostat.Visible = true;
+    DefaultThermostat.Enabled=true;
     GoBackTouchHandler.Enabled=true;
     FadeEffectManual.Enabled = true;
 
@@ -1290,6 +1293,7 @@ class Thermostat : Core::Group
     FadeEffectGoBack.Enabled = false;
 
     DefaultThermostat.Visible = false;
+    TemperatureController.Enabled=true;
     DefaultThermostat.Enabled=false;
     GoBackTouchHandler.Enabled=false;
     Background.Visible=true;
