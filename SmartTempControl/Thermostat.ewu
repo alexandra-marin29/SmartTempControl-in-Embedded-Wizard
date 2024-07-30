@@ -645,7 +645,7 @@ class TemperatureController : Core::Group
   // This slot method will receive a signal, if the value of the property assigned \
   // to @Outlet has been changed by another widget or by the application logic. In \
   // response to this notification, the widget will update itself.
-  $rect <610,359,810,399>
+  $rect <870,130,1070,170>
   slot outletNominalSlot
   {
     if ( OutletNominal != null )
@@ -689,7 +689,7 @@ class TemperatureController : Core::Group
   // This slot method will receive a signal, if the value of the property assigned \
   // to @Outlet has been changed by another widget or by the application logic. In \
   // response to this notification, the widget will update itself.
-  $rect <610,310,810,350>
+  $rect <870,90,1070,130>
   slot outletCurrentSlot
   {
     if ( OutletActual != null )
@@ -762,11 +762,12 @@ class TemperatureController : Core::Group
     InvalidateViewState();
   }
 
-  $rect <400,350,600,390>
+  $rect <870,50,1070,90>
   slot onStartSlot
   {
     InvalidateViewState();
     startValue = NominalValue;
+
 
     NominalText.Opacity = 0xFF;
     ActualText.Opacity  = 0x00;
@@ -775,7 +776,7 @@ class TemperatureController : Core::Group
 
   }
 
-  $rect <400,388,600,428>
+  $rect <870,170,1070,210>
   slot onRotateSlot
   {
     var int32 temp = 0;
@@ -818,7 +819,7 @@ class TemperatureController : Core::Group
 
   }
 
-  $rect <400,427,600,467>
+  $rect <870,290,1070,330>
   slot onEndSlot
   {
     InvalidateViewState();
@@ -827,10 +828,10 @@ class TemperatureController : Core::Group
 
   }
 
-  $rect <400,310,600,350>
+  $rect <400,250,600,290>
   var int32 startValue;
 
-  $rect <400,260,600,300>
+  $rect <390,350,590,390>
   object Graphics::Path DeltaTempPath;
 
   $rect <20,20,160,60>
@@ -874,7 +875,7 @@ class TemperatureController : Core::Group
     preset Opacity = 0;
   }
 
-  $rect <600,260,800,300>
+  $rect <390,310,590,350>
   object Effects::Int32Effect FadeTextEffect
   {
     preset OnAnimate = fadeText;
@@ -883,7 +884,7 @@ class TemperatureController : Core::Group
     preset InitialDelay = 1200;
   }
 
-  $rect <610,400,810,440>
+  $rect <870,10,1070,50>
   slot fadeText
   {
     sender;
@@ -893,7 +894,7 @@ class TemperatureController : Core::Group
 
   }
 
-  $rect <200,390,400,430>
+  $rect <870,210,1070,250>
   slot incrNominal
   {
     sender;
@@ -915,9 +916,10 @@ class TemperatureController : Core::Group
 
 
     FadeTextEffect.Enabled = true;
+
   }
 
-  $rect <200,430,400,470>
+  $rect <870,250,1070,290>
   slot decrNominal
   {
     sender;
@@ -938,6 +940,7 @@ class TemperatureController : Core::Group
     notifyobservers OutletNominal;
 
     FadeTextEffect.Enabled = true;
+
   }
 
   // This is a generic touch handler.
@@ -963,6 +966,22 @@ class TemperatureController : Core::Group
     preset OnPress = decrNominal;
     preset MaxStrikeCount = 100;
   }
+
+  // Properties
+  note group Note
+  {
+    attr Bounds = <380,-31,830,310>;
+  }
+
+  // Slot Methods
+  note group Note1
+  {
+    attr Bounds = <840,-30,1139,360>;
+  }
+
+  $rect <590,310,790,350>
+  $output true
+  object Thermostat::DeviceClass Device;
 }
 
 $rect <560,61,760,101>
@@ -1020,7 +1039,7 @@ $rect <-40,-40,200,0>
 $output false
 class Thermostat : Core::Group
 {
-  $rect <1030,10,1230,50>
+  $rect <830,90,1030,130>
   inherited property Bounds = <0,0,800,480>;
 
   $rect <20,20,160,60>
@@ -1095,7 +1114,7 @@ class Thermostat : Core::Group
     preset Font = Thermostat::FontM;
   }
 
-  $rect <1030,120,1230,160>
+  $rect <1370,80,1570,120>
   slot changeBackFinished
   {
     sender;
@@ -1105,7 +1124,7 @@ class Thermostat : Core::Group
 
   }
 
-  $rect <830,120,1030,160>
+  $rect <1060,60,1260,100>
   object Effects::Int32Effect FadeEffect
   {
     preset OnFinished = changeBackFinished;
@@ -1113,7 +1132,7 @@ class Thermostat : Core::Group
     preset Outlet = ^Overlay.Opacity;
   }
 
-  $rect <830,70,1030,110>
+  $rect <830,50,1030,90>
   object Core::PropertyObserver SettingsObserver
   {
     preset OnEvent = onSettingChanged;
@@ -1122,7 +1141,7 @@ class Thermostat : Core::Group
 
   // This slot method is executed when the associated property observer 'PropertyObserver' \
   // is notified.
-  $rect <1030,70,1230,110>
+  $rect <1370,39,1570,79>
   slot onSettingChanged
   {
     Overlay.Opacity = 0x00;
@@ -1159,7 +1178,7 @@ class Thermostat : Core::Group
     preset Appearance = Thermostat::RadioButtonPowerOff;
   }
 
-  $rect <830,170,1030,210>
+  $rect <1370,199,1570,239>
   slot ExitScreenSlot
   {
     sender;
@@ -1187,6 +1206,7 @@ class Thermostat : Core::Group
     Logo.Visible = false;
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
+    Fan.Visible=false;
 
     ExitScreen.Visible = true;
     FadeEffectPowerOff.Enabled = true;
@@ -1204,7 +1224,7 @@ class Thermostat : Core::Group
     preset OnPress = ExitScreenSlot;
   }
 
-  $rect <830,220,1030,260>
+  $rect <1060,100,1260,140>
   object Effects::Int32Effect FadeEffectPowerOff
   {
     preset OnFinished = null;
@@ -1238,7 +1258,7 @@ class Thermostat : Core::Group
     preset Appearance = Thermostat::RadioButtonDefaultConfig;
   }
 
-  $rect <1040,170,1239,210>
+  $rect <1371,119,1570,159>
   slot DefaultThermSlot
   {
     sender;
@@ -1285,7 +1305,7 @@ class Thermostat : Core::Group
     preset OnPress = GoBackSlot;
   }
 
-  $rect <1040,219,1239,259>
+  $rect <1371,160,1570,200>
   slot GoBackSlot
   {
     sender;
@@ -1343,14 +1363,14 @@ class Thermostat : Core::Group
     preset Visible = true;
   }
 
-  $rect <830,270,1030,310>
+  $rect <1060,140,1260,180>
   object Effects::Int32Effect FadeEffectManual
   {
     preset NoOfCycles = 1;
     preset Outlet = ^DefaultThermostat.Opacity;
   }
 
-  $rect <1040,270,1240,310>
+  $rect <1060,180,1260,220>
   object Effects::Int32Effect FadeEffectGoBack
   {
     preset NoOfCycles = 1;
@@ -1399,7 +1419,7 @@ class Thermostat : Core::Group
     preset OnPress = SlotFan;
   }
 
-  $rect <830,320,1030,360>
+  $rect <1370,240,1570,280>
   slot SlotFan
   {
     sender;
@@ -1434,14 +1454,14 @@ class Thermostat : Core::Group
 
   }
 
-  $rect <1040,320,1240,360>
+  $rect <1060,220,1260,260>
   object Effects::Int32Effect FadeEffectFanMode
   {
     preset NoOfCycles = 1;
     preset Outlet = ^FanMode.Opacity;
   }
 
-  $rect <830,370,1030,410>
+  $rect <1370,279,1570,319>
   slot SlotGoBackFanMode
   {
     sender;
@@ -1471,6 +1491,18 @@ class Thermostat : Core::Group
     Default.Enabled=true;
 
     FadeEffectGoBack.Enabled=true;
+  }
+
+  // Effects
+  note group Note
+  {
+    attr Bounds = <1050,0,1350,279>;
+  }
+
+  // Slot Methods
+  note group Note1
+  {
+    attr Bounds = <1350,0,1650,330>;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1515,6 +1547,8 @@ class Thermostat : Core::Group
   $member SlotFan
   $member FadeEffectFanMode
   $member SlotGoBackFanMode
+  $member Note
+  $member Note1
 }
 
 $rect <770,-10,970,30>
@@ -1581,7 +1615,7 @@ note group Note1
 // Screens and Temperature Controller
 note group Note4
 {
-  attr Bounds = <-70,-80,519,110>;
+  attr Bounds = <-80,-80,519,110>;
 }
 
 // Fonts
