@@ -479,7 +479,7 @@ resource Resources::Bitmap Controller
   attr bitmapmode Mode = Default;
 }
 
-$rect <-40,0,200,40>
+$rect <-40,-30,200,10>
 $output false
 class TemperatureController : Core::Group
 {
@@ -1035,7 +1035,7 @@ resource Resources::Font FontXXL
   attr fontrowdistance RowDistance;
 }
 
-$rect <-40,-40,200,0>
+$rect <-40,-70,200,-30>
 $output false
 class Thermostat : Core::Group
 {
@@ -1621,7 +1621,7 @@ note group Note1
 // Screens and Temperature Controller
 note group Note4
 {
-  attr Bounds = <-70,-80,519,110>;
+  attr Bounds = <-70,-130,520,110>;
 }
 
 // Fonts
@@ -1678,7 +1678,7 @@ resource Resources::Bitmap PowerOffIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,-40,430,0>
+$rect <230,-70,430,-30>
 $output false
 class ExitScreen : Core::Group
 {
@@ -1779,7 +1779,7 @@ resource Resources::Bitmap HeatSplashScreen
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,0,430,40>
+$rect <230,-30,430,10>
 $output false
 class DefaultThermostat : Core::Group
 {
@@ -1868,7 +1868,7 @@ resource Resources::Bitmap GoBackArrow
   attr bitmapmode Mode = Default;
 }
 
-$rect <-40,39,199,80>
+$rect <-39,10,200,50>
 $output false
 class Logo : Core::Group
 {
@@ -1934,7 +1934,7 @@ resource Resources::Bitmap VertBar
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,40,430,80>
+$rect <230,10,430,50>
 $output false
 class FanMode : Core::Group
 {
