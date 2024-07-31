@@ -1,9 +1,8 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
+attr currentCodeInspector = Thermostat::DeviceClass.ChangeActualTemp;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -17,7 +16,7 @@ attr extractDoc_Variants = false;
 attr generateClut_ReservedColors = 0;
 attr heapMonitor_Show = false;
 attr language = Default;
-attr profile = WebGL;
+attr profile = Win32;
 attr profilerMonitor_Show = false;
 attr search_CaseSensitive = false;
 attr search_IgnoreDescription = false;
@@ -29,50 +28,60 @@ attr search_WildCards = false;
 view Project
 {
   attr enableWireMode = false;
-  attr scrollTo = <-199,57>;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view profile WebGL
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-375>;
+  attr zoom = 0.25;
+}
+
+view unit Clock
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-23,-55>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-47,-178>;
-  attr zoom = 1.0;
-}
-
-view class Thermostat::Thermostat
-{
-  attr enableWireMode = false;
-  attr scrollTo = <574,-7>;
+  attr scrollTo = <144,-234>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,313>;
+  attr scrollTo = <-151,345>;
   attr zoom = 1.0;
 }
 
-view profile WebGL
+view class Thermostat::FanMode
 {
-  attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
+  attr enableWireMode = false;
+  attr scrollTo = <-225,-39>;
+  attr zoom = 0.5;
 }
 
-view unit Application
+view class Thermostat::DefaultThermostat
 {
-  attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
-}
-
-view class Application::Application
-{
+  attr enableWireMode = false;
   attr scrollTo = <25,-7>;
-  attr zoom = 1.0;
+  attr zoom = 0.75;
 }
 
-view class Effects::Int32Effect
+view class Thermostat::ExitScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 0.5;
+}
+
+view class Thermostat::Logo
 {
   attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
@@ -82,21 +91,15 @@ view class Effects::Int32Effect
 view class Thermostat::TemperatureController
 {
   attr enableWireMode = false;
-  attr scrollTo = <-23,-39>;
-  attr zoom = 1.0;
+  attr scrollTo = <-103,121>;
+  attr zoom = 0.75;
 }
 
-view class Thermostat::DefaultThermostat
-{
-  attr scrollTo = <167,119>;
-  attr zoom = 1.0;
-}
-
-view class Effects::ColorEffect
+view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
+  attr scrollTo = <-144,14>;
+  attr zoom = 0.75;
 }
 
 codeview Thermostat::Thermostat.ExitScreenSlot
@@ -142,9 +145,9 @@ codeview Thermostat::Thermostat.DefaultThermSlot
 codeview Thermostat::DeviceClass.ChangeActualTemp
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <24,10>;
-  attr codeSelStart = <0,8>;
+  attr codeFirstPos = <0,8>;
+  attr codeSelEnd = <15,7>;
+  attr codeSelStart = <15,7>;
 }
 
 codeview Thermostat::TemperatureController.UpdateViewState
@@ -201,4 +204,36 @@ codeview Thermostat::Thermostat.onSettingChanged
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <73,4>;
   attr codeSelStart = <73,4>;
+}
+
+codeview Thermostat::DeviceClass.OnSetNominalTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,12>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::DeviceClass.OnSetFanSpeed
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,11>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::DeviceClass.OnSetSwingMode
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,11>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::DeviceClass.OnSetSettingNo
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,19>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
 }

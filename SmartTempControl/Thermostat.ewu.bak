@@ -1471,9 +1471,8 @@ class Thermostat : Core::Group
   slot SlotGoBackFanMode
   {
     sender;
-    TemperatureController.Opacity = 0x00;
-    FadeEffectGoBack.Enabled = false;
     RectangleEffect.Enabled=false;
+
 
     FanMode.Visible=false;
     FanMode.Enabled=false;
@@ -1499,14 +1498,13 @@ class Thermostat : Core::Group
     RadioDay.Selected=true;
     Device.SettingNo=0;
 
-    FadeEffectGoBack.Enabled=true;
     RectangleEffect.Enabled=true;
   }
 
   // Effects
   note group Note
   {
-    attr Bounds = <1050,0,1350,330>;
+    attr Bounds = <1050,0,1350,359>;
   }
 
   // Slot Methods

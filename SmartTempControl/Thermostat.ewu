@@ -198,7 +198,7 @@ autoobject WidgetSet::RadioButtonConfig RadioButtonVacationConfig
 // Font resources used for the different widgets. If you want to change the fonts \
 // within your project, just create a variant of these font resources and define \
 // the attributes of the font resources according your design ideas.
-$rect <1079,100,1279,140>
+$rect <1020,0,1220,40>
 $output false
 resource Resources::Font FontL
 {
@@ -979,7 +979,7 @@ class TemperatureController : Core::Group
     attr Bounds = <840,-30,1139,360>;
   }
 
-  $rect <590,310,790,350>
+  $rect <0,470,200,510>
   $output true
   object Thermostat::DeviceClass Device;
 }
@@ -1019,7 +1019,7 @@ resource Resources::Bitmap SymbolHeadCool
 // Font resources used for the different widgets. If you want to change the fonts \
 // within your project, just create a variant of these font resources and define \
 // the attributes of the font resources according your design ideas.
-$rect <1079,60,1279,100>
+$rect <1020,-40,1220,0>
 $output false
 resource Resources::Font FontXXL
 {
@@ -1504,7 +1504,7 @@ class Thermostat : Core::Group
   // Effects
   note group Note
   {
-    attr Bounds = <1050,0,1350,359>;
+    attr Bounds = <1050,0,1350,330>;
   }
 
   // Slot Methods
@@ -1598,7 +1598,7 @@ resource Resources::Bitmap BackgroundNight
 // Font resources used for the different widgets. If you want to change the fonts \
 // within your project, just create a variant of these font resources and define \
 // the attributes of the font resources according your design ideas.
-$rect <1079,140,1279,180>
+$rect <1020,40,1220,80>
 $output false
 resource Resources::Font FontM
 {
@@ -1641,7 +1641,7 @@ note group Note4
 // Fonts
 note group Note2
 {
-  attr Bounds = <1030,0,1330,200>;
+  attr Bounds = <1010,-80,1240,120>;
 }
 
 $rect <210,350,450,390>
