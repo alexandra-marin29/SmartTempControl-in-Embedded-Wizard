@@ -1078,7 +1078,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioNight
   {
-    preset Bounds = <359,37,490,81>;
+    preset Bounds = <335,38,515,82>;
     preset OutletSelector = 1;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Night";
@@ -1109,7 +1109,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text OnOffButtonText
   {
-    preset Bounds = <425,251,556,281>;
+    preset Bounds = <386,251,615,281>;
     preset String = "ENABLE FAN";
     preset Font = Thermostat::FontM;
   }
@@ -1421,7 +1421,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text FanText
   {
-    preset Bounds = <627,250,727,280>;
+    preset Bounds = <615,250,757,279>;
     preset String = "FAN ";
     preset Font = Thermostat::FontM;
   }
@@ -1528,7 +1528,7 @@ class Thermostat : Core::Group
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1350,0,1650,430>;
+    attr Bounds = <1350,0,1650,510>;
   }
 
   $rect <1060,260,1260,300>
@@ -1591,6 +1591,54 @@ class Thermostat : Core::Group
     preset OnPress = SlotExitLanguage;
   }
 
+  $rect <1370,400,1570,440>
+  slot ChangeLanguageRomanian
+  {
+    sender;
+    RadioDay.Label="Zi" ;
+    RadioNight.Label="Noapte";
+    RadioVacation.Label="Vacanta";
+    FanText.String="VENTILATOR";
+    OnOffButtonText.String="PORNIRE VENTILATOR";
+    Settings.TextLanguage.String="Limba";
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler English
+  {
+    preset Point4 = <35,132>;
+    preset Point3 = <158,132>;
+    preset Point2 = <158,178>;
+    preset Point1 = <35,178>;
+    preset OnPress = ChangeLanguageRomanian;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler Romanian
+  {
+    preset Point4 = <50,221>;
+    preset Point3 = <187,221>;
+    preset Point2 = <187,265>;
+    preset Point1 = <50,265>;
+    preset OnPress = ChangeLanguageRomanian;
+  }
+
+  $rect <1370,439,1570,479>
+  slot ChangeLanguageEnglish
+  {
+    sender;
+    RadioDay.Label="Day" ;
+    RadioNight.Label="Night";
+    RadioVacation.Label="Vacation";
+    FanText.String="FAN";
+    OnOffButtonText.String="ENABLE FAN";
+    Settings.TextLanguage.String="Language";
+
+
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1642,6 +1690,10 @@ class Thermostat : Core::Group
   $member SlotLanguage
   $member SlotExitLanguage
   $member ExitLanguage
+  $member ChangeLanguageRomanian
+  $member English
+  $member Romanian
+  $member ChangeLanguageEnglish
 }
 
 $rect <770,-10,970,30>
@@ -2141,6 +2193,7 @@ class Settings : Core::Group
   object WidgetSet::RadioButton English
   {
     preset Bounds = <56,128,206,178>;
+    preset OnSelect = null;
     preset Icon = null;
     preset Label = "English";
     preset Appearance = RadioButtonConfigLanguage;
@@ -2158,13 +2211,15 @@ class Settings : Core::Group
     preset LabelOffColorDisabled = Thermostat::Hot;
     preset LabelOffColorDefault = Thermostat::Hot;
     preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
+    preset LabelOnFont = Thermostat::FontL;
     preset LabelOffFont = Thermostat::FontL;
   }
 
   $rect <20,20,160,60>
-  object WidgetSet::RadioButton RadioButton
+  object WidgetSet::RadioButton Romanian
   {
     preset Bounds = <56,211,206,261>;
+    preset OnSelect = null;
     preset Label = "Romanian";
     preset Appearance = RadioButtonConfigLanguage;
   }
@@ -2175,6 +2230,30 @@ class Settings : Core::Group
     preset Bounds = <220,2,277,32>;
     preset String = "X";
     preset Font = Thermostat::FontL;
+  }
+
+  $rect <440,150,640,190>
+  property int32 Language = 1;
+
+  $rect <440,190,640,230>
+  onset Language
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Language == value )
+      return;
+
+    // Remember the property's new value.
+    pure Language = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <440,230,640,270>
+  onget Language
+  {
+    return pure Language;
   }
 }
 

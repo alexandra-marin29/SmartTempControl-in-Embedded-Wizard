@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
+attr currentCodeInspector = Thermostat::Thermostat.ChangeLanguageRomanian;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -28,29 +28,37 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr scrollTo = <57,57>;
+  attr enableWireMode = false;
+  attr scrollTo = <25,57>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-71,-199>;
+  attr scrollTo = <-263,217>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <801,-22>;
+  attr scrollTo = <-15,-79>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::Settings
 {
   attr enableWireMode = false;
-  attr scrollTo = <-98,-167>;
-  attr zoom = 1.0;
+  attr scrollTo = <-160,-39>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::DeviceClass
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-14>;
+  attr zoom = 0.75;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
@@ -107,4 +115,36 @@ codeview Thermostat::Thermostat.ExitScreenSlot
   attr codeFirstPos = <0,15>;
   attr codeSelEnd = <23,28>;
   attr codeSelStart = <23,28>;
+}
+
+codeview Thermostat::Settings.OnSetLanguage
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::Settings.OnGetLanguage
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <1,0>;
+  attr codeSelStart = <1,0>;
+}
+
+codeview Thermostat::Thermostat.ChangeLanguageRomanian
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <26,4>;
+  attr codeSelStart = <26,4>;
+}
+
+codeview Thermostat::Thermostat.ChangeLanguageEnglish
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <38,6>;
+  attr codeSelStart = <38,6>;
 }
