@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.SlotExitLanguage;
+attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -42,8 +42,8 @@ view unit Thermostat
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-202,-129>;
-  attr zoom = 1.0;
+  attr scrollTo = <801,-22>;
+  attr zoom = 0.75;
 }
 
 view class Thermostat::Settings
@@ -57,32 +57,32 @@ codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,16>;
-  attr codeSelEnd = <40,9>;
-  attr codeSelStart = <40,9>;
+  attr codeSelEnd = <22,25>;
+  attr codeSelStart = <22,25>;
 }
 
 codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <27,9>;
-  attr codeSelStart = <27,9>;
+  attr codeFirstPos = <0,18>;
+  attr codeSelEnd = <0,27>;
+  attr codeSelStart = <0,27>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,8>;
-  attr codeSelStart = <0,8>;
+  attr codeFirstPos = <0,19>;
+  attr codeSelEnd = <32,30>;
+  attr codeSelStart = <32,30>;
 }
 
 codeview Thermostat::Thermostat.SlotFan
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,18>;
-  attr codeSelEnd = <27,24>;
-  attr codeSelStart = <27,24>;
+  attr codeFirstPos = <0,15>;
+  attr codeSelEnd = <0,21>;
+  attr codeSelStart = <0,25>;
 }
 
 codeview Thermostat::Thermostat.SlotLanguage
@@ -99,4 +99,12 @@ codeview Thermostat::Thermostat.SlotExitLanguage
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <23,1>;
   attr codeSelStart = <23,1>;
+}
+
+codeview Thermostat::Thermostat.ExitScreenSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,15>;
+  attr codeSelEnd = <23,28>;
+  attr codeSelStart = <23,28>;
 }

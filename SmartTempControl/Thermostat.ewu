@@ -1208,6 +1208,8 @@ class Thermostat : Core::Group
     RadioPowerOff.Enabled=false;
     Fan.Visible=false;
     FanText.Visible=false;
+    Settings.Visible=false;
+    Settings.Enabled=false;
 
     ExitScreen.Visible = true;
     FadeEffectPowerOff.Enabled = true;
@@ -1285,6 +1287,11 @@ class Thermostat : Core::Group
     Clock.Visible = false;
     Default.Visible = false;
     Default.Enabled=false;
+    Settings.Enabled=false;
+    Settings.Visible = false;
+    ExitLanguage.Enabled=false;
+    TouchHandlerLanguage.Enabled=false;
+
 
     DefaultThermostat.StackingPriority=1;
     DefaultThermostat.Visible = true;
@@ -1340,6 +1347,10 @@ class Thermostat : Core::Group
     Default.Visible =true;
     Default.Enabled=true;
     Default.Selected = false;
+    Settings.Enabled=true;
+    ExitLanguage.Enabled=true;
+    TouchHandlerLanguage.Enabled=true;
+
 
     RadioDay.Selected=true;
     Device.SettingNo=0;
@@ -1449,6 +1460,10 @@ class Thermostat : Core::Group
     Clock.Visible = false;
     Default.Visible = false;
     Default.Enabled=false;
+    Settings.Enabled=false;
+    Settings.Visible = false;
+    ExitLanguage.Enabled=false;
+    TouchHandlerLanguage.Enabled=false;
 
     FanMode.StackingPriority=1;
     FanMode.Visible = true;
@@ -1495,6 +1510,10 @@ class Thermostat : Core::Group
     Default.Visible =true;
     Default.Enabled=true;
     RadioDay.Selected=true;
+    Settings.Enabled=true;
+    ExitLanguage.Enabled=true;
+    TouchHandlerLanguage.Enabled=true;
+
     Device.SettingNo=0;
 
     RectangleEffect.Enabled=true;
@@ -1555,7 +1574,7 @@ class Thermostat : Core::Group
     Settings.Visible=true;
   }
 
-  $rect <1360,360,1560,400>
+  $rect <1370,360,1570,400>
   slot SlotExitLanguage
   {
     sender;

@@ -1509,7 +1509,7 @@ class Thermostat : Core::Group
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1350,0,1650,330>;
+    attr Bounds = <1350,0,1650,430>;
   }
 
   $rect <1060,260,1260,300>
@@ -1528,6 +1528,48 @@ class Thermostat : Core::Group
   {
     preset Bounds = <3,9,53,59>;
     preset Bitmap = Thermostat::SettingsIcon;
+  }
+
+  $rect <20,20,160,60>
+  object Thermostat::Settings Settings
+  {
+    preset Bounds = <-2,0,268,357>;
+    preset Visible = false;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler TouchHandlerLanguage
+  {
+    preset Point4 = <-3,0>;
+    preset Point3 = <63,0>;
+    preset Point2 = <63,95>;
+    preset Point1 = <-3,95>;
+    preset OnRelease = null;
+    preset OnPress = SlotLanguage;
+  }
+
+  $rect <1370,320,1570,360>
+  slot SlotLanguage
+  {
+    sender;
+    Settings.Visible=true;
+  }
+
+  $rect <1360,360,1560,400>
+  slot SlotExitLanguage
+  {
+    sender;
+    Settings.Visible=false;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler ExitLanguage
+  {
+    preset Point4 = <224,-4>;
+    preset Point3 = <268,-4>;
+    preset Point2 = <268,38>;
+    preset Point1 = <224,38>;
+    preset OnPress = SlotExitLanguage;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1575,7 +1617,12 @@ class Thermostat : Core::Group
   $member Note
   $member Note1
   $member RectangleEffect
+  $member Settings
   $member SettingsIcon
+  $member TouchHandlerLanguage
+  $member SlotLanguage
+  $member SlotExitLanguage
+  $member ExitLanguage
 }
 
 $rect <770,-10,970,30>
@@ -2053,8 +2100,63 @@ $rect <-40,50,200,90>
 $output false
 class Settings : Core::Group
 {
-  $rect <839,10,1039,50>
-  inherited property Bounds = <0,0,800,480>;
+  $rect <430,0,630,40>
+  inherited property Bounds = <0,0,277,357>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Background
+  {
+    preset Bounds = <0,0,277,357>;
+    preset Color = #73737393;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text TextLanguage
+  {
+    preset Bounds = <50,32,214,86>;
+    preset String = "Language";
+    preset Font = Resources::FontLarge;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::RadioButton English
+  {
+    preset Bounds = <56,128,206,178>;
+    preset Icon = null;
+    preset Label = "English";
+    preset Appearance = RadioButtonConfigLanguage;
+  }
+
+  $rect <430,50,670,90>
+  object WidgetSet::RadioButtonConfig RadioButtonConfigLanguage
+  {
+    preset LabelOnColorActive = Thermostat::Hot;
+    preset LabelOnColorFocused = Thermostat::Hot;
+    preset LabelOnColorDisabled = Thermostat::Hot;
+    preset LabelOnColorDefault = Thermostat::Hot;
+    preset LabelOffColorActive = Thermostat::Hot;
+    preset LabelOffColorFocused = Thermostat::Hot;
+    preset LabelOffColorDisabled = Thermostat::Hot;
+    preset LabelOffColorDefault = Thermostat::Hot;
+    preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
+    preset LabelOffFont = Thermostat::FontL;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::RadioButton RadioButton
+  {
+    preset Bounds = <56,211,206,261>;
+    preset Label = "Romanian";
+    preset Appearance = RadioButtonConfigLanguage;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text ExitSymbol
+  {
+    preset Bounds = <220,2,277,32>;
+    preset String = "X";
+    preset Font = Thermostat::FontL;
+  }
 }
 
 // Directives to adapt the order of the above members according to how these members 
