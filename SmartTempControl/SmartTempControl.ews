@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
+attr currentCodeInspector = Thermostat::Thermostat.SlotExitLanguage;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -28,7 +28,6 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr enableWireMode = false;
   attr scrollTo = <57,57>;
   attr zoom = 1.0;
 }
@@ -36,28 +35,68 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-71,-119>;
+  attr scrollTo = <-71,-199>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-39,-7>;
-  attr zoom = 0.75;
+  attr scrollTo = <-202,-129>;
+  attr zoom = 1.0;
 }
 
 view class Thermostat::Settings
 {
   attr enableWireMode = false;
-  attr scrollTo = <-199,-167>;
-  attr zoom = 0.5;
+  attr scrollTo = <-98,-167>;
+  attr zoom = 1.0;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <0,26>;
-  attr codeSelStart = <0,26>;
+  attr codeFirstPos = <0,16>;
+  attr codeSelEnd = <40,9>;
+  attr codeSelStart = <40,9>;
+}
+
+codeview Thermostat::Thermostat.DefaultThermSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <27,9>;
+  attr codeSelStart = <27,9>;
+}
+
+codeview Thermostat::Thermostat.GoBackSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,8>;
+  attr codeSelStart = <0,8>;
+}
+
+codeview Thermostat::Thermostat.SlotFan
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,18>;
+  attr codeSelEnd = <27,24>;
+  attr codeSelStart = <27,24>;
+}
+
+codeview Thermostat::Thermostat.SlotLanguage
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <22,1>;
+  attr codeSelStart = <22,1>;
+}
+
+codeview Thermostat::Thermostat.SlotExitLanguage
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <23,1>;
+  attr codeSelStart = <23,1>;
 }
