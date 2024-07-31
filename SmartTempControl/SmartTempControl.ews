@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.ChangeLanguageRomanian;
+attr currentCodeInspector = Thermostat::Thermostat.ExitScreenSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -43,7 +43,7 @@ view unit Thermostat
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-15,-79>;
+  attr scrollTo = <-15,-31>;
   attr zoom = 0.75;
 }
 
@@ -112,9 +112,9 @@ codeview Thermostat::Thermostat.SlotExitLanguage
 codeview Thermostat::Thermostat.ExitScreenSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <23,28>;
-  attr codeSelStart = <23,28>;
+  attr codeFirstPos = <0,18>;
+  attr codeSelEnd = <27,29>;
+  attr codeSelStart = <27,29>;
 }
 
 codeview Thermostat::Settings.OnSetLanguage
