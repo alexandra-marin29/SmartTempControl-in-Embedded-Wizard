@@ -59,14 +59,14 @@ $rect <540,70,740,110>
 language Default;
 
 // This unit is intended to contain the application class and another GUI components.
-$rect <299,179,499,219>
+$rect <290,180,490,220>
 unit Application
 {
   attr Directory = .\;
 }
 
 // This is a unit.
-$rect <299,219,499,259>
+$rect <290,220,490,260>
 unit Thermostat
 {
   attr Directory = .\;
@@ -105,10 +105,10 @@ note group Note3
 // Units
 note group Note5
 {
-  attr Bounds = <280,139,520,360>;
+  attr Bounds = <270,139,510,310>;
 }
 
-$rect <300,260,500,300>
+$rect <290,260,490,300>
 unit Clock
 {
   attr Directory = .\;

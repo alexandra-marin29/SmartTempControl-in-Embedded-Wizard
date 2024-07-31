@@ -455,7 +455,7 @@ class DeviceClass : Templates::DeviceClass
 $rect <-50,370,150,410>
 autoobject Thermostat::DeviceClass Device;
 
-$rect <560,-19,760,21>
+$rect <560,-10,760,30>
 $output false
 resource Resources::Bitmap Wheels
 {
@@ -467,7 +467,7 @@ resource Resources::Bitmap Wheels
   attr bitmapmode Mode = Default;
 }
 
-$rect <560,21,760,61>
+$rect <560,30,760,70>
 $output false
 resource Resources::Bitmap Controller
 {
@@ -904,8 +904,6 @@ class TemperatureController : Core::Group
     ActualText.Opacity  = 0x00;
     FadeTextEffect.Enabled = false;
 
-    if(Device.SettingNo==3)
-    {
     if ( temp > pure MaxValue )
       temp = pure MaxValue;
 
@@ -918,12 +916,7 @@ class TemperatureController : Core::Group
 
 
     FadeTextEffect.Enabled = true;
-    }
-    else 
-    {
-    SimpleTouchHandlerMinus.Enabled=false;
-    SimpleTouchHandlerPlus.Enabled=false;
-    }
+
   }
 
   $rect <870,250,1070,290>
@@ -936,8 +929,6 @@ class TemperatureController : Core::Group
     ActualText.Opacity  = 0x00;
     FadeTextEffect.Enabled = false;
 
-    if(Device.SettingNo==3)
-    {
     if ( temp < pure MinValue )
       temp = pure MinValue;
 
@@ -949,12 +940,7 @@ class TemperatureController : Core::Group
     notifyobservers OutletNominal;
 
     FadeTextEffect.Enabled = true;
-    }
-    else 
-    {
-    SimpleTouchHandlerMinus.Enabled=false;
-    SimpleTouchHandlerPlus.Enabled=false;
-    }
+
   }
 
   // This is a generic touch handler.
@@ -963,8 +949,8 @@ class TemperatureController : Core::Group
   {
     preset Point4 = <93,199>;
     preset Point3 = <157,199>;
-    preset Point2 = <157,101>;
-    preset Point1 = <93,101>;
+    preset Point2 = <157,140>;
+    preset Point1 = <93,140>;
     preset OnPress = incrNominal;
     preset MaxStrikeCount = 100;
   }
@@ -998,7 +984,7 @@ class TemperatureController : Core::Group
   object Thermostat::DeviceClass Device;
 }
 
-$rect <560,61,760,101>
+$rect <560,70,760,110>
 $output false
 resource Resources::Bitmap Needle
 {
@@ -1018,7 +1004,7 @@ $rect <-50,190,150,230>
 $output false
 const color Hot = #C70B6AFF;
 
-$rect <560,101,760,141>
+$rect <560,110,760,150>
 $output false
 resource Resources::Bitmap SymbolHeadCool
 {
@@ -1074,7 +1060,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::ToggleButton ToggleButton
   {
-    preset Bounds = <375,363,450,407>;
+    preset Bounds = <443,207,518,251>;
     preset Outlet = ^Thermostat::Device.SwingMode;
     preset Label = "Caption";
     preset Appearance = Thermostat::SwingSwitchConfig;
@@ -1123,7 +1109,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Text OnOffButtonText
   {
-    preset Bounds = <347,407,478,437>;
+    preset Bounds = <425,251,556,281>;
     preset String = "ENABLE FAN";
     preset Font = Thermostat::FontM;
   }
@@ -1221,6 +1207,7 @@ class Thermostat : Core::Group
     RadioPowerOff.Enabled=false;
     RadioPowerOff.Visible=false;
     Fan.Visible=false;
+    FanText.Visible=false;
 
     ExitScreen.Visible = true;
     FadeEffectPowerOff.Enabled = true;
@@ -1231,10 +1218,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandler
   {
-    preset Point4 = <735,6>;
+    preset Point4 = <721,6>;
     preset Point3 = <799,6>;
-    preset Point2 = <797,95>;
-    preset Point1 = <735,95>;
+    preset Point2 = <799,73>;
+    preset Point1 = <721,73>;
     preset OnPress = ExitScreenSlot;
   }
 
@@ -1250,7 +1237,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Clock::Clock Clock
   {
-    preset Bounds = <517,198,754,265>;
+    preset Bounds = <425,347,662,414>;
   }
 
   $rect <20,20,160,60>
@@ -1351,6 +1338,9 @@ class Thermostat : Core::Group
     Default.Enabled=true;
     Default.Selected = false;
 
+    RadioDay.Selected=true;
+    Device.SettingNo=0;
+
     FadeEffectGoBack.Enabled = true;
 
   }
@@ -1401,24 +1391,24 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandlerFanMode
   {
-    preset Point4 = <-3,9>;
-    preset Point3 = <85,9>;
-    preset Point2 = <85,82>;
-    preset Point1 = <0,82>;
+    preset Point4 = <3,16>;
+    preset Point3 = <91,16>;
+    preset Point2 = <91,89>;
+    preset Point1 = <6,89>;
     preset OnPress = SlotGoBackFanMode;
   }
 
   $rect <20,20,160,60>
   object Views::Image Fan
   {
-    preset Bounds = <517,348,578,407>;
+    preset Bounds = <647,192,708,251>;
     preset Bitmap = Thermostat::SymbolFanBig;
   }
 
   $rect <20,20,160,60>
   object Views::Text FanText
   {
-    preset Bounds = <497,407,597,437>;
+    preset Bounds = <627,250,727,280>;
     preset String = "FAN ";
     preset Font = Thermostat::FontM;
   }
@@ -1426,10 +1416,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler FanTouchHandler
   {
-    preset Point4 = <497,337>;
-    preset Point3 = <597,337>;
-    preset Point2 = <597,437>;
-    preset Point1 = <497,437>;
+    preset Point4 = <627,181>;
+    preset Point3 = <727,181>;
+    preset Point2 = <727,281>;
+    preset Point1 = <627,281>;
     preset OnPress = SlotFan;
   }
 
@@ -1493,7 +1483,7 @@ class Thermostat : Core::Group
     RadioDay.Enabled=true;
     RadioNight.Enabled=true;
     RadioNight.Visible=true;
-    FilledRectangle.Visible=false;
+    FilledRectangle.Visible=true;
     RadioVacation.Enabled=true;
     RadioVacation.Visible=true;
     TemperatureController.Visible=true;
@@ -1503,6 +1493,8 @@ class Thermostat : Core::Group
     Clock.Visible =true;
     Default.Visible =true;
     Default.Enabled=true;
+    RadioDay.Selected=true;
+    Device.SettingNo=0;
 
     FadeEffectGoBack.Enabled=true;
   }
@@ -1608,7 +1600,7 @@ resource Resources::Font FontM
   attr fontrowdistance RowDistance;
 }
 
-$rect <770,-50,970,-10>
+$rect <770,390,970,430>
 $output false
 resource Resources::Bitmap BackgroundDefault
 {
@@ -1629,7 +1621,7 @@ note group Note1
 // Screens and Temperature Controller
 note group Note4
 {
-  attr Bounds = <-80,-80,519,110>;
+  attr Bounds = <-70,-80,519,110>;
 }
 
 // Fonts
@@ -1876,7 +1868,7 @@ resource Resources::Bitmap GoBackArrow
   attr bitmapmode Mode = Default;
 }
 
-$rect <-40,40,160,80>
+$rect <-40,39,199,80>
 $output false
 class Logo : Core::Group
 {

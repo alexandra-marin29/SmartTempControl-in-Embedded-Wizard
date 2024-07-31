@@ -161,7 +161,7 @@ class Dots : Core::Group
   $rect <-10,50,190,90>
   inherited property Bounds = <0,0,10,30>;
 
-  $rect <0,90,180,130>
+  $rect <-10,90,170,130>
   inherited onset Bounds
   {
     // Invoke the inherited version of the onset method 'OnSetBounds'.
@@ -227,10 +227,10 @@ class DayOfWeek : Core::Group
     super( value );
   }
 
-  $rect <190,-40,390,0>
+  $rect <70,-40,270,0>
   property bool Active = true;
 
-  $rect <190,0,390,40>
+  $rect <70,0,270,40>
   onset Active
   {
     if ( value == pure Active )
@@ -241,13 +241,13 @@ class DayOfWeek : Core::Group
   }
 
   // The number of the desired day of the week. 0 is Sunday, 1 is Monday, ...
-  $rect <210,50,410,90>
+  $rect <320,-40,520,0>
   property int32 Day = 0;
 
   // This onset method is invoked automatically, when the value of the property @Day \
   // is changed. This method forces the view to display the day of the week with \
   // the given number.
-  $rect <210,90,410,130>
+  $rect <320,0,520,40>
   onset Day
   {
     if ( value < 0 ) value = 0;
