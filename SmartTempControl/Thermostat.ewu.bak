@@ -1202,10 +1202,10 @@ class Thermostat : Core::Group
     Default.Visible = false;
     FilledRectangle.Visible=false;
     DefaultThermostat.Visible=false;
+    RadioPowerOff.Visible=false;
     FanMode.Visible=false;
     Logo.Visible = false;
     RadioPowerOff.Enabled=false;
-    RadioPowerOff.Visible=false;
     Fan.Visible=false;
     FanText.Visible=false;
 
@@ -1218,10 +1218,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandler
   {
-    preset Point4 = <721,6>;
-    preset Point3 = <799,6>;
-    preset Point2 = <799,73>;
-    preset Point1 = <721,73>;
+    preset Point4 = <708,3>;
+    preset Point3 = <805,3>;
+    preset Point2 = <805,95>;
+    preset Point1 = <708,95>;
     preset OnPress = ExitScreenSlot;
   }
 
@@ -1291,7 +1291,8 @@ class Thermostat : Core::Group
     DefaultThermostat.Enabled=true;
     GoBackTouchHandler.Enabled=true;
     FadeEffectManual.Enabled = true;
-
+    RadioPowerOff.Visible=true;
+    RadioPowerOff.Enabled=true;
 
 
   }
@@ -1806,6 +1807,14 @@ class DefaultThermostat : Core::Group
   {
     preset Bounds = <11,11,78,81>;
     preset Bitmap = Thermostat::GoBackArrow;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::RadioButton PowerOff
+  {
+    preset Bounds = <735,16,779,60>;
+    preset Label = "";
+    preset Appearance = Thermostat::RadioButtonPowerOff;
   }
 }
 

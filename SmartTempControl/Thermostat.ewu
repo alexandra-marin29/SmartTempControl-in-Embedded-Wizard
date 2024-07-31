@@ -1293,6 +1293,8 @@ class Thermostat : Core::Group
     FadeEffectManual.Enabled = true;
     RadioPowerOff.Visible=true;
     RadioPowerOff.Enabled=true;
+    Device.FanSpeed=15;
+    Device.SwingMode=false;
 
 
   }
@@ -1566,7 +1568,7 @@ resource Resources::Bitmap BackgroundDay
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
-  attr bitmapformat Format = RGB565;
+  attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
 
@@ -1578,7 +1580,7 @@ resource Resources::Bitmap BackgroundNight
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
-  attr bitmapformat Format = RGB565;
+  attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
 
@@ -1609,7 +1611,7 @@ resource Resources::Bitmap BackgroundDefault
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
-  attr bitmapformat Format = RGB565;
+  attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
 

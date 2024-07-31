@@ -1,0 +1,74 @@
+/*******************************************************************************
+*
+* E M B E D D E D   W I Z A R D   P R O J E C T
+*
+*                                                Copyright (c) TARA Systems GmbH
+*                                    written by Paul Banach and Manfred Schweyer
+*
+********************************************************************************
+*
+* This file was generated automatically by Embedded Wizard Studio.
+*
+* Please do not make any modifications of this file! The modifications are lost
+* when the file is generated again by Embedded Wizard Studio!
+*
+* The template of this heading text can be found in the file 'head.ewt' in the
+* directory 'Platforms' of your Embedded Wizard installation directory. If you
+* wish to adapt this text, please copy the template file 'head.ewt' into your
+* project directory and edit the copy only. Please avoid any modifications of
+* the original template file!
+*
+* Version  : 13.04
+* Profile  : Win32
+* Platform : Windows.Software.RGBA8888
+*
+*******************************************************************************/
+
+/* Bitmap resource : 'Thermostat::SymbolHeadCool' */
+EW_DEFINE_BITMAP_RES( ThermostatSymbolHeadCool )
+  EW_BITMAP_FRAMES( ThermostatSymbolHeadCool, Default, EW_DRIVER_VARIANT_ALPHA8, 36, 36, 0 )
+    EW_BITMAP_FRAME( 13, 30, 12, 1, 0x00000000, 0x00000000 ),
+    EW_BITMAP_FRAME( 18, 4, 1, 27, 0x000001E0, 0x00000000 )
+    EW_BITMAP_MAPPING( ThermostatSymbolHeadCool, Default )
+
+  EW_BITMAP_PIXEL( ThermostatSymbolHeadCool, Default )          /* ratio 34.41 % */
+    0x1C080100, 0xC1A0B048, 0x2A130883, 0xA1B0C85C, 0xE50487C3, 0x00F49BB4, 0xFF58C422,
+    0x628B9DFE, 0x8C95E1D1, 0xE8191B19, 0x3B4070B8, 0x558CFF90, 0xD8D0A920, 0x32BA603F,
+    0xD2C8AB32, 0xFF798860, 0x94800126, 0x9A8258D1, 0xFB844F04, 0x40854FC7, 0x02751945,
+    0x1D436005, 0x69042BD1, 0xB2412511, 0x210AA58B, 0x52D3F24E, 0x7FBF0370, 0xC9CA3A84,
+    0xBFD9E6C8, 0xF60E4B7C, 0xA2CBD7FA, 0x32999010, 0x048001A6, 0xFF42412A, 0x409441DA,
+    0xBEBE632E, 0xFA88016D, 0x93A08637, 0x1C60158C, 0x10F0C092, 0x044E8CCA, 0x4FC692A2,
+    0x191540C8, 0xB484E0C7, 0xB34E0130, 0x100DDB19, 0x210F6C68, 0x7A040C6F, 0x616CCC78,
+    0x56428C94, 0x50252C65, 0xD501E542, 0xF184091A, 0x84CFDF98, 0x900EF296, 0x571FECC0,
+    0x8DCE6F00, 0x036F928E, 0xD33D3C00, 0x309B4C64, 0x025A3FD9, 0x4AA21013, 0x815CDE02,
+    0x700CFCCF, 0x000788D5, 0x292CFF93, 0x20A8AA74, 0x22AB720C, 0xEA58337A, 0x5F85355F,
+    0x93AC10F1, 0x81C8D3EF, 0x5050B55E, 0xA3CCFF20, 0xD4FF3E50, 0xF9289031, 0x331055D8,
+    0xC7206C72, 0xA5107540, 0x70FF39D0, 0xF018C006, 0x271080FC, 0xDBE2DCB1, 0x74291A51,
+    0x8CDB3FCB, 0x08828CF6, 0x0854E749, 0xCFF35502, 0x01990A30, 0xE4F90019, 0xAB0E5090,
+    0x738FF0D8, 0x87E4643F, 0x78600C42, 0x44EA078E, 0xA21390A6, 0x3B618061, 0xC454298C,
+    0x3360E757, 0x0D0868CC, 0x3C228C30, 0x1BCFF8C8, 0x55F1A50D, 0x6738AE46, 0xFC9F0250,
+    0x0F486273, 0x48218109, 0x099294D2, 0x2228661B, 0xD92049CA, 0x0943DDF3, 0x63CDE1B0,
+    0x09681680, 0x50B52C55, 0x30B12647, 0xCC814F03, 0x15C96318, 0xE9252E51, 0x5A5694A4,
+    0x00004069, 0x1C080100, 0xC1A0B048, 0x2A130883, 0xA1B0C85C, 0x9D0587C3, 0xB1019B90,
+    0x697FA1E2, 0xD04C362A, 0x8CC5C002, 0x4C680C30, 0xA29FE8A8, 0xC9FE9F8F, 0x87308919,
+    0xFEEA7FBD, 0xEED7FB91, 0x09814B04, 0xC8189108, 0x9FBFDE63, 0x540C60ED, 0x44244841,
+    0x114AFF24, 0x9D53E1CC, 0xFEB481D0, 0xEC3870F1, 0xFC0918DC, 0x58200DDA, 0x04C10D92,
+    0xD025ECF6, 0xC2D8CE12, 0xC19EFF94, 0xE054F7FB, 0xFE428247, 0x53F64B85, 0xD5244314,
+    0x43C3FE7E, 0x8BC0EDF0, 0x6945B73F, 0xDACFC338, 0x3108F67F, 0xA0518B70, 0xFF3E3A81,
+    0x71440BCD, 0xF3BD15E1, 0x67FBE580, 0x28E363D5, 0xDB267EDB, 0xC2C9D3FC, 0x0908B113,
+    0x96E24AD9, 0x2CFF58E8, 0x4C69FB01, 0x872281A8, 0x89187962, 0xB95EB424, 0x641E6E5A,
+    0x34A7F740, 0xE20DC209, 0x647C0DFD, 0x8481570B, 0x3AE15408, 0xD549EBAD, 0xE1FD3D87,
+    0x854D9447, 0xE3033060, 0xE78C79C7, 0x1B7C4E8C, 0x0A8FFC8B, 0x0E811CC3, 0x38CC53E7,
+    0x72030023, 0x6423CF0E, 0x9FF2E1A3, 0xD8D5F475, 0x25E88440, 0xFCA54318, 0xFF3B4CF4,
+    0x80D7F474, 0x9320F102, 0xB2AD3F31, 0x8CEA3310, 0x054C81E1, 0x4106F495, 0x8FC3CC03,
+    0xB3616404, 0x515B00D0, 0x3D411491, 0x409954D1, 0xD150FD51, 0x30848703, 0x012F0FD0,
+    0x8709E2F5, 0x4B9C2024, 0xD344C930, 0x5409C977, 0xA51849D2, 0x029152B4, 0x5BD1D031,
+    0xE4C51836, 0x194DF683, 0x5A2F39D1, 0x5C96E5A9, 0x4050C976, 0x00000000
+
+  EW_BITMAP_CLUT_EMPTY( ThermostatSymbolHeadCool, Default )
+
+  EW_BITMAPS_TABLE( ThermostatSymbolHeadCool )
+    EW_BITMAP( ThermostatSymbolHeadCool, Default )
+EW_END_OF_BITMAP_RES( ThermostatSymbolHeadCool )
+
+/* Embedded Wizard */
