@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
+attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -36,42 +36,39 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-143,-178>;
+  attr scrollTo = <-47,-178>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <590,-7>;
+  attr scrollTo = <574,-7>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-7>;
+  attr scrollTo = <-7,313>;
   attr zoom = 1.0;
 }
 
 view profile WebGL
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view unit Application
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view class Application::Application
 {
-  attr enableWireMode = false;
-  attr scrollTo = <-519,153>;
+  attr scrollTo = <25,-7>;
   attr zoom = 1.0;
 }
 
@@ -82,28 +79,48 @@ view class Effects::Int32Effect
   attr zoom = 1.0;
 }
 
+view class Thermostat::TemperatureController
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-23,-39>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::DefaultThermostat
+{
+  attr scrollTo = <167,119>;
+  attr zoom = 1.0;
+}
+
+view class Effects::ColorEffect
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
 codeview Thermostat::Thermostat.ExitScreenSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,18>;
-  attr codeSelEnd = <28,21>;
-  attr codeSelStart = <28,21>;
+  attr codeFirstPos = <0,9>;
+  attr codeSelEnd = <24,18>;
+  attr codeSelStart = <24,18>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <37,1>;
-  attr codeSelStart = <37,1>;
+  attr codeSelEnd = <7,0>;
+  attr codeSelStart = <7,0>;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,17>;
-  attr codeSelEnd = <29,30>;
-  attr codeSelStart = <29,30>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,3>;
+  attr codeSelStart = <0,3>;
 }
 
 codeview Core::Group.Add
@@ -117,7 +134,71 @@ codeview Core::Group.Add
 codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,19>;
-  attr codeSelEnd = <23,32>;
-  attr codeSelStart = <23,32>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <32,5>;
+  attr codeSelStart = <32,5>;
+}
+
+codeview Thermostat::DeviceClass.ChangeActualTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <24,10>;
+  attr codeSelStart = <0,8>;
+}
+
+codeview Thermostat::TemperatureController.UpdateViewState
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,8>;
+  attr codeSelStart = <0,8>;
+}
+
+codeview Thermostat::Thermostat.changeBackFinished
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <28,3>;
+  attr codeSelStart = <28,3>;
+}
+
+codeview Thermostat::Thermostat.SlotFan
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,10>;
+  attr codeSelEnd = <28,13>;
+  attr codeSelStart = <28,13>;
+}
+
+codeview Thermostat::TemperatureController.UpdateLayout
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,4>;
+  attr codeSelStart = <0,4>;
+}
+
+codeview Thermostat::TemperatureController.onStartSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,2>;
+  attr codeSelStart = <0,2>;
+}
+
+codeview Thermostat::DeviceClass.UpdateActualTemp
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::Thermostat.onSettingChanged
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <73,4>;
+  attr codeSelStart = <73,4>;
 }

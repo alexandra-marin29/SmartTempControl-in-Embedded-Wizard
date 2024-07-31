@@ -1313,10 +1313,9 @@ class Thermostat : Core::Group
   slot GoBackSlot
   {
     sender;
-    TemperatureController.Opacity = 0x00;
-    FadeEffectGoBack.Enabled = false;
     RectangleEffect.Enabled=false;
 
+    FilledRectangle.Color=#000000FF;
     DefaultThermostat.Visible = false;
     TemperatureController.Enabled=true;
     DefaultThermostat.Enabled=false;
@@ -1345,7 +1344,6 @@ class Thermostat : Core::Group
     RadioDay.Selected=true;
     Device.SettingNo=0;
 
-    FadeEffectGoBack.Enabled = true;
     RectangleEffect.Enabled=true;
   }
 
@@ -1473,9 +1471,8 @@ class Thermostat : Core::Group
   slot SlotGoBackFanMode
   {
     sender;
-    TemperatureController.Opacity = 0x00;
-    FadeEffectGoBack.Enabled = false;
     RectangleEffect.Enabled=false;
+
 
     FanMode.Visible=false;
     FanMode.Enabled=false;
@@ -1501,14 +1498,13 @@ class Thermostat : Core::Group
     RadioDay.Selected=true;
     Device.SettingNo=0;
 
-    FadeEffectGoBack.Enabled=true;
     RectangleEffect.Enabled=true;
   }
 
   // Effects
   note group Note
   {
-    attr Bounds = <1050,0,1350,320>;
+    attr Bounds = <1050,0,1350,359>;
   }
 
   // Slot Methods
@@ -1521,10 +1517,11 @@ class Thermostat : Core::Group
   object Effects::ColorEffect RectangleEffect
   {
     preset NoOfCycles = 1;
-    preset InitialDelay = 500;
+    preset CycleDuration = 800;
+    preset InitialDelay = 0;
     preset Value2 = #000000FF;
     preset Value1 = #00000000;
-    preset Outlet = ^FilledBackground.Color;
+    preset Outlet = ^FilledRectangle.Color;
   }
 
   // Directives to adapt the order of the above members according to how these members 
