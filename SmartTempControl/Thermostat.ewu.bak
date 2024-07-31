@@ -1293,6 +1293,8 @@ class Thermostat : Core::Group
     FadeEffectManual.Enabled = true;
     RadioPowerOff.Visible=true;
     RadioPowerOff.Enabled=true;
+    Device.FanSpeed=15;
+    Device.SwingMode=false;
 
 
   }
@@ -1313,6 +1315,7 @@ class Thermostat : Core::Group
     sender;
     TemperatureController.Opacity = 0x00;
     FadeEffectGoBack.Enabled = false;
+    RectangleEffect.Enabled=false;
 
     DefaultThermostat.Visible = false;
     TemperatureController.Enabled=true;
@@ -1343,7 +1346,7 @@ class Thermostat : Core::Group
     Device.SettingNo=0;
 
     FadeEffectGoBack.Enabled = true;
-
+    RectangleEffect.Enabled=true;
   }
 
   $rect <20,20,160,60>
@@ -1472,6 +1475,7 @@ class Thermostat : Core::Group
     sender;
     TemperatureController.Opacity = 0x00;
     FadeEffectGoBack.Enabled = false;
+    RectangleEffect.Enabled=false;
 
     FanMode.Visible=false;
     FanMode.Enabled=false;
@@ -1498,18 +1502,29 @@ class Thermostat : Core::Group
     Device.SettingNo=0;
 
     FadeEffectGoBack.Enabled=true;
+    RectangleEffect.Enabled=true;
   }
 
   // Effects
   note group Note
   {
-    attr Bounds = <1050,0,1350,279>;
+    attr Bounds = <1050,0,1350,320>;
   }
 
   // Slot Methods
   note group Note1
   {
     attr Bounds = <1350,0,1650,330>;
+  }
+
+  $rect <1060,260,1260,300>
+  object Effects::ColorEffect RectangleEffect
+  {
+    preset NoOfCycles = 1;
+    preset InitialDelay = 1000;
+    preset Value2 = #000000FF;
+    preset Value1 = #000000FF;
+    preset Outlet = ^FilledRectangle.Color;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1556,6 +1571,7 @@ class Thermostat : Core::Group
   $member SlotGoBackFanMode
   $member Note
   $member Note1
+  $member RectangleEffect
 }
 
 $rect <770,-10,970,30>
@@ -1566,7 +1582,7 @@ resource Resources::Bitmap BackgroundDay
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
-  attr bitmapformat Format = RGB565;
+  attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
 
@@ -1578,7 +1594,7 @@ resource Resources::Bitmap BackgroundNight
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
-  attr bitmapformat Format = RGB565;
+  attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
 
@@ -1609,7 +1625,7 @@ resource Resources::Bitmap BackgroundDefault
   attr bitmapdithering Dithering = Auto;
   attr framesize FrameSize;
   attr framedelay FrameDelay;
-  attr bitmapformat Format = RGB565;
+  attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
 }
 

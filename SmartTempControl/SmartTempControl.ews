@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Application::Application;
+attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
+attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -36,14 +36,14 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-143,158>;
+  attr scrollTo = <-143,-178>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-194,-7>;
+  attr scrollTo = <590,-7>;
   attr zoom = 0.75;
 }
 
@@ -71,7 +71,14 @@ view unit Application
 view class Application::Application
 {
   attr enableWireMode = false;
-  attr scrollTo = <-215,153>;
+  attr scrollTo = <-519,153>;
+  attr zoom = 1.0;
+}
+
+view class Effects::Int32Effect
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
@@ -86,25 +93,25 @@ codeview Thermostat::Thermostat.ExitScreenSlot
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,18>;
-  attr codeSelEnd = <0,31>;
-  attr codeSelStart = <0,31>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <37,1>;
+  attr codeSelStart = <37,1>;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,14>;
-  attr codeSelEnd = <28,15>;
-  attr codeSelStart = <28,15>;
+  attr codeFirstPos = <0,17>;
+  attr codeSelEnd = <29,30>;
+  attr codeSelStart = <29,30>;
 }
 
 codeview Core::Group.Add
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <10,0>;
-  attr codeSelStart = <10,0>;
+  attr codeSelEnd = <2,1>;
+  attr codeSelStart = <2,1>;
 }
 
 codeview Thermostat::Thermostat.DefaultThermSlot
