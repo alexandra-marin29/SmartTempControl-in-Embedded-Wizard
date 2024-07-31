@@ -15,7 +15,7 @@ note group ConstantsNote
 // Resources
 note group Note
 {
-  attr Bounds = <530,-80,1010,440>;
+  attr Bounds = <530,-80,1010,480>;
 }
 
 $rect <210,150,450,190>
@@ -1069,7 +1069,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioDay
   {
-    preset Bounds = <205,38,328,82>;
+    preset Bounds = <207,37,330,81>;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Day";
     preset Appearance = Thermostat::RadioButtonDayConfig;
@@ -1078,7 +1078,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioNight
   {
-    preset Bounds = <347,38,478,82>;
+    preset Bounds = <359,37,490,81>;
     preset OutletSelector = 1;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset Label = "Night";
@@ -1237,7 +1237,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Clock::Clock Clock
   {
-    preset Bounds = <425,347,662,414>;
+    preset Bounds = <397,347,634,414>;
   }
 
   $rect <20,20,160,60>
@@ -1249,7 +1249,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton Default
   {
-    preset Bounds = <-3,38,158,82>;
+    preset Bounds = <26,38,187,82>;
     preset OutletSelector = 3;
     preset Outlet = ^Thermostat::Device.SettingNo;
     preset OnRelease = null;
@@ -1473,7 +1473,6 @@ class Thermostat : Core::Group
     sender;
     RectangleEffect.Enabled=false;
 
-
     FanMode.Visible=false;
     FanMode.Enabled=false;
     SimpleTouchHandlerFanMode.Enabled=false;
@@ -1524,6 +1523,13 @@ class Thermostat : Core::Group
     preset Outlet = ^FilledRectangle.Color;
   }
 
+  $rect <20,20,160,60>
+  object Views::Image SettingsIcon
+  {
+    preset Bounds = <3,9,53,59>;
+    preset Bitmap = Thermostat::SettingsIcon;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1569,6 +1575,7 @@ class Thermostat : Core::Group
   $member Note
   $member Note1
   $member RectangleEffect
+  $member SettingsIcon
 }
 
 $rect <770,-10,970,30>
@@ -2030,6 +2037,26 @@ resource Resources::Bitmap SymbolFanSmall
   attr bitmapmode Mode = Default;
 }
 
+$rect <560,430,760,470>
+$output false
+resource Resources::Bitmap SettingsIcon
+{
+  attr bitmapfile FileName = .\Res\SettingsIcon.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <-40,50,200,90>
+$output false
+class Settings : Core::Group
+{
+  $rect <839,10,1039,50>
+  inherited property Bounds = <0,0,800,480>;
+}
+
 // Directives to adapt the order of the above members according to how these members 
 // where arranged when the project content was stored. In this manner the storage 
 // and the expected order of the members don't depend. Merging of changes in the 
@@ -2083,3 +2110,5 @@ $member HeatHandsSymbol
 $member FanMode
 $member SymbolFanBig
 $member SymbolFanSmall
+$member SettingsIcon
+$member Settings
