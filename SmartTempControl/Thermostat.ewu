@@ -615,7 +615,7 @@ class TemperatureController : Core::Group
   $rect <400,130,600,170>
   property int32 NominalValue = 300;
 
-  $rect <600,130,800,170>
+  $rect <620,130,820,170>
   onset NominalValue
   {
     if ( pure NominalValue == value )
@@ -631,7 +631,7 @@ class TemperatureController : Core::Group
   $rect <400,90,600,130>
   property int32 ActualValue = 150;
 
-  $rect <600,90,800,130>
+  $rect <620,90,820,130>
   onset ActualValue
   {
     if ( pure ActualValue == value )
@@ -652,7 +652,7 @@ class TemperatureController : Core::Group
       NominalValue = OutletNominal^;
   }
 
-  $rect <600,210,800,250>
+  $rect <620,210,820,250>
   onset OutletNominal
   {
     if ( pure OutletNominal == value )
@@ -696,7 +696,7 @@ class TemperatureController : Core::Group
       ActualValue = OutletActual^;
   }
 
-  $rect <600,170,800,210>
+  $rect <620,170,820,210>
   onset OutletActual
   {
     if ( pure OutletActual == value )
@@ -735,7 +735,7 @@ class TemperatureController : Core::Group
   $rect <400,50,600,90>
   property int32 MaxValue = 400;
 
-  $rect <600,50,800,90>
+  $rect <620,50,820,90>
   onset MaxValue
   {
     if ( pure MaxValue == value )
@@ -751,7 +751,7 @@ class TemperatureController : Core::Group
   $rect <400,10,600,50>
   property int32 MinValue = 100;
 
-  $rect <600,10,800,50>
+  $rect <620,10,820,50>
   onset MinValue
   {
     if ( pure MinValue == value )
@@ -1162,13 +1162,6 @@ class Thermostat : Core::Group
   }
 
   $rect <20,20,160,60>
-  object Thermostat::ExitScreen ExitScreen
-  {
-    preset Bounds = <0,0,800,480>;
-    preset Visible = false;
-  }
-
-  $rect <20,20,160,60>
   object WidgetSet::RadioButton RadioPowerOff
   {
     preset Bounds = <735,16,779,60>;
@@ -1183,7 +1176,7 @@ class Thermostat : Core::Group
   slot ExitScreenSlot
   {
     sender;
-    ExitScreen.Opacity = 0x00;
+    Exit.Opacity = 0x00;
     FadeEffectPowerOff.Enabled = false;
 
 
@@ -1198,6 +1191,8 @@ class Thermostat : Core::Group
     RadioVacation.Enabled=false;
     RadioVacation.Visible=false;
     TemperatureController.Visible=false;
+    TemperatureController.Enabled=false;
+
     OnOffButtonText.Visible=false;
     Clock.Visible = false;
     Default.Visible = false;
@@ -1213,8 +1208,12 @@ class Thermostat : Core::Group
     Settings.Visible=false;
     Settings.Enabled=false;
     SettingsIcon.Visible=false;
+    English.Enabled=false;
+    Romanian.Enabled=false;
+    DefaultThermostat.Enabled=false;
 
-    ExitScreen.Visible = true;
+    Exit.Visible = true;
+    Exit.ExitDialog.Visible=false;
     TouchHandlerCancel.Enabled=true;
 
     FadeEffectPowerOff.Enabled = true;
@@ -1238,7 +1237,7 @@ class Thermostat : Core::Group
     preset OnFinished = null;
     preset NoOfCycles = 1;
     preset CycleDuration = 1000;
-    preset Outlet = ^ExitScreen.Opacity;
+    preset Outlet = ^Exit.Opacity;
   }
 
   $rect <20,20,160,60>
@@ -1428,7 +1427,7 @@ class Thermostat : Core::Group
   object Views::Text FanText
   {
     preset Layout = Core::Layout[AlignToLeft, AlignToRight, AlignToTop];
-    preset Bounds = <606,252,748,281>;
+    preset Bounds = <608,253,750,282>;
     preset String = "FAN ";
     preset Font = Thermostat::FontM;
   }
@@ -1651,28 +1650,19 @@ class Thermostat : Core::Group
     FanText.String="FAN";
     OnOffButtonText.String="ENABLE FAN";
     Settings.TextLanguage.String="Language";
-    ExitScreen.CancelText.String="Goodbye!";
+    ExitScreen.CancelText.String="Cancel";
 
 
-  }
 
-  $rect <20,20,160,60>
-  object Core::SimpleTouchHandler TouchHandlerYes
-  {
-    preset Point4 = <91,310>;
-    preset Point3 = <350,310>;
-    preset Point2 = <350,398>;
-    preset Point1 = <91,398>;
-    preset OnPress = YesPressed;
   }
 
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler TouchHandlerCancel
   {
-    preset Point4 = <504,318>;
-    preset Point3 = <715,318>;
-    preset Point2 = <715,418>;
-    preset Point1 = <504,418>;
+    preset Point4 = <315,341>;
+    preset Point3 = <534,341>;
+    preset Point2 = <534,417>;
+    preset Point1 = <315,419>;
     preset OnPress = CancelPressed;
   }
 
@@ -1720,10 +1710,10 @@ class Thermostat : Core::Group
 
   }
 
-  $rect <1590,80,1790,120>
-  slot YesPressed
+  $rect <20,20,160,60>
+  object Thermostat::Exit Exit
   {
-    sender;
+    preset Bounds = <0,0,800,480>;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1734,8 +1724,7 @@ class Thermostat : Core::Group
   $member FilledBackground
   $member FanMode
   $member SimpleTouchHandlerFanMode
-  $member ExitScreen
-  $member TouchHandlerYes
+  $member Exit
   $member TouchHandlerCancel
   $member DefaultThermostat
   $member GoBackTouchHandler
@@ -1784,7 +1773,6 @@ class Thermostat : Core::Group
   $member Romanian
   $member ChangeLanguageEnglish
   $member CancelPressed
-  $member YesPressed
 }
 
 $rect <770,-10,970,30>
@@ -1851,7 +1839,7 @@ note group Note1
 // Screens and Temperature Controller
 note group Note4
 {
-  attr Bounds = <-70,-130,520,110>;
+  attr Bounds = <-70,-140,519,110>;
 }
 
 // Fonts
@@ -1948,7 +1936,7 @@ resource Resources::Bitmap HeatSplashScreen
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,-30,430,10>
+$rect <230,-60,430,-20>
 $output false
 class DefaultThermostat : Core::Group
 {
@@ -2111,7 +2099,7 @@ resource Resources::Bitmap VertBar
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,10,430,50>
+$rect <230,-20,430,20>
 $output false
 class FanMode : Core::Group
 {
@@ -2287,7 +2275,7 @@ class Settings : Core::Group
   }
 }
 
-$rect <230,-70,430,-30>
+$rect <230,-100,430,-60>
 $output false
 class ExitScreen : Core::Group
 {
@@ -2330,21 +2318,21 @@ class ExitScreen : Core::Group
   $rect <20,20,160,60>
   object Views::Image YesButton
   {
-    preset Bounds = <91,310,351,406>;
+    preset Bounds = <293,240,553,336>;
     preset Bitmap = Thermostat::ChoiceButton;
   }
 
   $rect <20,20,160,60>
   object Views::Image YesButton1
   {
-    preset Bounds = <474,310,734,406>;
+    preset Bounds = <293,325,553,421>;
     preset Bitmap = Thermostat::ChoiceButton;
   }
 
   $rect <20,20,160,60>
   object Views::Text YesText
   {
-    preset Bounds = <168,343,268,373>;
+    preset Bounds = <373,273,473,303>;
     preset String = "YES";
     preset Font = Thermostat::FontL;
   }
@@ -2352,7 +2340,7 @@ class ExitScreen : Core::Group
   $rect <20,20,160,60>
   object Views::Text CancelText
   {
-    preset Bounds = <522,342,687,373>;
+    preset Bounds = <341,358,506,389>;
     preset String = "Cancel";
     preset Font = Thermostat::FontL;
   }
@@ -2368,6 +2356,93 @@ resource Resources::Bitmap ChoiceButton
   attr framedelay FrameDelay;
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
+}
+
+$rect <230,20,430,60>
+$output false
+class ExitDialog : Core::Group
+{
+  $rect <810,0,1010,40>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,800,480>;
+    preset Bitmap = Thermostat::BackgroundDay;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image1
+  {
+    preset Bounds = <256,90,544,391>;
+    preset Bitmap = Thermostat::HouseSplashScreen;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image2
+  {
+    preset Bounds = <315,168,485,342>;
+    preset Bitmap = Thermostat::HeatSplashScreen;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <283,390,517,451>;
+    preset String = "Goodbye!";
+    preset Font = Thermostat::FontL;
+  }
+
+  $rect <819,70,1019,110>
+  object Effects::ColorEffect ColorEffect
+  {
+    preset NoOfCycles = 0;
+    preset InitialDelay = 0;
+    preset Enabled = true;
+    preset Value2 = Thermostat::Cold;
+    preset Value1 = Thermostat::Hot;
+    preset Outlet = ^Text.Color;
+  }
+}
+
+$rect <230,60,430,100>
+$output false
+class Exit : Core::Group
+{
+  $rect <820,-10,1020,30>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Thermostat::ExitDialog ExitDialog
+  {
+    preset Bounds = <0,0,800,480>;
+  }
+
+  $rect <20,20,160,60>
+  object Thermostat::ExitScreen ExitScreen
+  {
+    preset Bounds = <0,0,800,480>;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <307,248>;
+    preset Point3 = <531,248>;
+    preset Point2 = <531,325>;
+    preset Point1 = <306,326>;
+    preset OnPress = SlotYesPressed;
+  }
+
+  $rect <819,40,1019,80>
+  slot SlotYesPressed
+  {
+    sender;
+    ExitScreen.Visible=false;
+    ExitScreen.Enabled=false;
+    ExitDialog.Visible=true;
+  }
 }
 
 // Directives to adapt the order of the above members according to how these members 
@@ -2426,3 +2501,5 @@ $member SettingsIcon
 $member Settings
 $member ExitScreen
 $member ChoiceButton
+$member ExitDialog
+$member Exit
