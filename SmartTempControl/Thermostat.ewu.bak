@@ -1119,7 +1119,6 @@ class Thermostat : Core::Group
   slot changeBackFinished
   {
     sender;
-
     Background.Bitmap = Overlay.Bitmap;
     Overlay.Opacity = 0x00;
 
@@ -1211,6 +1210,8 @@ class Thermostat : Core::Group
     English.Enabled=false;
     Romanian.Enabled=false;
     DefaultThermostat.Enabled=false;
+    TouchHandlerLanguage.Enabled=false;
+    Default.Enabled=false;
 
     Exit.Visible = true;
     Exit.ExitDialog.Visible=false;
@@ -1274,7 +1275,7 @@ class Thermostat : Core::Group
 
 
     Thermostat::Device.SettingNo= 3;
-    ExitScreen.Visible=false;
+    Exit.Visible=false;
     Background.Visible=false;
     Overlay.Visible=false;
     ToggleButton.Visible=false;
@@ -1296,6 +1297,10 @@ class Thermostat : Core::Group
     Settings.Visible = false;
     ExitLanguage.Enabled=false;
     TouchHandlerLanguage.Enabled=false;
+    GoBackTouchHandler.Enabled=false;
+    SimpleTouchHandlerFanMode.Enabled=false;
+    FanTouchHandler.Enabled=false;
+    Exit.Visible=false;
 
 
     DefaultThermostat.StackingPriority=1;
@@ -1355,6 +1360,7 @@ class Thermostat : Core::Group
     Settings.Enabled=true;
     ExitLanguage.Enabled=true;
     TouchHandlerLanguage.Enabled=true;
+    FanTouchHandler.Enabled=true;
 
 
     RadioDay.Selected=true;
@@ -1490,7 +1496,7 @@ class Thermostat : Core::Group
     preset Outlet = ^FanMode.Opacity;
   }
 
-  $rect <1370,279,1570,319>
+  $rect <1590,240,1790,280>
   slot SlotGoBackFanMode
   {
     sender;
@@ -1578,14 +1584,16 @@ class Thermostat : Core::Group
     preset OnPress = SlotLanguage;
   }
 
-  $rect <1590,119,1790,159>
+  $rect <1590,80,1790,120>
   slot SlotLanguage
   {
     sender;
     Settings.Visible=true;
+    Romanian.Enabled=true;
+    English.Enabled=true;
   }
 
-  $rect <1590,160,1790,200>
+  $rect <1590,121,1790,161>
   slot SlotExitLanguage
   {
     sender;
@@ -1602,7 +1610,7 @@ class Thermostat : Core::Group
     preset OnPress = SlotExitLanguage;
   }
 
-  $rect <1590,199,1790,239>
+  $rect <1590,160,1790,200>
   slot ChangeLanguageRomanian
   {
     sender;
@@ -1612,10 +1620,13 @@ class Thermostat : Core::Group
     FanText.String="VENTILATOR";
     OnOffButtonText.String="PORNIRE VENTILATOR";
     Settings.TextLanguage.String="Limba";
-    ExitScreen.CancelText.String="Anulare";
-    ExitScreen.YesText.String="Da";
-    ExitScreen.ExitText.String ="Sunteti sigur ca ";
-    ExitScreen.ExitText2.String="doriti sa iesiti?";
+    Exit.ExitScreen.CancelText.String="Anulare";
+    Exit.ExitScreen.YesText.String="Da";
+    Exit.ExitScreen.ExitText.String ="Sunteti sigur ca ";
+    Exit.ExitScreen.ExitText2.String="doriti sa iesiti?";
+    Exit.ExitDialog.Text.String="La revedere!";
+    Romanian.Enabled=false;
+
 
 
   }
@@ -1628,6 +1639,7 @@ class Thermostat : Core::Group
     preset Point2 = <166,181>;
     preset Point1 = <30,181>;
     preset OnPress = ChangeLanguageEnglish;
+    preset Enabled = false;
   }
 
   $rect <20,20,160,60>
@@ -1638,9 +1650,10 @@ class Thermostat : Core::Group
     preset Point2 = <196,282>;
     preset Point1 = <26,282>;
     preset OnPress = ChangeLanguageRomanian;
+    preset Enabled = false;
   }
 
-  $rect <1590,240,1790,280>
+  $rect <1590,201,1790,241>
   slot ChangeLanguageEnglish
   {
     sender;
@@ -1650,8 +1663,12 @@ class Thermostat : Core::Group
     FanText.String="FAN";
     OnOffButtonText.String="ENABLE FAN";
     Settings.TextLanguage.String="Language";
-    ExitScreen.CancelText.String="Cancel";
-
+    Exit.ExitScreen.CancelText.String="Cancel";
+    Exit.ExitScreen.YesText.String="Yes";
+    Exit.ExitScreen.ExitText.String ="Are you sure you";
+    Exit.ExitScreen.ExitText2.String="want to exit?";
+    Exit.ExitDialog.Text.String="Goodbye!";
+    English.Enabled=false;
 
 
   }
@@ -1671,7 +1688,7 @@ class Thermostat : Core::Group
   {
     sender;
 
-    ExitScreen.Visible = true;
+    Exit.Visible = true;
     TouchHandlerCancel.Enabled=false;
 
 
@@ -1701,6 +1718,9 @@ class Thermostat : Core::Group
     FanTouchHandler.Enabled=true;
     FanMode.Visible=false;
     DefaultThermostat.Visible= false;
+    Default.Enabled=true;
+    English.Enabled=true;
+    Romanian.Enabled=true;
 
     Settings.Enabled=true;
     SettingsIcon.Visible=true;
@@ -2333,7 +2353,7 @@ class ExitScreen : Core::Group
   object Views::Text YesText
   {
     preset Bounds = <373,273,473,303>;
-    preset String = "YES";
+    preset String = "Yes";
     preset Font = Thermostat::FontL;
   }
 
