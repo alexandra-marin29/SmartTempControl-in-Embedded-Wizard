@@ -1,6 +1,6 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Thermostat::ExitScreen;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
 attr currentCodeInspector = Thermostat::TemperatureController.UpdateViewState;
@@ -29,21 +29,21 @@ attr search_WildCards = false;
 view Project
 {
   attr enableWireMode = false;
-  attr scrollTo = <25,57>;
+  attr scrollTo = <25,185>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-167,-199>;
+  attr scrollTo = <825,457>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <280,53>;
+  attr scrollTo = <-72,-27>;
   attr zoom = 0.5;
 }
 
@@ -71,8 +71,8 @@ view class Thermostat::FanMode
 view class Thermostat::ExitScreen
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,25>;
-  attr zoom = 1.0;
+  attr scrollTo = <-23,-34>;
+  attr zoom = 0.5;
 }
 
 view class Thermostat::TemperatureController
@@ -80,6 +80,13 @@ view class Thermostat::TemperatureController
   attr enableWireMode = false;
   attr scrollTo = <-215,105>;
   attr zoom = 0.75;
+}
+
+view class Thermostat::ExitScreen2
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-195,-47>;
+  attr zoom = 0.5;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode

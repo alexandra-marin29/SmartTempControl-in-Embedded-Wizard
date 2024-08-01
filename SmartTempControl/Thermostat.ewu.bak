@@ -1536,7 +1536,7 @@ class Thermostat : Core::Group
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1350,0,1650,510>;
+    attr Bounds = <1350,0,1650,499>;
   }
 
   $rect <1060,260,1260,300>
@@ -1560,7 +1560,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Thermostat::Settings Settings
   {
-    preset Bounds = <-2,0,268,357>;
+    preset Bounds = <-2,0,267,320>;
     preset Visible = false;
   }
 
@@ -1617,20 +1617,20 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler English
   {
-    preset Point4 = <35,135>;
-    preset Point3 = <171,135>;
-    preset Point2 = <171,181>;
-    preset Point1 = <35,181>;
+    preset Point4 = <30,135>;
+    preset Point3 = <166,135>;
+    preset Point2 = <166,181>;
+    preset Point1 = <30,181>;
     preset OnPress = ChangeLanguageEnglish;
   }
 
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler Romanian
   {
-    preset Point4 = <35,237>;
-    preset Point3 = <205,237>;
-    preset Point2 = <205,281>;
-    preset Point1 = <35,281>;
+    preset Point4 = <26,238>;
+    preset Point3 = <196,238>;
+    preset Point2 = <196,282>;
+    preset Point1 = <26,282>;
     preset OnPress = ChangeLanguageRomanian;
   }
 
@@ -2182,19 +2182,19 @@ $output false
 class Settings : Core::Group
 {
   $rect <430,0,630,40>
-  inherited property Bounds = <0,0,277,357>;
+  inherited property Bounds = <0,0,277,323>;
 
   $rect <20,20,160,60>
   object Views::Rectangle Background
   {
-    preset Bounds = <0,0,277,357>;
-    preset Color = #73737393;
+    preset Bounds = <0,0,277,323>;
+    preset Color = #737373CC;
   }
 
   $rect <20,20,160,60>
   object Views::Text TextLanguage
   {
-    preset Bounds = <55,45,219,99>;
+    preset Bounds = <55,32,219,86>;
     preset String = "Language";
     preset Font = Resources::FontLarge;
   }
@@ -2202,7 +2202,7 @@ class Settings : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton English
   {
-    preset Bounds = <55,140,205,190>;
+    preset Bounds = <34,135,184,185>;
     preset OnSelect = null;
     preset Icon = null;
     preset Label = "English";
@@ -2228,7 +2228,7 @@ class Settings : Core::Group
   $rect <20,20,160,60>
   object WidgetSet::RadioButton Romanian
   {
-    preset Bounds = <55,236,205,286>;
+    preset Bounds = <34,234,184,284>;
     preset OnSelect = null;
     preset Label = "Romanian";
     preset Appearance = RadioButtonConfigLanguage;
