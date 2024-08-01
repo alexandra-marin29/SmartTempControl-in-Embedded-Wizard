@@ -1208,12 +1208,15 @@ class Thermostat : Core::Group
     Logo.Visible = false;
     RadioPowerOff.Enabled=false;
     Fan.Visible=false;
+    FanTouchHandler.Enabled=false;
     FanText.Visible=false;
     Settings.Visible=false;
     Settings.Enabled=false;
     SettingsIcon.Visible=false;
 
     ExitScreen.Visible = true;
+    TouchHandlerCancel.Enabled=true;
+
     FadeEffectPowerOff.Enabled = true;
 
 
@@ -1536,7 +1539,7 @@ class Thermostat : Core::Group
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1350,0,1650,499>;
+    attr Bounds = <1350,0,1830,500>;
   }
 
   $rect <1060,260,1260,300>
@@ -1649,6 +1652,56 @@ class Thermostat : Core::Group
 
   }
 
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler TouchHandlerCancel
+  {
+    preset Point4 = <504,318>;
+    preset Point3 = <715,318>;
+    preset Point2 = <715,418>;
+    preset Point1 = <504,418>;
+    preset OnPress = CancelPressed;
+  }
+
+  $rect <1590,39,1790,79>
+  slot CancelPressed
+  {
+    sender;
+
+    ExitScreen.Visible = true;
+    TouchHandlerCancel.Enabled=false;
+
+
+
+    Background.Visible=true;
+    Overlay.Visible=true;
+    ToggleButton.Visible=true;
+    ToggleButton.Enabled=true;
+    RadioDay.Visible=true;
+    RadioDay.Enabled=true;
+    RadioNight.Enabled=true;
+    RadioNight.Visible=true;
+    RadioVacation.Enabled=true;
+    RadioVacation.Visible=true;
+    TemperatureController.Visible=true;
+    OnOffButtonText.Visible=true;
+    Clock.Visible = true;
+    Default.Visible = true;
+    FilledRectangle.Visible=true;
+    DefaultThermostat.Visible=true;
+    RadioPowerOff.Visible=true;
+    FanMode.Visible=true;
+    Logo.Visible = true;
+    RadioPowerOff.Enabled=true;
+    Fan.Visible=true;
+    FanText.Visible=true;
+    Settings.Enabled=true;
+    SettingsIcon.Visible=true;
+
+    FadeEffectPowerOff.Enabled = true;
+
+
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1658,6 +1711,7 @@ class Thermostat : Core::Group
   $member FanMode
   $member SimpleTouchHandlerFanMode
   $member ExitScreen
+  $member TouchHandlerCancel
   $member DefaultThermostat
   $member GoBackTouchHandler
   $member Background
@@ -1704,6 +1758,7 @@ class Thermostat : Core::Group
   $member English
   $member Romanian
   $member ChangeLanguageEnglish
+  $member CancelPressed
 }
 
 $rect <770,-10,970,30>
@@ -1825,101 +1880,6 @@ resource Resources::Bitmap PowerOffIcon
   attr framedelay FrameDelay;
   attr bitmapformat Format = Native;
   attr bitmapmode Mode = Default;
-}
-
-$rect <230,-70,430,-30>
-$output false
-class ExitScreen : Core::Group
-{
-  $rect <880,10,1080,50>
-  inherited property Bounds = <0,0,800,480>;
-
-  $rect <20,20,160,60>
-  object Views::Text Text
-  {
-    preset Bounds = <215,370,580,481>;
-    preset String = "Goodbye!";
-    preset Font = Resources::FontExtraLarge;
-  }
-
-  $rect <880,59,1080,99>
-  object Effects::ColorEffect ColorEffect
-  {
-    preset OnFinished = null;
-    preset InterCycleDelay = 500;
-    preset InitialDelay = 500;
-    preset Enabled = true;
-    preset Value2 = Thermostat::Cold;
-    preset Value1 = Thermostat::Hot;
-    preset Outlet = ^Text.Color;
-  }
-
-  $rect <20,20,160,60>
-  object Views::Rectangle Background
-  {
-    preset Bounds = <0,0,800,480>;
-    preset ColorTR = #D7D7D7FF;
-    preset ColorTL = #DDDDDDFF;
-  }
-
-  $rect <20,20,160,60>
-  object Views::Image House
-  {
-    preset Bounds = <230,99,568,381>;
-    preset Bitmap = Thermostat::HouseSplashScreen;
-  }
-
-  $rect <20,20,160,60>
-  object Views::Image Icon
-  {
-    preset Bounds = <326,197,472,334>;
-    preset Bitmap = Thermostat::HeatSplashScreen;
-  }
-
-  $rect <20,20,160,60>
-  object Thermostat::ExitScreen2 ExitScreen2
-  {
-    preset Bounds = <-2,0,798,480>;
-  }
-
-  $rect <20,20,160,60>
-  object Core::SimpleTouchHandler TouchHandlerYes
-  {
-    preset Point4 = <107,314>;
-    preset Point3 = <326,314>;
-    preset Point2 = <327,405>;
-    preset Point1 = <109,405>;
-  }
-
-  $rect <20,20,160,60>
-  object Core::SimpleTouchHandler TouchHandlerCancel
-  {
-    preset Point4 = <472,314>;
-    preset Point3 = <717,314>;
-    preset Point2 = <717,405>;
-    preset Point1 = <472,405>;
-  }
-
-  // This is an annotation.
-  note group Note
-  {
-    attr Bounds = <852,122,1152,322>;
-  }
-
-  // Directives to adapt the order of the above members according to how these members 
-  // where arranged when the project content was stored. In this manner the storage 
-  // and the expected order of the members don't depend. Merging of changes in the 
-  // project files is simplified.
-  $member Bounds
-  $member Background
-  $member Text
-  $member ColorEffect
-  $member House
-  $member Icon
-  $member ExitScreen2
-  $member TouchHandlerYes
-  $member TouchHandlerCancel
-  $member Note
 }
 
 $rect <560,271,760,311>
@@ -2301,9 +2261,9 @@ class Settings : Core::Group
   }
 }
 
-$rect <230,50,430,90>
+$rect <230,-70,430,-30>
 $output false
-class ExitScreen2 : Core::Group
+class ExitScreen : Core::Group
 {
   $rect <840,-10,1040,30>
   inherited property Bounds = <0,0,800,480>;
@@ -2422,7 +2382,6 @@ $member Note4
 $member Note2
 $member RadioButtonPowerOff
 $member PowerOffIcon
-$member ExitScreen
 $member BackgroundVacation
 $member Vac
 $member HouseSplashScreen
@@ -2439,5 +2398,5 @@ $member SymbolFanBig
 $member SymbolFanSmall
 $member SettingsIcon
 $member Settings
-$member ExitScreen2
+$member ExitScreen
 $member ChoiceButton

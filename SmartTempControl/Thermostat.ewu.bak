@@ -1876,6 +1876,36 @@ class ExitScreen : Core::Group
     preset Bitmap = Thermostat::HeatSplashScreen;
   }
 
+  $rect <20,20,160,60>
+  object Thermostat::ExitScreen2 ExitScreen2
+  {
+    preset Bounds = <-2,0,798,480>;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler TouchHandlerYes
+  {
+    preset Point4 = <107,314>;
+    preset Point3 = <326,314>;
+    preset Point2 = <327,405>;
+    preset Point1 = <109,405>;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler TouchHandlerCancel
+  {
+    preset Point4 = <472,314>;
+    preset Point3 = <717,314>;
+    preset Point2 = <717,405>;
+    preset Point1 = <472,405>;
+  }
+
+  // This is an annotation.
+  note group Note
+  {
+    attr Bounds = <852,122,1152,322>;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1886,6 +1916,10 @@ class ExitScreen : Core::Group
   $member ColorEffect
   $member House
   $member Icon
+  $member ExitScreen2
+  $member TouchHandlerYes
+  $member TouchHandlerCancel
+  $member Note
 }
 
 $rect <560,271,760,311>
@@ -2267,6 +2301,89 @@ class Settings : Core::Group
   }
 }
 
+$rect <230,50,430,90>
+$output false
+class ExitScreen2 : Core::Group
+{
+  $rect <840,-10,1040,30>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Background
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorTL = #FFFFFFFF;
+    preset Color = #D4D4D4FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <84,48,734,431>;
+    preset Color = #FFFFFF49;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text ExitText
+  {
+    preset Bounds = <213,104,587,173>;
+    preset String = "Are you sure you";
+    preset Font = Resources::FontExtraLarge;
+    preset Color = Thermostat::Hot;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text ExitText2
+  {
+    preset Bounds = <222,187,579,224>;
+    preset String = "want to exit?";
+    preset Font = Resources::FontExtraLarge;
+    preset Color = Thermostat::Hot;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image YesButton
+  {
+    preset Bounds = <91,310,351,406>;
+    preset Bitmap = Thermostat::ChoiceButton;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image YesButton1
+  {
+    preset Bounds = <474,310,734,406>;
+    preset Bitmap = Thermostat::ChoiceButton;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text YesText
+  {
+    preset Bounds = <168,343,268,373>;
+    preset String = "YES";
+    preset Font = Thermostat::FontL;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <522,342,687,373>;
+    preset String = "Cancel";
+    preset Font = Thermostat::FontL;
+  }
+}
+
+$rect <766,430,966,470>
+$output false
+resource Resources::Bitmap ChoiceButton
+{
+  attr bitmapfile FileName = .\Res\ChoiceButton.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
 // Directives to adapt the order of the above members according to how these members 
 // where arranged when the project content was stored. In this manner the storage 
 // and the expected order of the members don't depend. Merging of changes in the 
@@ -2322,3 +2439,5 @@ $member SymbolFanBig
 $member SymbolFanSmall
 $member SettingsIcon
 $member Settings
+$member ExitScreen2
+$member ChoiceButton
