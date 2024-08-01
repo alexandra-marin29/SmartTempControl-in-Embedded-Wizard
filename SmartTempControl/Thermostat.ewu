@@ -1540,7 +1540,7 @@ class Thermostat : Core::Group
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1350,0,1830,500>;
+    attr Bounds = <1350,0,1830,330>;
   }
 
   $rect <1060,260,1260,300>
@@ -1579,14 +1579,14 @@ class Thermostat : Core::Group
     preset OnPress = SlotLanguage;
   }
 
-  $rect <1370,320,1570,360>
+  $rect <1590,119,1790,159>
   slot SlotLanguage
   {
     sender;
     Settings.Visible=true;
   }
 
-  $rect <1370,360,1570,400>
+  $rect <1590,160,1790,200>
   slot SlotExitLanguage
   {
     sender;
@@ -1603,7 +1603,7 @@ class Thermostat : Core::Group
     preset OnPress = SlotExitLanguage;
   }
 
-  $rect <1370,400,1570,440>
+  $rect <1590,199,1790,239>
   slot ChangeLanguageRomanian
   {
     sender;
@@ -1641,7 +1641,7 @@ class Thermostat : Core::Group
     preset OnPress = ChangeLanguageRomanian;
   }
 
-  $rect <1370,439,1570,479>
+  $rect <1590,240,1790,280>
   slot ChangeLanguageEnglish
   {
     sender;
@@ -1709,6 +1709,8 @@ class Thermostat : Core::Group
     Fan.Visible=true;
     FanText.Visible=true;
     FanTouchHandler.Enabled=true;
+    FanMode.Visible=false;
+    DefaultThermostat.Visible= false;
 
     Settings.Enabled=true;
     SettingsIcon.Visible=true;

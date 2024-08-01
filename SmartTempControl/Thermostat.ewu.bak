@@ -1275,6 +1275,7 @@ class Thermostat : Core::Group
 
 
     Thermostat::Device.SettingNo= 3;
+    ExitScreen.Visible=false;
     Background.Visible=false;
     Overlay.Visible=false;
     ToggleButton.Visible=false;
@@ -1612,7 +1613,10 @@ class Thermostat : Core::Group
     FanText.String="VENTILATOR";
     OnOffButtonText.String="PORNIRE VENTILATOR";
     Settings.TextLanguage.String="Limba";
-    ExitScreen.Text.String="La revedere !";
+    ExitScreen.CancelText.String="Anulare";
+    ExitScreen.YesText.String="Da";
+    ExitScreen.ExitText.String ="Sunteti sigur ca ";
+    ExitScreen.ExitText2.String="doriti sa iesiti?";
 
 
   }
@@ -1647,9 +1651,19 @@ class Thermostat : Core::Group
     FanText.String="FAN";
     OnOffButtonText.String="ENABLE FAN";
     Settings.TextLanguage.String="Language";
-    ExitScreen.Text.String="Goodbye!";
+    ExitScreen.CancelText.String="Goodbye!";
 
 
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler TouchHandlerYes
+  {
+    preset Point4 = <91,310>;
+    preset Point3 = <350,310>;
+    preset Point2 = <350,398>;
+    preset Point1 = <91,398>;
+    preset OnPress = YesPressed;
   }
 
   $rect <20,20,160,60>
@@ -1694,12 +1708,20 @@ class Thermostat : Core::Group
     RadioPowerOff.Enabled=true;
     Fan.Visible=true;
     FanText.Visible=true;
+    FanTouchHandler.Enabled=true;
+
     Settings.Enabled=true;
     SettingsIcon.Visible=true;
 
     FadeEffectPowerOff.Enabled = true;
 
 
+  }
+
+  $rect <1590,80,1790,120>
+  slot YesPressed
+  {
+    sender;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1711,6 +1733,7 @@ class Thermostat : Core::Group
   $member FanMode
   $member SimpleTouchHandlerFanMode
   $member ExitScreen
+  $member TouchHandlerYes
   $member TouchHandlerCancel
   $member DefaultThermostat
   $member GoBackTouchHandler
@@ -1759,6 +1782,7 @@ class Thermostat : Core::Group
   $member Romanian
   $member ChangeLanguageEnglish
   $member CancelPressed
+  $member YesPressed
 }
 
 $rect <770,-10,970,30>
@@ -2324,7 +2348,7 @@ class ExitScreen : Core::Group
   }
 
   $rect <20,20,160,60>
-  object Views::Text Text
+  object Views::Text CancelText
   {
     preset Bounds = <522,342,687,373>;
     preset String = "Cancel";

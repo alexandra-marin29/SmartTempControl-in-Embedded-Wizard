@@ -28,13 +28,13 @@ var EmWiApp;if(!EmWiApp)throw new Error("The application file '_project.js' isn'
 );if(EmWiApp.kR)throw new Error("The unit file 'Application.js' included twice!"
 );EmWiApp.kR=(function(){var B=EmWiApp;var D={};
 var AH=[0,0,800,480];
-D.Kk={Ff:null,_Init:function(aArg){B.Core.Root._Init.call(this,aArg);B.Thermostat.
-Ff._Init.call(this.Ff={K:this},0);this.__proto__=D.Kk;this.N(AH);this.T(this.Ff,
-0);},_Done:function(){this.__proto__=B.Core.Root;this.Ff._Done();B.Core.Root._Done.
-call(this);},_ReInit:function(){B.Core.Root._ReInit.call(this);this.Ff._ReInit();
-},_Mark:function(E){var A;B.Core.Root._Mark.call(this,E);if((A=this.Ff)._cycle!=
+D.Kq={Fj:null,_Init:function(aArg){B.Core.Root._Init.call(this,aArg);B.Thermostat.
+Fj._Init.call(this.Fj={K:this},0);this.__proto__=D.Kq;this.N(AH);this.T(this.Fj,
+0);},_Done:function(){this.__proto__=B.Core.Root;this.Fj._Done();B.Core.Root._Done.
+call(this);},_ReInit:function(){B.Core.Root._ReInit.call(this);this.Fj._ReInit();
+},_Mark:function(E){var A;B.Core.Root._Mark.call(this,E);if((A=this.Fj)._cycle!=
 E)A._Mark(A._cycle=E);},_className:"Application::Application"};
-D._Init=function(){D.Kk.__proto__=B.Core.Root;};D._ReInit=function(){};D.Ci=function(
+D._Init=function(){D.Kq.__proto__=B.Core.Root;};D._ReInit=function(){};D.Cl=function(
 E){};return D;})();
 
 /* Embedded Wizard */

@@ -32,6 +32,6 @@ D.DI={_Init:function(aArg){this.__proto__=D.DI;B.h7++;},_Done:function(){this.__
 null;B.h7--;},_ReInit:function(){},_Mark:function(E){var A;if((A=this.K)&&(A._cycle
 !=E))A._Mark(A._cycle=E);},K:null,_cycle:0,_observers:null,_className:"Templates::DeviceClass"
 };
-D._Init=function(){};D._ReInit=function(){};D.Ci=function(E){};return D;})();
+D._Init=function(){};D._ReInit=function(){};D.Cl=function(E){};return D;})();
 
 /* Embedded Wizard */

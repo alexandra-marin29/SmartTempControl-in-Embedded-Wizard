@@ -1,9 +1,8 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -29,234 +28,41 @@ attr search_WildCards = false;
 view Project
 {
   attr enableWireMode = false;
-  attr scrollTo = <25,89>;
+  attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <249,-167>;
+  attr scrollTo = <185,-135>;
   attr zoom = 1.0;
 }
 
-view class Thermostat::Thermostat
+view unit Clock
 {
   attr enableWireMode = false;
-  attr scrollTo = <591,29>;
-  attr zoom = 0.75;
-}
-
-view class Thermostat::Settings
-{
-  attr scrollTo = <-160,-135>;
-  attr zoom = 0.75;
-}
-
-view class Thermostat::DeviceClass
-{
-  attr scrollTo = <-167,-14>;
-  attr zoom = 0.75;
-}
-
-view class Thermostat::FanMode
-{
-  attr enableWireMode = false;
-  attr scrollTo = <265,-7>;
+  attr scrollTo = <-452,-215>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::TemperatureController
 {
   attr enableWireMode = false;
-  attr scrollTo = <-215,-119>;
+  attr scrollTo = <-218,-7>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::Thermostat
+{
+  attr enableWireMode = false;
+  attr scrollTo = <137,-7>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::ExitScreen
 {
   attr enableWireMode = false;
-  attr scrollTo = <-19,-47>;
+  attr scrollTo = <-7,-103>;
   attr zoom = 0.5;
-}
-
-view class Effects::Int32Effect
-{
-  attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
-}
-
-view class Core::SimpleTouchHandler
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-7,-7>;
-  attr zoom = 1.0;
-}
-
-codeview Thermostat::Thermostat.SlotGoBackFanMode
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,20>;
-  attr codeSelEnd = <25,29>;
-  attr codeSelStart = <25,29>;
-}
-
-codeview Thermostat::Thermostat.DefaultThermSlot
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <25,6>;
-  attr codeSelStart = <25,6>;
-}
-
-codeview Thermostat::Thermostat.GoBackSlot
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <32,30>;
-  attr codeSelStart = <32,30>;
-}
-
-codeview Thermostat::Thermostat.SlotFan
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <0,26>;
-  attr codeSelStart = <0,26>;
-}
-
-codeview Thermostat::Thermostat.SlotLanguage
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <22,1>;
-  attr codeSelStart = <22,1>;
-}
-
-codeview Thermostat::Thermostat.SlotExitLanguage
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <23,1>;
-  attr codeSelStart = <23,1>;
-}
-
-codeview Thermostat::Thermostat.ExitScreenSlot
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,22>;
-  attr codeSelEnd = <0,34>;
-  attr codeSelStart = <0,34>;
-}
-
-codeview Thermostat::Settings.OnSetLanguage
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Thermostat::Settings.OnGetLanguage
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <1,0>;
-  attr codeSelStart = <1,0>;
-}
-
-codeview Thermostat::Thermostat.ChangeLanguageRomanian
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <48,10>;
-  attr codeSelStart = <48,10>;
-}
-
-codeview Core::SimpleTouchHandler.HandleEvent
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,296>;
-  attr codeSelEnd = <0,301>;
-  attr codeSelStart = <0,301>;
-}
-
-codeview Core::Root.DriveMultiTouchHitting
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,161>;
-  attr codeSelEnd = <2,167>;
-  attr codeSelStart = <2,167>;
-}
-
-codeview Core::Root.DriveCursorHitting
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <4,4>;
-  attr codeSelStart = <4,4>;
-}
-
-codeview Thermostat::DeviceClass.ChangeActualTemp
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,4>;
-  attr codeSelStart = <19,4>;
-}
-
-codeview Thermostat::TemperatureController.UpdateViewState
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <26,7>;
-  attr codeSelStart = <26,7>;
-}
-
-codeview Thermostat::TemperatureController.UpdateLayout
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Thermostat::TemperatureController.OnSetNominalValue
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Thermostat::TemperatureController.OnSetOutletActual
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Core::Group.Add
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <2,1>;
-  attr codeSelStart = <2,1>;
-}
-
-codeview Thermostat::Thermostat.CancelPressed
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,20>;
-  attr codeSelEnd = <0,30>;
-  attr codeSelStart = <0,30>;
-}
-
-codeview Thermostat::Thermostat.YesPressed
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <7,0>;
-  attr codeSelStart = <7,0>;
 }
