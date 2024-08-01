@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.ExitScreenSlot;
+attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -43,7 +43,7 @@ view unit Thermostat
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <131,-51>;
+  attr scrollTo = <591,29>;
   attr zoom = 0.75;
 }
 
@@ -62,25 +62,33 @@ view class Thermostat::DeviceClass
 view class Thermostat::FanMode
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-7>;
+  attr scrollTo = <265,-7>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::TemperatureController
 {
-  attr scrollTo = <-215,105>;
+  attr enableWireMode = false;
+  attr scrollTo = <-215,-119>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::ExitScreen
 {
   attr enableWireMode = false;
-  attr scrollTo = <-195,-47>;
+  attr scrollTo = <-19,-47>;
   attr zoom = 0.5;
 }
 
 view class Effects::Int32Effect
 {
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Core::SimpleTouchHandler
+{
+  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
@@ -96,9 +104,9 @@ codeview Thermostat::Thermostat.SlotGoBackFanMode
 codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,18>;
-  attr codeSelEnd = <0,27>;
-  attr codeSelStart = <0,27>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <25,6>;
+  attr codeSelStart = <25,6>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
@@ -161,16 +169,8 @@ codeview Thermostat::Thermostat.ChangeLanguageRomanian
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,7>;
-  attr codeSelStart = <39,7>;
-}
-
-codeview Thermostat::Thermostat.ChangeLanguageEnglish
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <31,7>;
-  attr codeSelStart = <31,7>;
+  attr codeSelEnd = <48,10>;
+  attr codeSelStart = <48,10>;
 }
 
 codeview Core::SimpleTouchHandler.HandleEvent
@@ -249,6 +249,14 @@ codeview Thermostat::Thermostat.CancelPressed
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,20>;
-  attr codeSelEnd = <21,28>;
-  attr codeSelStart = <21,28>;
+  attr codeSelEnd = <0,30>;
+  attr codeSelStart = <0,30>;
+}
+
+codeview Thermostat::Thermostat.YesPressed
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <7,0>;
+  attr codeSelStart = <7,0>;
 }
