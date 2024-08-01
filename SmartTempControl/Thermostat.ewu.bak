@@ -1406,10 +1406,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler SimpleTouchHandlerFanMode
   {
-    preset Point4 = <3,16>;
-    preset Point3 = <91,16>;
-    preset Point2 = <91,89>;
-    preset Point1 = <6,89>;
+    preset Point4 = <0,0>;
+    preset Point3 = <70,0>;
+    preset Point2 = <69,60>;
+    preset Point1 = <3,60>;
     preset OnPress = SlotGoBackFanMode;
   }
 
@@ -1467,6 +1467,8 @@ class Thermostat : Core::Group
     Settings.Visible = false;
     ExitLanguage.Enabled=false;
     TouchHandlerLanguage.Enabled=false;
+    Settings.Enabled=false;
+
 
     FanMode.StackingPriority=1;
     FanMode.Visible = true;
@@ -1516,6 +1518,9 @@ class Thermostat : Core::Group
     Settings.Enabled=true;
     ExitLanguage.Enabled=true;
     TouchHandlerLanguage.Enabled=true;
+    SettingsIcon.Visible=true;
+    Settings.Visible=false;
+
 
     Device.SettingNo=0;
 
@@ -1548,7 +1553,7 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Image SettingsIcon
   {
-    preset Bounds = <3,9,53,59>;
+    preset Bounds = <6,23,56,73>;
     preset Bitmap = Thermostat::SettingsIcon;
   }
 
@@ -1562,10 +1567,10 @@ class Thermostat : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler TouchHandlerLanguage
   {
-    preset Point4 = <-3,0>;
-    preset Point3 = <63,0>;
-    preset Point2 = <63,95>;
-    preset Point1 = <-3,95>;
+    preset Point4 = <0,21>;
+    preset Point3 = <66,21>;
+    preset Point2 = <66,81>;
+    preset Point1 = <0,81>;
     preset OnRelease = null;
     preset OnPress = SlotLanguage;
   }
@@ -2123,7 +2128,7 @@ class FanMode : Core::Group
   $rect <20,20,160,60>
   object Views::Image GoBackFanMode
   {
-    preset Bounds = <0,6,87,78>;
+    preset Bounds = <0,0,87,72>;
     preset Bitmap = Thermostat::GoBackArrow;
   }
 

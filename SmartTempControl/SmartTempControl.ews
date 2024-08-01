@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Thermostat::ExitScreen;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
+attr currentCodeInspector = Thermostat::Thermostat.ChangeLanguageEnglish;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -43,18 +43,20 @@ view unit Thermostat
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-143,-47>;
+  attr scrollTo = <657,225>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::Settings
 {
+  attr enableWireMode = false;
   attr scrollTo = <-160,-39>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
+  attr enableWireMode = false;
   attr scrollTo = <-7,-14>;
   attr zoom = 0.75;
 }
@@ -64,6 +66,13 @@ view class Thermostat::FanMode
   attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 0.75;
+}
+
+view class Thermostat::ExitScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,25>;
+  attr zoom = 1.0;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
@@ -142,14 +151,14 @@ codeview Thermostat::Thermostat.ChangeLanguageRomanian
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <26,4>;
-  attr codeSelStart = <26,4>;
+  attr codeSelEnd = <0,7>;
+  attr codeSelStart = <39,7>;
 }
 
 codeview Thermostat::Thermostat.ChangeLanguageEnglish
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <38,6>;
-  attr codeSelStart = <38,6>;
+  attr codeSelEnd = <31,7>;
+  attr codeSelStart = <31,7>;
 }
