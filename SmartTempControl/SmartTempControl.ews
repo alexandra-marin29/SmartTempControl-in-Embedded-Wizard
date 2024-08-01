@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::Thermostat;
+attr active = Thermostat::Exit;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.CancelPressed;
+attr currentCodeInspector = Thermostat::TemperatureController.decrNominal;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -17,7 +17,7 @@ attr extractDoc_Variants = false;
 attr generateClut_ReservedColors = 0;
 attr heapMonitor_Show = false;
 attr language = Default;
-attr profile = Win32;
+attr profile = WebGL;
 attr profilerMonitor_Show = false;
 attr search_CaseSensitive = false;
 attr search_IgnoreDescription = false;
@@ -57,15 +57,71 @@ view class Application::Application
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-407,-199>;
+  attr scrollTo = <-199,-279>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <633,-7>;
+  attr scrollTo = <-119,-7>;
   attr zoom = 0.75;
+}
+
+view class Thermostat::TemperatureController
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-306,-103>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::Logo
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::Settings
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-151,-55>;
+  attr zoom = 0.5;
+}
+
+view class Thermostat::ExitScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-123>;
+  attr zoom = 0.25;
+}
+
+view class Thermostat::DefaultThermostat
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 0.25;
+}
+
+view class Thermostat::FanMode
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::ExitDialog
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::Exit
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 0.25;
 }
 
 codeview Thermostat::TemperatureController.OnSetOutletNominal
@@ -200,6 +256,22 @@ codeview Thermostat::DeviceClass1.ChangeActualTemp
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,8>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::TemperatureController.onRotateSlot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Thermostat::TemperatureController.decrNominal
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
   attr codeSelEnd = <0,0>;
   attr codeSelStart = <0,0>;
 }
