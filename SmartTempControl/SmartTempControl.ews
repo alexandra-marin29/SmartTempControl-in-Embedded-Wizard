@@ -3,7 +3,7 @@ $version 1.0
 attr active = Thermostat::Thermostat;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.ExitScreenSlot;
+attr currentCodeInspector = Thermostat::Thermostat.SlotGoBackFanMode;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -17,7 +17,7 @@ attr extractDoc_Variants = false;
 attr generateClut_ReservedColors = 0;
 attr heapMonitor_Show = false;
 attr language = Default;
-attr profile = Win32;
+attr profile = WebGL;
 attr profilerMonitor_Show = false;
 attr search_CaseSensitive = false;
 attr search_IgnoreDescription = false;
@@ -36,37 +36,42 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-263,217>;
+  attr scrollTo = <-391,-231>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-15,-31>;
+  attr scrollTo = <-143,-47>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::Settings
 {
-  attr enableWireMode = false;
   attr scrollTo = <-160,-39>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DeviceClass
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-14>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::FanMode
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
   attr zoom = 0.75;
 }
 
 codeview Thermostat::Thermostat.SlotGoBackFanMode
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,16>;
-  attr codeSelEnd = <22,25>;
-  attr codeSelStart = <22,25>;
+  attr codeFirstPos = <0,20>;
+  attr codeSelEnd = <25,29>;
+  attr codeSelStart = <25,29>;
 }
 
 codeview Thermostat::Thermostat.DefaultThermSlot
@@ -80,7 +85,7 @@ codeview Thermostat::Thermostat.DefaultThermSlot
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,19>;
+  attr codeFirstPos = <0,0>;
   attr codeSelEnd = <32,30>;
   attr codeSelStart = <32,30>;
 }
@@ -89,8 +94,8 @@ codeview Thermostat::Thermostat.SlotFan
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <0,21>;
-  attr codeSelStart = <0,25>;
+  attr codeSelEnd = <0,26>;
+  attr codeSelStart = <0,26>;
 }
 
 codeview Thermostat::Thermostat.SlotLanguage

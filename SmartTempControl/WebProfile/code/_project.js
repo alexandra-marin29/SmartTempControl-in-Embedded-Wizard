@@ -28,14 +28,14 @@ var EmWiCompr_13_04;var EmWiApp;if(!EmWiCompr_13_04)throw new Error("The Embedde
 );if(EmWiApp)throw new Error("The application file '_project.js' included twice!"
 );EmWiApp=(function(){var B={__proto__:EmWiCompr_13_04};
 B.Default=0;
-B.abC=[800,480];B.rs=function(){return B.kR.Kb;};B.zU="";B.o7=0;B.wA=0;B.j0=[];B.
+B.abC=[800,480];B.rs=function(){return B.kR.Kk;};B.zU="";B.o7=0;B.wA=0;B.j0=[];B.
 _Init=function(){B.Core._Init();B.aci._Init();B.Graphics._Init();B.acg._Init();B.
 acf._Init();B.kR._Init();B.Thermostat._Init();B.acj._Init();B.ach._Init();B.Clock.
 _Init();this.__proto__._Init.apply(this,arguments);};B._ReInit=function(){B.Core.
 _ReInit();B.aci._ReInit();B.Graphics._ReInit();B.acg._ReInit();B.acf._ReInit();B.
 kR._ReInit();B.Thermostat._ReInit();B.acj._ReInit();B.ach._ReInit();B.Clock._ReInit(
-);};B.abA=function(E){B.Core.B$(E);B.aci.B$(E);B.Graphics.B$(E);B.acg.B$(E);B.acf.
-B$(E);B.kR.B$(E);B.Thermostat.B$(E);B.acj.B$(E);B.ach.B$(E);B.Clock.B$(E);};return B;
+);};B.abA=function(E){B.Core.Ci(E);B.aci.Ci(E);B.Graphics.Ci(E);B.acg.Ci(E);B.acf.
+Ci(E);B.kR.Ci(E);B.Thermostat.Ci(E);B.acj.Ci(E);B.ach.Ci(E);B.Clock.Ci(E);};return B;
 })();
 
 /* Embedded Wizard */

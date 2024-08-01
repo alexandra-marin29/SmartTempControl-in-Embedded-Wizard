@@ -50,7 +50,7 @@ profile Win32 : Windows.Software.RGBA8888
   attr FontConversion = Windows;
 
   $rect <10,10,154,50>
-  macro Author = "Dipl. Ing. Paul Banach and Dipl. Ing. Manfred Schweyer, Copyright (C) TARA Systems GmbH";
+  macro Author;
 }
 
 // The 'default' Language. Each project has to contain at least one language brick \
@@ -99,7 +99,7 @@ note group Note2
 // Languages
 note group Note3
 {
-  attr Bounds = <520,20,760,130>;
+  attr Bounds = <520,20,760,150>;
 }
 
 // Units

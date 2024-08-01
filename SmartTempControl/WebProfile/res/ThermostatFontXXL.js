@@ -25,9 +25,9 @@
 *******************************************************************************/
 
 var EmWiApp;if(!EmWiApp)throw new Error("The application file '_project.js' isn't yet loaded!"
-);if(EmWiApp.acn)throw new Error("The file file 'ThermostatFontXXL.js' included twice!"
+);if(EmWiApp.aco)throw new Error("The file file 'ThermostatFontXXL.js' included twice!"
 );
-EmWiApp.acn=[57,15,0,16,14,14,"\
+EmWiApp.aco=[57,15,0,16,14,14,"\
 \u0000\u8003\u7FD5\u0015\u002B\u801B\u0000\u0000\u002E\u8004\u7FFB\u0006\u0005\u800E\u0000\u0780\
 \u0030\u8003\u7FD5\u001B\u002C\u8021\u0000\u07F3\u0031\u8005\u7FD5\u0010\u002B\u8021\u0000\u1058\
 \u0032\u8003\u7FD5\u001C\u002B\u8021\u0000\u13E8\u0033\u8002\u7FD5\u001C\u002C\u8021\u0000\u1C6A\

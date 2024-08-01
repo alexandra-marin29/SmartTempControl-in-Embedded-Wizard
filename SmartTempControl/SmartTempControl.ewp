@@ -123,6 +123,6 @@ profile WebGL : Web.WebGL.RGBA8888
   attr FontConversion = Windows;
   attr CleanOutputDirectories = false;
   attr Obfuscation = true;
-  attr OutputDirectory = .\Profile;
+  attr OutputDirectory = .\WebProfile;
   attr ApplicationClass = Application::Application;
 }
