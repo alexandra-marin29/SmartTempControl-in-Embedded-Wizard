@@ -3,7 +3,7 @@
 // Device Class
 note group GlobalsNote
 {
-  attr Bounds = <-70,279,170,439>;
+  attr Bounds = <-70,279,170,480>;
 }
 
 // Constants
@@ -367,47 +367,6 @@ class DeviceClass : Templates::DeviceClass
     $endif
 
     notifyobservers ^SwingMode;
-  }
-
-  $rect <20,340,220,380>
-  slot ChangeActualTemp
-  {
-    var int32 temp = ActualTemp;
-
-    if(SettingNo ==0)
-      NominalTemp = 215;
-    if(SettingNo ==1)
-      NominalTemp = 190;
-    if(SettingNo == 2)
-      NominalTemp = 170;
-
-    if(SwingMode==true){
-        if(FanSpeed>30 && FanSpeed < 50)
-          NominalTemp = NominalTemp-10;
-        if(FanSpeed>50)
-          NominalTemp = NominalTemp -20;
-    }
-    if ( temp < NominalTemp)
-      temp = temp + 1;
-    else if ( temp > NominalTemp )
-      temp = temp - 1;
-
-    UpdateActualTemp( temp );
-
-  }
-
-  $rect <220,340,420,380>
-  object Core::Timer ChangeTempTimer
-  {
-    preset OnTrigger = ChangeActualTemp;
-    preset Period = 350;
-    preset Enabled = true;
-  }
-
-  // Temperature
-  note group TemperatureNote
-  {
-    attr Bounds = <10,290,440,400>;
   }
 
   $rect <220,220,420,260>
@@ -1688,7 +1647,7 @@ class Thermostat : Core::Group
   {
     sender;
 
-    Exit.Visible = true;
+    Exit.Visible = false;
     TouchHandlerCancel.Enabled=false;
 
 
@@ -1853,7 +1812,7 @@ resource Resources::Bitmap BackgroundDefault
 // Widgets
 note group Note1
 {
-  attr Bounds = <170,110,519,439>;
+  attr Bounds = <170,110,519,470>;
 }
 
 // Screens and Temperature Controller
@@ -2465,6 +2424,51 @@ class Exit : Core::Group
   }
 }
 
+$rect <-50,410,150,450>
+vclass DeviceClass1 : Thermostat::DeviceClass
+{
+  $rect <40,50,240,90>
+  slot ChangeActualTemp
+  {
+    var int32 temp = ActualTemp;
+
+    if(SettingNo ==0)
+      NominalTemp = 215;
+    if(SettingNo ==1)
+      NominalTemp = 190;
+    if(SettingNo == 2)
+      NominalTemp = 170;
+
+    if(SwingMode==true){
+        if(FanSpeed>30 && FanSpeed < 50)
+          NominalTemp = NominalTemp-10;
+        if(FanSpeed>50)
+          NominalTemp = NominalTemp -20;
+    }
+    if ( temp < NominalTemp)
+      temp = temp + 1;
+    else if ( temp > NominalTemp )
+      temp = temp - 1;
+
+    UpdateActualTemp( temp );
+
+  }
+
+  $rect <40,90,240,130>
+  object Core::Timer ChangeTempTimer
+  {
+    preset OnTrigger = ChangeActualTemp;
+    preset Period = 350;
+    preset Enabled = true;
+  }
+
+  // Temperature
+  note group Note
+  {
+    attr Bounds = <10,-30,310,170>;
+  }
+}
+
 // Directives to adapt the order of the above members according to how these members 
 // where arranged when the project content was stored. In this manner the storage 
 // and the expected order of the members don't depend. Merging of changes in the 
@@ -2523,3 +2527,4 @@ $member ExitScreen
 $member ChoiceButton
 $member ExitDialog
 $member Exit
+$member DeviceClass1
