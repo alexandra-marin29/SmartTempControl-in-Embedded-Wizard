@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::Interface;
+attr active = Thermostat::ThermostatApp;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
+attr currentCodeInspector = Thermostat::Interface.OffButtonPressed;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -36,7 +36,7 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-103,-167>;
+  attr scrollTo = <-103,-235>;
   attr zoom = 0.75;
 }
 
@@ -56,14 +56,14 @@ view class Thermostat::Logo
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-352,-26>;
+  attr scrollTo = <432,-26>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::Interface
 {
   attr enableWireMode = false;
-  attr scrollTo = <-115,-56>;
+  attr scrollTo = <333,-24>;
   attr zoom = 0.75;
 }
 
@@ -78,6 +78,20 @@ view class Thermostat::DefaultThermostat
 {
   attr enableWireMode = false;
   attr scrollTo = <-7,9>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::Exit
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,265>;
+  attr zoom = 1.0;
+}
+
+view class Thermostat::ThermostatApp
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,329>;
   attr zoom = 1.0;
 }
 
@@ -119,4 +133,12 @@ codeview Thermostat::Interface.GoBackFromFan
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <55,2>;
   attr codeSelStart = <55,2>;
+}
+
+codeview Thermostat::Interface.OffButtonPressed
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <41,4>;
+  attr codeSelStart = <41,4>;
 }

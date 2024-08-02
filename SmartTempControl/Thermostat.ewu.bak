@@ -1159,59 +1159,26 @@ class Thermostat : Core::Group
   slot DefaultThermSlot
   {
     sender;
-    DefaultThermostat.Opacity = 0x00;
-    FadeEffectManual.Enabled = false;
-
 
     Thermostat::Device.SettingNo= 3;
-    Exit.Visible=false;
-    Background.Visible=false;
-    Overlay.Visible=false;
-    ToggleButton.Visible=false;
-    ToggleButton.Enabled=false;
-    RadioDay.Visible=false;
-    RadioDay.Enabled=false;
-    RadioNight.Enabled=false;
-    RadioNight.Visible=false;
-    RadioVacation.Enabled=false;
-    RadioVacation.Visible=false;
-    FilledRectangle.Visible=false;
-    TemperatureController.Visible=false;
-    TemperatureController.Enabled=false;
-    OnOffButtonText.Visible=false;
-    Clock.Visible = false;
-    Default.Visible = false;
-    Default.Enabled=false;
-    Settings.Enabled=false;
-    Settings.Visible = false;
-    ExitLanguage.Enabled=false;
     TouchHandlerLanguage.Enabled=false;
-    GoBackTouchHandler.Enabled=false;
-    SimpleTouchHandlerFanMode.Enabled=false;
-    FanTouchHandler.Enabled=false;
-    Exit.Visible=false;
 
-
-    DefaultThermostat.StackingPriority=1;
-    DefaultThermostat.Visible = true;
-    DefaultThermostat.Enabled=true;
-    GoBackTouchHandler.Enabled=true;
-    FadeEffectManual.Enabled = true;
-    RadioPowerOff.Visible=true;
-    RadioPowerOff.Enabled=true;
+    Settings.Enabled=false;
+    Romanian.Enabled=false;
+    TemperatureController.Enabled=false;
+    var Core::Group newDialog = new Thermostat::DefaultThermostat;
+    var Effects::Transition transition1 = FadeTransition;
+    SwitchToDialog(newDialog,transition1, null, null, null, null, null, null,null, null, false );
     Device.FanSpeed=15;
-    Device.SwingMode=false;
-
-
   }
 
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler GoBackTouchHandler
   {
-    preset Point4 = <0,3>;
-    preset Point3 = <100,3>;
-    preset Point2 = <100,103>;
-    preset Point1 = <0,103>;
+    preset Point4 = <0,207>;
+    preset Point3 = <66,207>;
+    preset Point2 = <66,282>;
+    preset Point1 = <0,282>;
     preset OnPress = GoBackSlot;
   }
 
@@ -1224,8 +1191,7 @@ class Thermostat : Core::Group
     FilledRectangle.Color=#000000FF;
 
     var Core::Group newDialog1 = new Thermostat::Thermostat;
-    var Effects::Transition exitTransition = FadeTransition;
-    SwitchToDialog(newDialog1,exitTransition, null, null, null, null, null, null,null, null, false );
+    SwitchToDialog(newDialog1,null, null, null, null, null, null, null,null, null, false );
 
 
     RadioDay.Selected=true;
@@ -1284,14 +1250,14 @@ class Thermostat : Core::Group
     attr Bounds = <1350,0,1830,330>;
   }
 
-  $rect <1060,100,1260,140>
+  $rect <1060,111,1260,151>
   object Effects::ColorEffect RectangleEffect
   {
     preset NoOfCycles = 1;
     preset CycleDuration = 800;
     preset InitialDelay = 0;
     preset Value2 = #000000FF;
-    preset Value1 = #00000000;
+    preset Value1 = #000000FF;
     preset Outlet = ^FilledRectangle.Color;
   }
 
@@ -1462,7 +1428,7 @@ class Thermostat : Core::Group
     preset Bounds = <0,0,800,480>;
   }
 
-  $rect <1060,140,1310,180>
+  $rect <1060,150,1310,190>
   object Effects::FadeInOutTransition FadeTransition;
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1472,8 +1438,8 @@ class Thermostat : Core::Group
   $member Bounds
   $member FilledBackground
   $member Exit
-  $member DefaultThermostat
   $member GoBackTouchHandler
+  $member DefaultThermostat
   $member Background
   $member Overlay
   $member RadioPowerOff
@@ -1699,7 +1665,7 @@ class DefaultThermostat : Core::Group
   $rect <20,20,160,60>
   object Views::Image GoBackArrow
   {
-    preset Bounds = <11,8,67,68>;
+    preset Bounds = <0,204,73,276>;
     preset Bitmap = Thermostat::GoBackArrow;
   }
 
