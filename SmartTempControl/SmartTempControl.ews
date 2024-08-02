@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat;
+attr active = Thermostat::Interface;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Thermostat.GoBackSlot;
+attr currentCodeInspector = Thermostat::Thermostat.DefaultThermSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -42,6 +42,7 @@ view unit Thermostat
 
 view class Thermostat::TemperatureController
 {
+  attr enableWireMode = false;
   attr scrollTo = <-135,2>;
   attr zoom = 0.75;
 }
@@ -55,14 +56,28 @@ view class Thermostat::Logo
 view class Thermostat::Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <496,-26>;
+  attr scrollTo = <-352,-26>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::Interface
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-115,-56>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::FanMode
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,10>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::DefaultThermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-7>;
+  attr scrollTo = <-7,9>;
   attr zoom = 1.0;
 }
 
@@ -70,14 +85,38 @@ codeview Thermostat::Thermostat.DefaultThermSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <53,4>;
-  attr codeSelStart = <53,4>;
+  attr codeSelEnd = <36,7>;
+  attr codeSelStart = <36,7>;
 }
 
 codeview Thermostat::Thermostat.GoBackSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <29,13>;
-  attr codeSelStart = <29,13>;
+  attr codeSelEnd = <30,6>;
+  attr codeSelStart = <30,6>;
+}
+
+codeview Core::Group.Add
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <2,1>;
+  attr codeSelStart = <2,1>;
+}
+
+codeview Thermostat::Interface.FanSelected
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <22,6>;
+  attr codeSelStart = <22,6>;
+}
+
+codeview Thermostat::Interface.GoBackFromFan
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <55,2>;
+  attr codeSelStart = <55,2>;
 }
