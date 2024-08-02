@@ -1548,7 +1548,7 @@ resource Resources::Bitmap HeatSplashScreen
   attr bitmapmode Mode = Default;
 }
 
-$rect <300,-160,500,-120>
+$rect <270,-80,470,-40>
 $output false
 class DefaultThermostat : Core::Group
 {
@@ -1710,7 +1710,7 @@ resource Resources::Bitmap VertBar
   attr bitmapmode Mode = Default;
 }
 
-$rect <300,-119,500,-79>
+$rect <270,-39,470,1>
 $output false
 class FanMode : Core::Group
 {
@@ -1883,7 +1883,7 @@ class Settings : Core::Group
   }
 }
 
-$rect <300,-199,500,-159>
+$rect <300,-160,500,-120>
 $output false
 class ExitScreen : Core::Group
 {
@@ -1966,7 +1966,7 @@ resource Resources::Bitmap ChoiceButton
   attr bitmapmode Mode = Default;
 }
 
-$rect <300,-80,500,-40>
+$rect <300,-119,500,-79>
 $output false
 class ExitDialog : Core::Group
 {
@@ -2014,7 +2014,7 @@ class ExitDialog : Core::Group
   }
 }
 
-$rect <300,-39,500,1>
+$rect <260,-199,460,-159>
 $output false
 class Exit : Core::Group
 {
@@ -2048,10 +2048,14 @@ class Exit : Core::Group
   slot SlotYesPressed
   {
     sender;
-    ExitScreen.Visible=false;
-    ExitScreen.Enabled=false;
-    ExitDialog.Visible=true;
+    var Core::Group newDialog = new Thermostat::ExitDialog;
+    var Effects::Transition transition6 = FadeTransition;
+    SwitchToDialog(newDialog,transition6, null, null, null, null, null, null,null, null, false );
+
   }
+
+  $rect <820,90,1070,130>
+  object Effects::FadeInOutTransition FadeTransition;
 }
 
 $rect <-50,410,150,450>

@@ -28,14 +28,14 @@ var EmWiCompr_13_04;var EmWiApp;if(!EmWiCompr_13_04)throw new Error("The Embedde
 );if(EmWiApp)throw new Error("The application file '_project.js' included twice!"
 );EmWiApp=(function(){var B={__proto__:EmWiCompr_13_04};
 B.Default=0;
-B.abC=[800,480];B.rs=function(){return B.kR.Kv;};B.zU="";B.o7=0;B.wA=0;B.j0=[];B.
-_Init=function(){B.Core._Init();B.aci._Init();B.Graphics._Init();B.acg._Init();B.
-acf._Init();B.kR._Init();B.Thermostat._Init();B.acj._Init();B.ach._Init();B.Clock.
+B.abC=[800,480];B.rs=function(){return B.kR.LT;};B.zU="";B.o7=0;B.wA=0;B.j0=[];B.
+_Init=function(){B.Core._Init();B.ach._Init();B.Graphics._Init();B.acg._Init();B.
+acf._Init();B.kR._Init();B.Thermostat._Init();B.acj._Init();B.aci._Init();B.Clock.
 _Init();this.__proto__._Init.apply(this,arguments);};B._ReInit=function(){B.Core.
-_ReInit();B.aci._ReInit();B.Graphics._ReInit();B.acg._ReInit();B.acf._ReInit();B.
-kR._ReInit();B.Thermostat._ReInit();B.acj._ReInit();B.ach._ReInit();B.Clock._ReInit(
-);};B.abA=function(E){B.Core.Cn(E);B.aci.Cn(E);B.Graphics.Cn(E);B.acg.Cn(E);B.acf.
-Cn(E);B.kR.Cn(E);B.Thermostat.Cn(E);B.acj.Cn(E);B.ach.Cn(E);B.Clock.Cn(E);};return B;
+_ReInit();B.ach._ReInit();B.Graphics._ReInit();B.acg._ReInit();B.acf._ReInit();B.
+kR._ReInit();B.Thermostat._ReInit();B.acj._ReInit();B.aci._ReInit();B.Clock._ReInit(
+);};B.abA=function(E){B.Core.Cx(E);B.ach.Cx(E);B.Graphics.Cx(E);B.acg.Cx(E);B.acf.
+Cx(E);B.kR.Cx(E);B.Thermostat.Cx(E);B.acj.Cx(E);B.aci.Cx(E);B.Clock.Cx(E);};return B;
 })();
 
 /* Embedded Wizard */

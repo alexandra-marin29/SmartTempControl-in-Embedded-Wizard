@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::ThermostatApp;
+attr active = Thermostat::Exit;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::ThermostatApp.CancelButtonPressed;
+attr currentCodeInspector = Thermostat::Exit.SlotYesPressed;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -17,7 +17,7 @@ attr extractDoc_Variants = false;
 attr generateClut_ReservedColors = 0;
 attr heapMonitor_Show = false;
 attr language = Default;
-attr profile = Win32;
+attr profile = WebGL;
 attr profilerMonitor_Show = false;
 attr search_CaseSensitive = false;
 attr search_IgnoreDescription = false;
@@ -28,7 +28,6 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,89>;
   attr zoom = 1.0;
 }
@@ -36,43 +35,46 @@ view Project
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-141,-214>;
+  attr scrollTo = <-141,-246>;
   attr zoom = 0.75;
 }
 
 view class Thermostat::ThermostatApp
 {
   attr enableWireMode = false;
-  attr scrollTo = <869,17>;
-  attr zoom = 1.25;
+  attr scrollTo = <-150,-109>;
+  attr zoom = 0.5;
 }
 
 view class Thermostat::Interface
 {
-  attr enableWireMode = false;
   attr scrollTo = <-151,-71>;
   attr zoom = 0.5;
 }
 
 view class Thermostat::Thermostat
 {
-  attr enableWireMode = false;
   attr scrollTo = <313,-71>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::DefaultThermostat
 {
-  attr enableWireMode = false;
   attr scrollTo = <217,-7>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::TemperatureController
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 0.5;
+}
+
+view class Thermostat::Exit
+{
+  attr enableWireMode = false;
+  attr scrollTo = <505,-7>;
+  attr zoom = 1.0;
 }
 
 codeview Thermostat::Interface.GoBackFromFan
@@ -169,4 +171,12 @@ codeview Thermostat::Thermostat.ChangeLanguageEnglish
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <40,6>;
   attr codeSelStart = <40,6>;
+}
+
+codeview Thermostat::Exit.SlotYesPressed
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <36,3>;
+  attr codeSelStart = <36,3>;
 }
