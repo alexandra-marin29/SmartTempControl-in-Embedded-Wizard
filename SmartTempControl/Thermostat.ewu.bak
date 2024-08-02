@@ -438,7 +438,7 @@ resource Resources::Bitmap Controller
   attr bitmapmode Mode = Default;
 }
 
-$rect <-40,-30,200,10>
+$rect <0,-80,240,-40>
 $output false
 class TemperatureController : Core::Group
 {
@@ -994,7 +994,7 @@ resource Resources::Font FontXXL
   attr fontrowdistance RowDistance;
 }
 
-$rect <-40,-70,200,-30>
+$rect <-10,-119,230,-79>
 $output false
 class Thermostat : Core::Group
 {
@@ -1543,7 +1543,7 @@ note group Note1
 // Screens and Temperature Controller
 note group Note4
 {
-  attr Bounds = <-70,-140,519,110>;
+  attr Bounds = <-70,-240,519,110>;
 }
 
 // Fonts
@@ -1640,7 +1640,7 @@ resource Resources::Bitmap HeatSplashScreen
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,-60,430,-20>
+$rect <300,-160,500,-120>
 $output false
 class DefaultThermostat : Core::Group
 {
@@ -1737,7 +1737,7 @@ resource Resources::Bitmap GoBackArrow
   attr bitmapmode Mode = Default;
 }
 
-$rect <-39,10,200,50>
+$rect <0,0,239,40>
 $output false
 class Logo : Core::Group
 {
@@ -1803,7 +1803,7 @@ resource Resources::Bitmap VertBar
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,-20,430,20>
+$rect <300,-119,500,-79>
 $output false
 class FanMode : Core::Group
 {
@@ -1889,7 +1889,7 @@ resource Resources::Bitmap SettingsIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <-40,50,200,90>
+$rect <0,-39,240,1>
 $output false
 class Settings : Core::Group
 {
@@ -1976,7 +1976,7 @@ class Settings : Core::Group
   }
 }
 
-$rect <230,-100,430,-60>
+$rect <300,-199,500,-159>
 $output false
 class ExitScreen : Core::Group
 {
@@ -2059,7 +2059,7 @@ resource Resources::Bitmap ChoiceButton
   attr bitmapmode Mode = Default;
 }
 
-$rect <230,20,430,60>
+$rect <300,-80,500,-40>
 $output false
 class ExitDialog : Core::Group
 {
@@ -2107,7 +2107,7 @@ class ExitDialog : Core::Group
   }
 }
 
-$rect <230,60,430,100>
+$rect <300,-39,500,1>
 $output false
 class Exit : Core::Group
 {
@@ -2118,6 +2118,7 @@ class Exit : Core::Group
   object Thermostat::ExitDialog ExitDialog
   {
     preset Bounds = <0,0,800,480>;
+    preset Visible = false;
   }
 
   $rect <20,20,160,60>
@@ -2191,12 +2192,18 @@ vclass DeviceClass1 : Thermostat::DeviceClass
   }
 }
 
-$rect <-39,-110,161,-70>
+$rect <-20,-160,180,-120>
 $output false
 class Interface : Core::Group
 {
   $rect <830,10,1030,50>
   inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Thermostat::Exit Exit
+  {
+    preset Bounds = <0,0,800,480>;
+  }
 
   $rect <20,20,160,60>
   object Thermostat::FanMode FanMode
@@ -2230,7 +2237,7 @@ class Interface : Core::Group
     preset OnPress = FanSelected;
   }
 
-  $rect <839,80,1039,120>
+  $rect <1360,39,1561,79>
   slot FanSelected
   {
     sender;
@@ -2242,16 +2249,16 @@ class Interface : Core::Group
 
   }
 
-  $rect <830,130,1080,170>
+  $rect <1050,50,1300,90>
   object Effects::FadeInOutTransition FadeTransition;
 
-  $rect <830,170,1080,210>
+  $rect <1050,90,1300,130>
   object Effects::SlideTransition SlideTransition
   {
     preset Direction = Core::Direction.Right;
   }
 
-  $rect <839,210,1039,250>
+  $rect <1360,80,1560,120>
   slot GoBackFromFan
   {
     sender;
@@ -2260,6 +2267,46 @@ class Interface : Core::Group
     SwitchToDialog(newDialog,null, null, null, null, null, null, null,null, null, false );
 
   }
+
+  // Effects
+  note group Note
+  {
+    attr Bounds = <1030,0,1330,200>;
+  }
+
+  // Slot Methods
+  note group Note1
+  {
+    attr Bounds = <1340,0,1639,230>;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler OffButton
+  {
+    preset Point4 = <700,0>;
+    preset Point3 = <800,0>;
+    preset Point2 = <800,82>;
+    preset Point1 = <700,82>;
+    preset OnPress = OffButtonPressed;
+  }
+
+  $rect <1360,119,1560,159>
+  slot OffButtonPressed
+  {
+    sender;
+    var Core::Group newDialog = new Thermostat::Exit;
+    var Effects::Transition transition4 = FadeTransition;
+    SwitchToDialog(newDialog,transition4, null, null, null, null, null, null,null, null, false );
+
+  }
+}
+
+$rect <-50,-199,150,-159>
+$output false
+class ThermostatApp : Core::Group
+{
+  $rect <10,230,210,270>
+  inherited property Bounds = <0,0,300,200>;
 }
 
 // Directives to adapt the order of the above members according to how these members 
@@ -2322,3 +2369,4 @@ $member ExitDialog
 $member Exit
 $member DeviceClass1
 $member Interface
+$member ThermostatApp

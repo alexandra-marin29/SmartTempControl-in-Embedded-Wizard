@@ -438,7 +438,7 @@ resource Resources::Bitmap Controller
   attr bitmapmode Mode = Default;
 }
 
-$rect <0,-80,240,-40>
+$rect <10,-80,250,-40>
 $output false
 class TemperatureController : Core::Group
 {
@@ -994,7 +994,7 @@ resource Resources::Font FontXXL
   attr fontrowdistance RowDistance;
 }
 
-$rect <-10,-119,230,-79>
+$rect <-20,-119,220,-79>
 $output false
 class Thermostat : Core::Group
 {
@@ -1241,13 +1241,13 @@ class Thermostat : Core::Group
   // Effects
   note group Note
   {
-    attr Bounds = <1050,0,1350,380>;
+    attr Bounds = <1050,0,1350,219>;
   }
 
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1350,0,1830,330>;
+    attr Bounds = <1350,0,1830,219>;
   }
 
   $rect <1060,111,1260,151>
@@ -1286,7 +1286,7 @@ class Thermostat : Core::Group
     preset OnPress = SlotLanguage;
   }
 
-  $rect <1590,80,1790,120>
+  $rect <1590,40,1790,80>
   slot SlotLanguage
   {
     sender;
@@ -1295,7 +1295,7 @@ class Thermostat : Core::Group
     English.Enabled=true;
   }
 
-  $rect <1590,121,1790,161>
+  $rect <1590,80,1790,120>
   slot SlotExitLanguage
   {
     sender;
@@ -1312,7 +1312,7 @@ class Thermostat : Core::Group
     preset OnPress = SlotExitLanguage;
   }
 
-  $rect <1590,160,1790,200>
+  $rect <1590,120,1790,160>
   slot ChangeLanguageRomanian
   {
     sender;
@@ -1355,7 +1355,7 @@ class Thermostat : Core::Group
     preset Enabled = false;
   }
 
-  $rect <1590,201,1790,241>
+  $rect <1590,160,1790,200>
   slot ChangeLanguageEnglish
   {
     sender;
@@ -1371,53 +1371,6 @@ class Thermostat : Core::Group
     Exit.ExitScreen.ExitText2.String="want to exit?";
     Exit.ExitDialog.Text.String="Goodbye!";
     English.Enabled=false;
-
-
-  }
-
-  $rect <1590,39,1790,79>
-  slot CancelPressed
-  {
-    sender;
-
-    Exit.Visible = false;
-    TouchHandlerCancel.Enabled=false;
-
-
-
-    Background.Visible=true;
-    Overlay.Visible=true;
-    ToggleButton.Visible=true;
-    ToggleButton.Enabled=true;
-    RadioDay.Visible=true;
-    RadioDay.Enabled=true;
-    RadioNight.Enabled=true;
-    RadioNight.Visible=true;
-    RadioVacation.Enabled=true;
-    RadioVacation.Visible=true;
-    TemperatureController.Visible=true;
-    OnOffButtonText.Visible=true;
-    Clock.Visible = true;
-    Default.Visible = true;
-    FilledRectangle.Visible=true;
-    DefaultThermostat.Visible=true;
-    RadioPowerOff.Visible=true;
-    FanMode.Visible=true;
-    Logo.Visible = true;
-    RadioPowerOff.Enabled=true;
-    Fan.Visible=true;
-    FanText.Visible=true;
-    FanTouchHandler.Enabled=true;
-    FanMode.Visible=false;
-    DefaultThermostat.Visible= false;
-    Default.Enabled=true;
-    English.Enabled=true;
-    Romanian.Enabled=true;
-
-    Settings.Enabled=true;
-    SettingsIcon.Visible=true;
-
-    FadeEffectPowerOff.Enabled = true;
 
 
   }
@@ -1475,7 +1428,6 @@ class Thermostat : Core::Group
   $member English
   $member Romanian
   $member ChangeLanguageEnglish
-  $member CancelPressed
   $member FadeTransition
 }
 
@@ -1737,7 +1689,7 @@ resource Resources::Bitmap GoBackArrow
   attr bitmapmode Mode = Default;
 }
 
-$rect <0,0,239,40>
+$rect <11,0,250,40>
 $output false
 class Logo : Core::Group
 {
@@ -1889,7 +1841,7 @@ resource Resources::Bitmap SettingsIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <0,-39,240,1>
+$rect <10,-39,250,1>
 $output false
 class Settings : Core::Group
 {
@@ -2192,18 +2144,12 @@ vclass DeviceClass1 : Thermostat::DeviceClass
   }
 }
 
-$rect <-20,-160,180,-120>
+$rect <-40,-160,160,-120>
 $output false
 class Interface : Core::Group
 {
   $rect <830,10,1030,50>
   inherited property Bounds = <0,0,800,480>;
-
-  $rect <20,20,160,60>
-  object Thermostat::Exit Exit
-  {
-    preset Bounds = <0,0,800,480>;
-  }
 
   $rect <20,20,160,60>
   object Thermostat::FanMode FanMode
@@ -2277,36 +2223,69 @@ class Interface : Core::Group
   // Slot Methods
   note group Note1
   {
-    attr Bounds = <1340,0,1639,230>;
+    attr Bounds = <1340,0,1639,199>;
+  }
+}
+
+$rect <-60,-199,140,-159>
+$output false
+class ThermostatApp : Core::Group
+{
+  $rect <830,0,1030,40>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Thermostat::Exit Exit
+  {
+    preset Bounds = <0,0,800,480>;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler CancelButton
+  {
+    preset Point4 = <322,328>;
+    preset Point3 = <528,328>;
+    preset Point2 = <528,408>;
+    preset Point1 = <322,408>;
+    preset OnPress = CancelButtonPressed;
+  }
+
+  $rect <20,20,160,60>
+  object Thermostat::Interface Interface
+  {
+    preset Bounds = <0,0,800,480>;
   }
 
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler OffButton
   {
-    preset Point4 = <700,0>;
-    preset Point3 = <800,0>;
-    preset Point2 = <800,82>;
-    preset Point1 = <700,82>;
+    preset Point4 = <699,-1>;
+    preset Point3 = <799,-1>;
+    preset Point2 = <798,80>;
+    preset Point1 = <699,80>;
     preset OnPress = OffButtonPressed;
   }
 
-  $rect <1360,119,1560,159>
+  $rect <830,50,1030,90>
   slot OffButtonPressed
   {
     sender;
     var Core::Group newDialog = new Thermostat::Exit;
-    var Effects::Transition transition4 = FadeTransition;
+    var Effects::Transition transition4 = Interface.FadeTransition;
     SwitchToDialog(newDialog,transition4, null, null, null, null, null, null,null, null, false );
-
+    Interface.Enabled=false;
+    CancelButton.Enabled=true;
   }
-}
 
-$rect <-50,-199,150,-159>
-$output false
-class ThermostatApp : Core::Group
-{
-  $rect <10,230,210,270>
-  inherited property Bounds = <0,0,300,200>;
+  $rect <830,99,1030,139>
+  slot CancelButtonPressed
+  {
+    sender;
+    var Core::Group newDialog = new Thermostat::Interface;
+    var Effects::Transition transition4 = Interface.FadeTransition;
+    SwitchToDialog(newDialog,transition4, null, null, null, null, null, null,null, null, false );
+    CancelButton.Enabled=false;
+  }
 }
 
 // Directives to adapt the order of the above members according to how these members 

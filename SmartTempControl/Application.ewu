@@ -8,8 +8,11 @@ class Application : Core::Root
   $rect <0,500,200,540>
   inherited property Bounds = <0,0,800,480>;
 
-  $rect <30,60,230,100>
-  object Thermostat::Thermostat Thermostat;
+  $rect <20,20,160,60>
+  object Thermostat::ThermostatApp ThermostatApp
+  {
+    preset Bounds = <0,0,800,480>;
+  }
 }
 
 // Application class
