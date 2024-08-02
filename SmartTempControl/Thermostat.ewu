@@ -1129,6 +1129,7 @@ class Thermostat : Core::Group
   object Thermostat::DefaultThermostat DefaultThermostat
   {
     preset Bounds = <-3,0,797,480>;
+    preset Enabled = false;
   }
 
   $rect <20,20,160,60>
@@ -1244,7 +1245,7 @@ class Thermostat : Core::Group
     attr Bounds = <1350,0,1830,219>;
   }
 
-  $rect <1060,111,1260,151>
+  $rect <1060,100,1260,140>
   object Effects::ColorEffect RectangleEffect
   {
     preset NoOfCycles = 1;
@@ -1294,6 +1295,8 @@ class Thermostat : Core::Group
   {
     sender;
     Settings.Visible=false;
+    English.Enabled=false;
+    Romanian.Enabled=false;
   }
 
   $rect <20,20,160,60>
@@ -1316,12 +1319,6 @@ class Thermostat : Core::Group
     FanText.String="VENTILATOR";
     OnOffButtonText.String="PORNIRE VENTILATOR";
     Settings.TextLanguage.String="Limba";
-    Exit.ExitScreen.CancelText.String="Anulare";
-    Exit.ExitScreen.YesText.String="Da";
-    Exit.ExitScreen.ExitText.String ="Sunteti sigur ca ";
-    Exit.ExitScreen.ExitText2.String="doriti sa iesiti?";
-    Exit.ExitDialog.Text.String="La revedere!";
-    Romanian.Enabled=false;
 
 
 
@@ -1359,12 +1356,6 @@ class Thermostat : Core::Group
     FanText.String="FAN";
     OnOffButtonText.String="ENABLE FAN";
     Settings.TextLanguage.String="Language";
-    Exit.ExitScreen.CancelText.String="Cancel";
-    Exit.ExitScreen.YesText.String="Yes";
-    Exit.ExitScreen.ExitText.String ="Are you sure you";
-    Exit.ExitScreen.ExitText2.String="want to exit?";
-    Exit.ExitDialog.Text.String="Goodbye!";
-    English.Enabled=false;
 
 
   }
@@ -1375,7 +1366,7 @@ class Thermostat : Core::Group
     preset Bounds = <0,0,800,480>;
   }
 
-  $rect <1060,150,1310,190>
+  $rect <1060,140,1310,180>
   object Effects::FadeInOutTransition FadeTransition;
 
   $rect <20,20,160,60>
@@ -2201,7 +2192,7 @@ $rect <-60,-199,140,-159>
 $output false
 class ThermostatApp : Core::Group
 {
-  $rect <830,0,1030,40>
+  $rect <819,0,1019,40>
   inherited property Bounds = <0,0,800,480>;
 
   $rect <20,20,160,60>
@@ -2229,14 +2220,14 @@ class ThermostatApp : Core::Group
   $rect <20,20,160,60>
   object Core::SimpleTouchHandler OffButton
   {
-    preset Point4 = <699,-1>;
+    preset Point4 = <723,-2>;
     preset Point3 = <799,-1>;
     preset Point2 = <798,80>;
-    preset Point1 = <699,80>;
+    preset Point1 = <723,80>;
     preset OnPress = OffButtonPressed;
   }
 
-  $rect <830,50,1030,90>
+  $rect <1040,50,1240,90>
   slot OffButtonPressed
   {
     sender;
@@ -2248,15 +2239,20 @@ class ThermostatApp : Core::Group
 
   }
 
-  $rect <830,99,1030,139>
+  $rect <1040,90,1240,130>
   slot CancelButtonPressed
   {
     sender;
     var Core::Group newDialog = new Thermostat::Interface;
-    var Effects::Transition transition4 = Interface.FadeTransition;
-    SwitchToDialog(newDialog,transition4, null, null, null, null, null, null,null, null, false );
+    SwitchToDialog(newDialog,null, null, null, null, null, null, null,null, null, false );
     CancelButton.Enabled=false;
     OffButton.Enabled=true;
+  }
+
+  // Slot Methods
+  note group Note
+  {
+    attr Bounds = <1019,-10,1319,190>;
   }
 }
 

@@ -1120,17 +1120,6 @@ class Thermostat : Core::Group
   }
 
   $rect <20,20,160,60>
-  object WidgetSet::RadioButton RadioPowerOff
-  {
-    preset Bounds = <735,16,779,60>;
-    preset OutletSelector = 1;
-    preset Outlet = null;
-    preset Icon = null;
-    preset Label = "";
-    preset Appearance = Thermostat::RadioButtonPowerOff;
-  }
-
-  $rect <20,20,160,60>
   object Clock::Clock Clock
   {
     preset Bounds = <397,347,634,414>;
@@ -1389,6 +1378,13 @@ class Thermostat : Core::Group
   $rect <1060,150,1310,190>
   object Effects::FadeInOutTransition FadeTransition;
 
+  $rect <20,20,160,60>
+  object Views::Image PowerOff
+  {
+    preset Bounds = <750,0,800,50>;
+    preset Bitmap = Thermostat::PowerOffIcon;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1400,7 +1396,6 @@ class Thermostat : Core::Group
   $member DefaultThermostat
   $member Background
   $member Overlay
-  $member RadioPowerOff
   $member ToggleButton
   $member RadioDay
   $member RadioNight
@@ -1434,6 +1429,7 @@ class Thermostat : Core::Group
   $member Romanian
   $member ChangeLanguageEnglish
   $member FadeTransition
+  $member PowerOff
 }
 
 $rect <770,-10,970,30>
@@ -1507,42 +1503,6 @@ note group Note4
 note group Note2
 {
   attr Bounds = <1010,-80,1240,120>;
-}
-
-$rect <210,350,450,390>
-$output false
-autoobject WidgetSet::RadioButtonConfig RadioButtonPowerOff
-{
-  preset LabelOnColorActive = #FFFFFFFF;
-  preset LabelOnColorFocused = #FFFFFFFF;
-  preset LabelOnColorDefault = #FFFFFFFF;
-  preset LabelOffColorActive = #FFFFFFFF;
-  preset LabelOffColorFocused = #FFFFFFFF;
-  preset LabelOffColorDefault = #FFFFFFFF;
-  preset LabelMarginLeft = 50;
-  preset LabelAlignment = Views::TextAlignment[AlignHorzLeft, AlignVertCenter];
-  preset LabelOnFont = Thermostat::FontL;
-  preset LabelOffFont = Thermostat::FontL;
-  preset FaceLayout = Core::Layout[AlignToBottom, AlignToLeft, AlignToTop];
-  preset FaceOnFrameActive = 1;
-  preset FaceOnFrameFocused = 1;
-  preset FaceOnFrameDisabled = 1;
-  preset FaceOnFrameDefault = 1;
-  preset FaceOnBitmapActive = Thermostat::PowerOffIcon;
-  preset FaceOnBitmapFocused = Thermostat::PowerOffIcon;
-  preset FaceOnBitmapDisabled = Thermostat::PowerOffIcon;
-  preset FaceOnBitmapDefault = Thermostat::PowerOffIcon;
-  preset FaceOffTintDefault = #FFFFFFFF;
-  preset FaceOffFrameActive = 0;
-  preset FaceOffFrameFocused = 0;
-  preset FaceOffFrameDisabled = 0;
-  preset FaceOffFrameDefault = 0;
-  preset FaceOffBitmapActive = Thermostat::PowerOffIcon;
-  preset FaceOffBitmapFocused = Thermostat::PowerOffIcon;
-  preset FaceOffBitmapDisabled = Thermostat::PowerOffIcon;
-  preset FaceOffBitmapDefault = Thermostat::PowerOffIcon;
-  preset WidgetMaxSize = <440,44>;
-  preset WidgetMinSize = <44,44>;
 }
 
 $rect <770,231,970,271>
@@ -1627,15 +1587,14 @@ class DefaultThermostat : Core::Group
   }
 
   $rect <20,20,160,60>
-  object WidgetSet::RadioButton PowerOff
+  object Views::Image PowerOff
   {
-    preset Bounds = <735,16,779,60>;
-    preset Label = "";
-    preset Appearance = Thermostat::RadioButtonPowerOff;
+    preset Bounds = <750,0,800,50>;
+    preset Bitmap = Thermostat::PowerOffIcon;
   }
 }
 
-$rect <210,390,450,430>
+$rect <210,350,450,390>
 $output false
 autoobject WidgetSet::RadioButtonConfig RadioButtonDefaultConfig
 {
@@ -2187,7 +2146,7 @@ class Interface : Core::Group
     preset Point2 = <727,279>;
     preset Point1 = <627,279>;
     preset OnPress = FanSelected;
-    preset Enabled = false;
+    preset Enabled = true;
   }
 
   $rect <1360,38,1562,79>
@@ -2286,6 +2245,7 @@ class ThermostatApp : Core::Group
     SwitchToDialog(newDialog,transition4, null, null, null, null, null, null,null, null, false );
     Interface.Enabled=false;
     CancelButton.Enabled=true;
+
   }
 
   $rect <830,99,1030,139>
@@ -2296,6 +2256,7 @@ class ThermostatApp : Core::Group
     var Effects::Transition transition4 = Interface.FadeTransition;
     SwitchToDialog(newDialog,transition4, null, null, null, null, null, null,null, null, false );
     CancelButton.Enabled=false;
+    OffButton.Enabled=true;
   }
 }
 
@@ -2335,7 +2296,6 @@ $member BackgroundDefault
 $member Note1
 $member Note4
 $member Note2
-$member RadioButtonPowerOff
 $member PowerOffIcon
 $member BackgroundVacation
 $member Vac
