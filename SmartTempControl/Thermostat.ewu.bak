@@ -1919,7 +1919,7 @@ $rect <230,-60,430,-20>
 $output false
 class DefaultThermostat : Core::Group
 {
-  $rect <850,10,1050,50>
+  $rect <830,-10,1030,30>
   inherited property Bounds = <0,0,800,480>;
 
   $rect <20,20,160,60>
@@ -2082,7 +2082,7 @@ $rect <230,-20,430,20>
 $output false
 class FanMode : Core::Group
 {
-  $rect <899,19,1099,59>
+  $rect <-10,510,190,550>
   inherited property Bounds = <0,0,800,480>;
 
   $rect <20,20,160,60>
@@ -2168,7 +2168,7 @@ $rect <-40,50,200,90>
 $output false
 class Settings : Core::Group
 {
-  $rect <430,0,630,40>
+  $rect <340,0,540,40>
   inherited property Bounds = <0,0,277,323>;
 
   $rect <20,20,160,60>
@@ -2196,7 +2196,7 @@ class Settings : Core::Group
     preset Appearance = RadioButtonConfigLanguage;
   }
 
-  $rect <430,50,670,90>
+  $rect <340,50,580,90>
   object WidgetSet::RadioButtonConfig RadioButtonConfigLanguage
   {
     preset LabelOnColorActive = Thermostat::Hot;
@@ -2229,10 +2229,10 @@ class Settings : Core::Group
     preset Font = Thermostat::FontL;
   }
 
-  $rect <440,150,640,190>
+  $rect <340,90,540,130>
   property int32 Language = 1;
 
-  $rect <440,190,640,230>
+  $rect <340,130,540,170>
   onset Language
   {
     // The value doesn't change - nothing to do.
@@ -2242,12 +2242,9 @@ class Settings : Core::Group
     // Remember the property's new value.
     pure Language = value;
 
-    // TO DO:
-    // 
-    // Now you can handle the alternation of the property.
   }
 
-  $rect <440,230,640,270>
+  $rect <330,170,530,210>
   onget Language
   {
     return pure Language;
@@ -2341,7 +2338,7 @@ $rect <230,20,430,60>
 $output false
 class ExitDialog : Core::Group
 {
-  $rect <810,0,1010,40>
+  $rect <840,-10,1040,30>
   inherited property Bounds = <0,0,800,480>;
 
   $rect <20,20,160,60>
@@ -2373,7 +2370,7 @@ class ExitDialog : Core::Group
     preset Font = Thermostat::FontL;
   }
 
-  $rect <819,70,1019,110>
+  $rect <840,40,1040,80>
   object Effects::ColorEffect ColorEffect
   {
     preset NoOfCycles = 0;
