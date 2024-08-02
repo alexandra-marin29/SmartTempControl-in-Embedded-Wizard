@@ -1160,6 +1160,9 @@ class Thermostat : Core::Group
   {
     sender;
 
+    DefaultThermostat.Enabled=true;
+    GoBackTouchHandler.Enabled=true;
+
     Thermostat::Device.SettingNo= 3;
     TouchHandlerLanguage.Enabled=false;
 
@@ -1180,6 +1183,7 @@ class Thermostat : Core::Group
     preset Point2 = <66,282>;
     preset Point1 = <0,282>;
     preset OnPress = GoBackSlot;
+    preset Enabled = false;
   }
 
   $rect <1371,160,1570,200>
@@ -1198,6 +1202,7 @@ class Thermostat : Core::Group
     Device.SettingNo=0;
     TouchHandlerLanguage.Enabled=true;
     RectangleEffect.Enabled=true;
+    DefaultThermostat.Enabled=false;
   }
 
   $rect <20,20,160,60>
@@ -2165,6 +2170,7 @@ class Interface : Core::Group
     preset Point2 = <100,279>;
     preset Point1 = <0,279>;
     preset OnPress = GoBackFromFan;
+    preset Enabled = false;
   }
 
   $rect <20,20,160,60>
@@ -2181,17 +2187,21 @@ class Interface : Core::Group
     preset Point2 = <727,279>;
     preset Point1 = <627,279>;
     preset OnPress = FanSelected;
+    preset Enabled = false;
   }
 
-  $rect <1360,39,1561,79>
+  $rect <1360,38,1562,79>
   slot FanSelected
   {
     sender;
     Thermostat.Enabled=false;
+    FanMode.Enabled=true;
+    GoBackFanMode.Enabled=true;
     Thermostat.DefaultThermostat.Enabled=false;
     var Core::Group newDialog = new Thermostat::FanMode;
     var Effects::Transition transition2 = SlideTransition;
     SwitchToDialog(newDialog,transition2, null, null, null, null, null, null,null, null, false );
+
 
   }
 
@@ -2211,7 +2221,8 @@ class Interface : Core::Group
     Thermostat.Enabled=true;
     var Core::Group newDialog = new Thermostat::Thermostat;
     SwitchToDialog(newDialog,null, null, null, null, null, null, null,null, null, false );
-
+    FanMode.Enabled=false;
+    GoBackFanMode.Enabled=false;
   }
 
   // Effects
