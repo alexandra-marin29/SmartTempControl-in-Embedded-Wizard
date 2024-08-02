@@ -28,7 +28,7 @@ var EmWiApp;if(!EmWiApp)throw new Error("The application file '_project.js' isn'
 );if(EmWiApp.acj)throw new Error("The unit file 'Templates.js' included twice!");
 EmWiApp.acj=(function(){var B=EmWiApp;var D={};
 
-D.Ec={_Init:function(aArg){this.__proto__=D.Ec;B.h7++;},_Done:function(){this.__proto__=
+D.Ed={_Init:function(aArg){this.__proto__=D.Ed;B.h7++;},_Done:function(){this.__proto__=
 null;B.h7--;},_ReInit:function(){},_Mark:function(E){var A;if((A=this.J)&&(A._cycle
 !=E))A._Mark(A._cycle=E);},J:null,_cycle:0,_observers:null,_className:"Templates::DeviceClass"
 };
