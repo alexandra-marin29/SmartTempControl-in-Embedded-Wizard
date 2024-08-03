@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Thermostat::Exit;
+attr active = Thermostat::ThermostatApp;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Thermostat::Exit.SlotYesPressed;
+attr currentCodeInspector = Clock::Clock.updateSlot;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -28,155 +28,57 @@ attr search_WildCards = false;
 
 view Project
 {
-  attr scrollTo = <-7,89>;
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
   attr zoom = 1.0;
 }
 
 view unit Thermostat
 {
   attr enableWireMode = false;
-  attr scrollTo = <-141,-246>;
-  attr zoom = 0.75;
-}
-
-view class Thermostat::ThermostatApp
-{
-  attr enableWireMode = false;
-  attr scrollTo = <-150,-109>;
-  attr zoom = 0.5;
-}
-
-view class Thermostat::Interface
-{
-  attr scrollTo = <-151,-71>;
-  attr zoom = 0.5;
-}
-
-view class Thermostat::Thermostat
-{
-  attr scrollTo = <313,-71>;
+  attr scrollTo = <-231,-311>;
   attr zoom = 1.0;
 }
 
-view class Thermostat::DefaultThermostat
+view class Thermostat::Settings
 {
-  attr scrollTo = <217,-7>;
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-39>;
   attr zoom = 1.0;
 }
 
 view class Thermostat::TemperatureController
 {
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-103>;
+  attr zoom = 0.75;
+}
+
+view class Thermostat::Thermostat
+{
+  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
   attr zoom = 0.5;
 }
 
-view class Thermostat::Exit
+view class Thermostat::Fan
 {
   attr enableWireMode = false;
-  attr scrollTo = <505,-7>;
-  attr zoom = 1.0;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 0.5;
 }
 
-codeview Thermostat::Interface.GoBackFromFan
+view class Thermostat::ThermostatApp
 {
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <9,5>;
-  attr codeSelStart = <9,5>;
+  attr enableWireMode = false;
+  attr scrollTo = <297,-23>;
+  attr zoom = 0.75;
 }
 
-codeview Thermostat::Interface.FanSelected
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <25,2>;
-  attr codeSelStart = <25,2>;
-}
-
-codeview Thermostat::Thermostat.GoBackSlot
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <32,13>;
-  attr codeSelStart = <32,13>;
-}
-
-codeview Thermostat::Thermostat.DefaultThermSlot
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <7,2>;
-  attr codeSelStart = <7,2>;
-}
-
-codeview Thermostat::ThermostatApp.CancelButtonPressed
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <29,2>;
-  attr codeSelStart = <29,2>;
-}
-
-codeview Thermostat::ThermostatApp.OffButtonPressed
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <26,5>;
-  attr codeSelStart = <26,5>;
-}
-
-codeview Thermostat::Thermostat.onSettingChanged
+codeview Clock::Clock.updateSlot
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <0,0>;
   attr codeSelStart = <0,0>;
-}
-
-codeview Thermostat::Thermostat.changeBackFinished
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Thermostat::Thermostat.SlotExitLanguage
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <23,3>;
-  attr codeSelStart = <23,3>;
-}
-
-codeview Thermostat::Thermostat.SlotLanguage
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <22,3>;
-  attr codeSelStart = <22,3>;
-}
-
-codeview Thermostat::Thermostat.ChangeLanguageRomanian
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <37,6>;
-  attr codeSelStart = <37,6>;
-}
-
-codeview Thermostat::Thermostat.ChangeLanguageEnglish
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <40,6>;
-  attr codeSelStart = <40,6>;
-}
-
-codeview Thermostat::Exit.SlotYesPressed
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <36,3>;
-  attr codeSelStart = <36,3>;
 }

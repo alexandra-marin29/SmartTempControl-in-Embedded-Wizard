@@ -1828,7 +1828,7 @@ class Settings : Core::Group
     preset Appearance = RadioButtonConfigLanguage;
   }
 
-  $rect <340,50,580,90>
+  $rect <550,0,790,40>
   object WidgetSet::RadioButtonConfig RadioButtonConfigLanguage
   {
     preset LabelOnColorActive = Thermostat::Hot;
@@ -2061,7 +2061,7 @@ class Exit : Core::Group
 $rect <-50,410,150,450>
 vclass DeviceClass1 : Thermostat::DeviceClass
 {
-  $rect <40,50,240,90>
+  $rect <290,110,490,150>
   slot ChangeActualTemp
   {
     var int32 temp = ActualTemp;
@@ -2088,7 +2088,7 @@ vclass DeviceClass1 : Thermostat::DeviceClass
 
   }
 
-  $rect <40,90,240,130>
+  $rect <290,160,490,200>
   object Core::Timer ChangeTempTimer
   {
     preset OnTrigger = ChangeActualTemp;
@@ -2099,13 +2099,13 @@ vclass DeviceClass1 : Thermostat::DeviceClass
   // Temperature
   note group Note
   {
-    attr Bounds = <10,-30,310,170>;
+    attr Bounds = <260,60,560,260>;
   }
 }
 
 $rect <-40,-160,160,-120>
 $output false
-class Interface : Core::Group
+class Fan : Core::Group
 {
   $rect <830,10,1030,50>
   inherited property Bounds = <0,0,800,480>;
@@ -2216,7 +2216,7 @@ class ThermostatApp : Core::Group
   }
 
   $rect <20,20,160,60>
-  object Thermostat::Interface Interface
+  object Thermostat::Fan Interface
   {
     preset Bounds = <0,0,800,480>;
   }
@@ -2247,7 +2247,7 @@ class ThermostatApp : Core::Group
   slot CancelButtonPressed
   {
     sender;
-    var Core::Group newDialog = new Thermostat::Interface;
+    var Core::Group newDialog = new Thermostat::Fan;
     SwitchToDialog(newDialog,null, null, null, null, null, null, null,null, null, false );
     CancelButton.Enabled=false;
     OffButton.Enabled=true;
@@ -2318,5 +2318,5 @@ $member ChoiceButton
 $member ExitDialog
 $member Exit
 $member DeviceClass1
-$member Interface
+$member Fan
 $member ThermostatApp

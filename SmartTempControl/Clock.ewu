@@ -299,10 +299,10 @@ $rect <20,140,220,180>
 $output false
 class Clock : Core::Group
 {
-  $rect <20,80,220,120>
+  $rect <10,80,210,120>
   inherited property Bounds = <0,0,237,67>;
 
-  $rect <20,120,200,160>
+  $rect <10,120,190,160>
   inherited method Init()
   {
     postsignal updateSlot;
@@ -367,7 +367,7 @@ class Clock : Core::Group
 
   // This is a timer object. The timer forces the clock update. Each time the timer \
   // expires, a signal is sent to the @updateSlot method.
-  $rect <10,160,210,200>
+  $rect <280,-10,480,30>
   object Core::Timer Timer
   {
     preset OnTrigger = updateSlot;
@@ -377,7 +377,7 @@ class Clock : Core::Group
 
   // This method will receive signals from the timer object @Timer. It performs the \
   // clock update.
-  $rect <10,240,210,280>
+  $rect <280,70,480,110>
   slot updateSlot
   {
     var Core::Time current = Time.CurrentTime;
@@ -406,7 +406,7 @@ class Clock : Core::Group
   }
 
   // This Core::Time object provides the clock with the current time.
-  $rect <10,200,210,240>
+  $rect <280,30,480,70>
   object Core::Time Time;
 
   $rect <20,20,160,60>
